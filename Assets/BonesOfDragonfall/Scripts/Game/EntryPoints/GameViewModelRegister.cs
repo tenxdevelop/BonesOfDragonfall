@@ -6,12 +6,11 @@ using SkyForge;
 
 namespace BonesOfDragonfall
 {
-    public static class GameServiceRegister
+    public static class GameViewModelRegister
     {
-        public static void RegisterServices(DIContainer container)
+        public static void RegisterViewModels(DIContainer container)
         {
-            container.RegisterSingleton(factory => new SceneService());
-            container.RegisterSingleton(factory => new LoadService());
+            container.RegisterSingleton<IUIRootViewModel>(factory => new UIRootViewModel());
         }
     }
 }

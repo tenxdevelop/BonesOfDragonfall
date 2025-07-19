@@ -8,7 +8,6 @@ using SkyForge.Extension;
 using UnityEngine;
 using SkyForge;
 
-
 namespace BonesOfDragonfall
 {
     public class GameEntryPoint
@@ -45,6 +44,8 @@ namespace BonesOfDragonfall
             _rootContainer.RegisterInstance(_coroutine);
             
             GameServiceRegister.RegisterServices(_rootContainer);
+            GameViewModelRegister.RegisterViewModels(_rootContainer);
+            GameViewRegister.RegisterViews(_rootContainer);
             
             var sceneService = _rootContainer.Resolve<SceneService>();
             sceneService.LoadSceneEvent += OnLoadScene;
@@ -73,7 +74,9 @@ namespace BonesOfDragonfall
         }
         private void OnLoadBootstrapScene()
         {
+            var uIRootViewModel = _rootContainer.Resolve<IUIRootViewModel>();
             
+            uIRootViewModel.ShowLoadingScreen();
         }
 
         private IEnumerator OnLoadMainMenuScene(SceneEnterParams sceneEnterParams)
@@ -85,12 +88,20 @@ namespace BonesOfDragonfall
             yield return mainMenuEntryPoint.Initialization(mainMenuContainer, sceneEnterParams);
 
             mainMenuEntryPoint.Run();
-            
+            HideLoadingScreen();
         }
 
         private IEnumerator OnLoadGameplayScene(SceneEnterParams sceneEnterParams)
         {
             yield return new WaitForEndOfFrame();
+
+            HideLoadingScreen();
+        }
+
+        private void HideLoadingScreen()
+        {
+            var uIRootViewModel = _rootContainer.Resolve<IUIRootViewModel>();
+            uIRootViewModel.HideLoadingScreen();
         }
     }
 }

@@ -26,8 +26,6 @@ namespace BonesOfDragonfall
             MainMenuViewModelRegister.RegisterViewModels(_container, mainMenuEnterParams);
             MainMenuViewRegister.RegisterViews(_container);
             
-            Debug.Log("Init main menu");
-            
             yield return null;
         }
 
