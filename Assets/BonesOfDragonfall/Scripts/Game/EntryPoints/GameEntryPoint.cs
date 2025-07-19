@@ -107,6 +107,9 @@ namespace BonesOfDragonfall
         {
             var gameplayContainer = new DIContainer(_rootContainer);
             
+            var gameStateProvider = gameplayContainer.Resolve<IGameStateProvider>();
+            gameStateProvider.LoadState();
+            
             var gameplayEntryPoint = UnityExtension.GetEntryPoint<GameplayEntryPoint>();
             
             yield return gameplayEntryPoint.Initialization(gameplayContainer, sceneEnterParams);

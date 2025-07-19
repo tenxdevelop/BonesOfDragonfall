@@ -16,6 +16,11 @@ namespace BonesOfDragonfall
             
             uIRootViewModel.ClearUIScreens();
             uIRootViewModel.ClearUIStaticScreens();
+
+            var playerViewPrefab = loadService.LoadPrefab<PlayerView>(LoadService.PREFAB_WORLD_PLAYER);
+            var playerViewModel = container.Resolve<IPlayerViewModel>();
+            loadService.CreateView(playerViewPrefab, playerViewModel);
+            
         }
     }
 }

@@ -17,8 +17,11 @@ namespace BonesOfDragonfall
         public string ConfigId => OriginState.configId;
         
         public ReactiveProperty<Vector3> Position { get; private set; }
-        
+
+        public ReactiveProperty<Vector3> ForceMovement { get; private set; }
+        public ReactiveProperty<Quaternion> Rotation { get; private set; }
         public ReactiveProperty<float> HealthPoint { get; private set; }
+        public ReactiveProperty<float> CameraRotation { get; private set; }
         
         public PlayerModel(PlayerData originState)
         {
@@ -26,6 +29,10 @@ namespace BonesOfDragonfall
             
             HealthPoint = new ReactiveProperty<float>(originState.healthPoint);
             Position = new ReactiveProperty<Vector3>(originState.position);
+            ForceMovement = new ReactiveProperty<Vector3>();
+            
+            Rotation = new ReactiveProperty<Quaternion>(new Quaternion(0, 0, 0, 1));
+            CameraRotation = new ReactiveProperty<float>();
             
             HealthPoint.Subscribe(newHealthPoint => OriginState.healthPoint = newHealthPoint);
             Position.Subscribe(newPosition => OriginState.position = newPosition);

@@ -5,6 +5,7 @@
 using SkyForge.Reactive.Extension;
 using System.Collections.Generic;
 using SkyForge.Reactive;
+using UnityEngine;
 
 namespace BonesOfDragonfall
 {
@@ -17,7 +18,18 @@ namespace BonesOfDragonfall
         {
             var gameStateData = new GameStateData()
             {
+                globalEntityId = 2,
                 entities = new List<EntityStateData>()
+                {
+                    new PlayerData()
+                    {
+                        entityType = EntityType.Player,
+                        configId = "playerConfig",
+                        position = new Vector3(0, 1, 0),
+                        healthPoint = 100,
+                        uniqueId = 1
+                    }
+                }
             };
             
             StateModel = new GameStateModel(gameStateData, entityFactoryService);
@@ -27,7 +39,18 @@ namespace BonesOfDragonfall
         {
             
         }
-
+        
+        public IPlayerModel GetPlayerModel()
+        {
+            foreach (var entity in StateModel.Entities)
+            {
+                if (entity.EntityType.Equals(EntityType.Player))
+                    return entity as IPlayerModel;
+            }
+            
+            return null;
+        }
+        
         public IObservable<bool> SaveState()
         {
             return Observable.Return(true);

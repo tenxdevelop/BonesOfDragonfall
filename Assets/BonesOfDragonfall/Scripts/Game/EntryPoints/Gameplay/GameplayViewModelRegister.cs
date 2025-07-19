@@ -10,7 +10,8 @@ namespace BonesOfDragonfall
     {
         public static void RegisterViewModels(DIContainer container, GameplayEnterParams gameplayEnterParams)
         {
-            
+            container.RegisterSingleton<IPlayerViewModel>(factory => new PlayerViewModel(container.Resolve<IGameStateProvider>().GetPlayerModel(), 
+                container.Resolve<IPlayerService>(), container.Resolve<IPlayerInput>()));
         }
     }
 }

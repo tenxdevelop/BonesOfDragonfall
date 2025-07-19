@@ -10,7 +10,10 @@ namespace BonesOfDragonfall
 {
     public interface IPlayerViewModel : IViewModel
     {
-        ReactiveProperty<Vector3> Position { get; }
-        ReactiveProperty<Quaternion> CameraRotation { get; }
+        ReactiveProperty<Vector3> ForceMovement { get; }
+        ReactiveProperty<Quaternion> Rotation { get; }
+        ReactiveProperty<float> CameraRotation { get; }
+        
+        void UpdatePosition(object sender, Vector3 position);
     }
 }

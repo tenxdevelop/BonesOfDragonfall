@@ -13,6 +13,8 @@ namespace BonesOfDragonfall
         public const string PREFAB_UI_STATIC_UIROOT_MAIN_MENU = "Prefabs/UI/MainMenu/StaticUIRootMainMenu";
         public const string PREFAB_UI_UIROOT_MAIN_MENU = "Prefabs/UI/MainMenu/UIRootMainMenu";
         
+        public const string PREFAB_WORLD_PLAYER = "Prefabs/World/Player/Player";
+        
         public T LoadPrefab<T>(string prefabPath) where T : Object
         {
             var prefab = Resources.Load<T>(prefabPath);

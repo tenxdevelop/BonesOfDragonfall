@@ -8,6 +8,6 @@ namespace BonesOfDragonfall
 {
     public interface IGameStateProvider : IStateProvider<GameStateModel>
     {
-        
+        IPlayerModel GetPlayerModel();
     }
 }
