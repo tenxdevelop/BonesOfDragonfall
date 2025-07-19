@@ -2,6 +2,7 @@
    Copyright SunWorldStudio Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using System.Collections;
 using SkyForge.Extension;
 
 namespace BonesOfDragonfall
@@ -12,5 +13,10 @@ namespace BonesOfDragonfall
         public const string MAIN_MENU_SCENE = "MainMenu";
         public const string GAMEPLAY_SCENE = "Gameplay";
         
+        public IEnumerator LoadMainMenu(MainMenuEnterParams mainMenuEnterParams)
+        {
+            yield return LoadScene(BOOTSTRAP_SCENE);
+            yield return LoadScene(MAIN_MENU_SCENE, mainMenuEnterParams);
+        }
     }
 }

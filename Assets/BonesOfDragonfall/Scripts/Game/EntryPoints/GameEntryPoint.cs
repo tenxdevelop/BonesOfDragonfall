@@ -15,7 +15,7 @@ namespace BonesOfDragonfall
     {
         private static GameEntryPoint _instance;
         
-        private DIContainer _container;
+        private DIContainer _rootContainer;
         private Coroutines _coroutine;
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -37,18 +37,20 @@ namespace BonesOfDragonfall
         
         private void Run()
         { 
-            _container = new DIContainer();
+            _rootContainer = new DIContainer();
              
             //Init coroutines
             _coroutine = new GameObject("[COROUTINES]").AddComponent<Coroutines>();
             Object.DontDestroyOnLoad(_coroutine.gameObject);
-            _container.RegisterInstance(_coroutine);
+            _rootContainer.RegisterInstance(_coroutine);
             
-            GameServiceRegister.RegisterServices(_container);
+            GameServiceRegister.RegisterServices(_rootContainer);
             
-            var sceneService = _container.Resolve<SceneService>();
+            var sceneService = _rootContainer.Resolve<SceneService>();
             sceneService.LoadSceneEvent += OnLoadScene;
             
+            var defaultMainMenuEnterParams = new MainMenuEnterParams();
+            _coroutine.StartCoroutine(sceneService.LoadMainMenu(defaultMainMenuEnterParams));
         }
 
         private void OnLoadScene(Scene scene, LoadSceneMode loadSceneMode, SceneEnterParams sceneEnterParams)
@@ -76,7 +78,14 @@ namespace BonesOfDragonfall
 
         private IEnumerator OnLoadMainMenuScene(SceneEnterParams sceneEnterParams)
         {
-            yield return new WaitForEndOfFrame();
+            var mainMenuContainer = new DIContainer(_rootContainer);
+
+            var mainMenuEntryPoint = UnityExtension.GetEntryPoint<MainMenuEntryPoint>();
+            
+            yield return mainMenuEntryPoint.Initialization(mainMenuContainer, sceneEnterParams);
+
+            mainMenuEntryPoint.Run();
+            
         }
 
         private IEnumerator OnLoadGameplayScene(SceneEnterParams sceneEnterParams)
