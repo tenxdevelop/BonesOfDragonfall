@@ -11,7 +11,6 @@ namespace BonesOfDragonfall
     {
         public static void RegisterServices(DIContainer container, GameplayEnterParams gameplayEnterParams, SingleReactiveProperty<GameplayExitParams> gameplayExitParams)
         {
-            
             //Init game input system
             var gameInputManager = new GameInputManager();
             gameInputManager.RegisterInput<IPlayerInputMapper, PlayerKeyboardAndMouseInputMapper>();
