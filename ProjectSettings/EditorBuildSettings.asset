@@ -15,5 +15,5 @@ EditorBuildSettings:
     path: Assets/BonesOfDragonfall/Scenes/Gameplay.unity
     guid: 7950a3fb868b5524aa20c503f2458251
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 0546caaea4869cc4ba7050d9a64b0910, type: 3}
   m_UseUCBPForAssetBundles: 0

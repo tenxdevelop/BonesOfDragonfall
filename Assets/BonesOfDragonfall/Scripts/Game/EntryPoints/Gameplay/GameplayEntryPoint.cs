@@ -15,6 +15,8 @@ namespace BonesOfDragonfall
         private SingleReactiveProperty<GameplayExitParams> _gameplayExitParams = new();
 
         private DIContainer _container;
+
+        private Vector2 _playerMoveDirection = Vector2.zero;
         public IEnumerator Initialization(DIContainer parentContainer, SceneEnterParams sceneEnterParams)
         {
             _container = parentContainer;
@@ -26,8 +28,14 @@ namespace BonesOfDragonfall
             GameplayViewRegister.RegisterViews(_container);
             
             yield return null;
+            
         }
-
+        
+        private void OnDisable()
+        {
+            _container.Dispose();
+        }
+        
         public IObservable<SceneExitParams> Run()
         {
             return _gameplayExitParams;
