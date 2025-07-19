@@ -10,6 +10,8 @@ namespace BonesOfDragonfall
     {
         public static void RegisterViewModels(DIContainer container, MainMenuEnterParams mainMenuEnterParams)
         {
+            container.RegisterSingleton<IUIRootMainMenuViewModel>(factory => new UIRootMainMenuViewModel(factory.Resolve<ApplicationService>(), 
+                factory.Resolve<IMainMenuService>()));
             
         }
     }

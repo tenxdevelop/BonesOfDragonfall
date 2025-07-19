@@ -11,7 +11,7 @@ namespace BonesOfDragonfall
     {
         public static void RegisterServices(DIContainer container, MainMenuEnterParams mainMenuEnterParams, SingleReactiveProperty<MainMenuExitParams> mainMenuExitParams)
         {
-            
+            container.RegisterSingleton<IMainMenuService>(factory => new MainMenuService(mainMenuExitParams));
         }
     }
 }
