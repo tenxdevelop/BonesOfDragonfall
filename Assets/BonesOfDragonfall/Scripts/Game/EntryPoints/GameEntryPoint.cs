@@ -3,6 +3,7 @@
 \**************************************************************************/
 
 using UnityEngine.SceneManagement;
+using SkyForge.Reactive.Extension;
 using System.Collections;
 using SkyForge.Extension;
 using UnityEngine;
@@ -87,14 +88,31 @@ namespace BonesOfDragonfall
             
             yield return mainMenuEntryPoint.Initialization(mainMenuContainer, sceneEnterParams);
 
-            mainMenuEntryPoint.Run();
+            mainMenuEntryPoint.Run().Subscribe(sceneExitParams =>
+            {
+                var sceneService =  _rootContainer.Resolve<SceneService>();
+                var typeEnterParams = sceneExitParams.TargetEnterParams.GetType();
+                
+                if (typeEnterParams.Equals(typeof(GameplayEnterParams)))
+                {
+                    _coroutine.StartCoroutine(sceneService.LoadGameplay(sceneExitParams.TargetEnterParams.As<GameplayEnterParams>()));
+                }
+                
+            });
+            
             HideLoadingScreen();
         }
 
         private IEnumerator OnLoadGameplayScene(SceneEnterParams sceneEnterParams)
         {
-            yield return new WaitForEndOfFrame();
+            var gameplayContainer = new DIContainer(_rootContainer);
+            
+            var gameplayEntryPoint = UnityExtension.GetEntryPoint<GameplayEntryPoint>();
+            
+            yield return gameplayEntryPoint.Initialization(gameplayContainer, sceneEnterParams);
 
+            gameplayEntryPoint.Run();
+            
             HideLoadingScreen();
         }
 

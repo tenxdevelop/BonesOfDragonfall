@@ -18,5 +18,11 @@ namespace BonesOfDragonfall
             yield return LoadScene(BOOTSTRAP_SCENE);
             yield return LoadScene(MAIN_MENU_SCENE, mainMenuEnterParams);
         }
+
+        public IEnumerator LoadGameplay(GameplayEnterParams gameplayEnterParams)
+        {
+            yield return LoadScene(BOOTSTRAP_SCENE);
+            yield return LoadScene(GAMEPLAY_SCENE, gameplayEnterParams);
+        }
     }
 }
