@@ -34,6 +34,12 @@ namespace BonesOfDragonfall
             gameInputMap.GetInputPlayerRotationCameraMouse().performed -= OnPlayerRotationCameraMouse;
         }
         
+        public bool PlayerJumpPressed()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            return gameInputMap.PlayerJumpPressedKeyboard();
+        }
+        
         private void OnPlayerMovedKeyboard(InputAction.CallbackContext context)
         {
             PlayerMovedReceivedEvent?.Invoke(context.ReadValue<Vector2>());

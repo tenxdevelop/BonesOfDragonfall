@@ -25,7 +25,10 @@ namespace BonesOfDragonfall
                 var limitedVelocity = flatVelocity.normalized * _maxSpeed;
                 _rigidbody.linearVelocity = new Vector3(limitedVelocity.x, _rigidbody.linearVelocity.y, limitedVelocity.z);
             }
-            
+        }
+
+        private void LateUpdate()
+        {
             UpdatePositionEvent?.Invoke(_rigidbody.position);
         }
     }

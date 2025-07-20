@@ -12,6 +12,8 @@ namespace BonesOfDragonfall
     public class PlayerViewModel : IPlayerViewModel
     {
         public ReactiveProperty<Vector3> ForceMovement => _playerModel.ForceMovement;
+        public ReactiveProperty<float> DragMovement => _playerModel.DragMovement;
+        public ReactiveProperty<Vector3> JumpForce => _playerModel.JumpForce;
         public ReactiveProperty<Quaternion> Rotation => _playerModel.Rotation;
         public ReactiveProperty<float> CameraRotation => _playerModel.CameraRotation;
         
@@ -22,6 +24,8 @@ namespace BonesOfDragonfall
         private ReactiveProperty<Vector2> _playerMoveDirection = new();
 
         private IFinalStateMachine _playerStateMachine;
+
+        private ReactiveProperty<bool> _playerInGround = new();
         
         public PlayerViewModel(IPlayerModel playerModel, IPlayerService playerService, IPlayerInput playerInput)
         {
@@ -36,11 +40,16 @@ namespace BonesOfDragonfall
             _playerStateMachine = new FinalStateMachine();
 
             var playerIdleState = new PlayerIdleState();
-            var playerMovingState = new PlayerMovingState(_playerService, _playerMoveDirection, 7 * 10, _playerModel.UniqueId);
+            var playerMovingState = new PlayerMovingState(_playerService, _playerMoveDirection, _playerInGround, 7 * 10 * 1.5f, 0.1f, 4f, _playerModel.UniqueId);
+            var playerJumpState = new PlayerJumpState(_playerService, _playerModel.UniqueId, 20);
             
             _playerStateMachine.RegisterState(playerIdleState);
+            
             _playerStateMachine.AddTransition<PlayerIdleState>(playerMovingState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude > 0));
             _playerStateMachine.AddTransition<PlayerMovingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
+            _playerStateMachine.AddTransition<PlayerMovingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
+            _playerStateMachine.AddTransition<PlayerIdleState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
+            _playerStateMachine.AddTransition<PlayerJumpState>(playerIdleState, new FuncPredicate(() => true));
             
             _playerStateMachine.SetState(playerIdleState);
         }
@@ -76,7 +85,17 @@ namespace BonesOfDragonfall
         {
             _playerStateMachine.PhysicsUpdate(deltaTime);
         }
-
-       
+        
+        [ReactiveMethod]
+        public void PlayerInGround(object sender)
+        {
+            _playerInGround.Value = true;
+        }
+        
+        [ReactiveMethod]
+        public void PlayerNotInGround(object sender)
+        {
+            _playerInGround.Value = false;
+        }
     }
 }

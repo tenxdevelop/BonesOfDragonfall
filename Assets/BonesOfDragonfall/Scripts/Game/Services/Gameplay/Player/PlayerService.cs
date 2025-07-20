@@ -22,15 +22,21 @@ namespace BonesOfDragonfall
             
         }
 
-        public void Move(Vector2 direction,  float speed, int playerId)
+        public void Move(Vector2 direction, float speed, float airSpeed, float dragMovement, bool playerInGround, int playerId)
         {
-            var command = new CmdPlayerMove(direction, speed, playerId);
+            var command = new CmdPlayerMove(direction, speed, airSpeed, dragMovement, playerInGround, playerId);
             _commandProcessor.Process(command);
         }
 
         public void PlayerRotation(Vector2 direction, float sensitivityX, float sensitivityY, int playerId)
         {
             var command = new CmdPlayerRotation(direction, sensitivityX, sensitivityY, playerId);
+            _commandProcessor.Process(command);
+        }
+        
+        public void Jump(float jumpForce, int playerId)
+        {
+            var command = new CmdPlayerJump(jumpForce, playerId);
             _commandProcessor.Process(command);
         }
     }

@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "PlayerJumpKeyboard",
+                    "type": "Button",
+                    "id": "d8577c6f-1b18-4c17-88d2-e4911422cde2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -90,6 +99,17 @@
                     "action": "PlayerMovementKeyboard",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d8ab6232-fe07-4de5-aea2-052efca653d0",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerJumpKeyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

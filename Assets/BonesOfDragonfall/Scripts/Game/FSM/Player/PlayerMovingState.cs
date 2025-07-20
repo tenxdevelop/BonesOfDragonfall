@@ -13,18 +13,25 @@ namespace BonesOfDragonfall
     {
         private int _playerId;
         private float _playerSpeed;
+        private float _playerAirSpeed;
+        private float _dragMovement;
         
         private IPlayerService _playerService;
         
         private Vector2 _playerMoveDirection;
+        private bool _playerInGround;
         
-        public PlayerMovingState(IPlayerService playerService, ReactiveProperty<Vector2> direction, float playerSpeed, int playerId)
+        public PlayerMovingState(IPlayerService playerService, ReactiveProperty<Vector2> direction,ReactiveProperty<bool> playerInGround, float playerSpeed, 
+            float playerAirSpeed, float dragMovement, int playerId)
         {
             _playerService = playerService;
             _playerSpeed = playerSpeed;
             _playerId = playerId;
+            _playerAirSpeed = playerAirSpeed;
+            _dragMovement = dragMovement;
             
             direction.Subscribe(newDirection => _playerMoveDirection =  newDirection);
+            playerInGround.Subscribe(newPlayer => _playerInGround = newPlayer);
         }
         
         public void OnStart()
@@ -39,7 +46,7 @@ namespace BonesOfDragonfall
 
         public void OnPhysicsUpdate(float deltaTime)
         {
-            _playerService.Move(_playerMoveDirection, _playerSpeed, _playerId);
+            _playerService.Move(_playerMoveDirection, _playerSpeed, _playerAirSpeed, _dragMovement, _playerInGround, _playerId);
         }
 
         public void OnExit()

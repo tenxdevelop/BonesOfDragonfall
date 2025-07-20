@@ -12,5 +12,7 @@ namespace BonesOfDragonfall
     {
         public event Action<Vector2> PlayerMovedReceivedEvent;
         public event Action<Vector2> PlayerCameraRotationReceivedEvent;
+        
+        public bool PlayerJumpPressed();
     }
 }
