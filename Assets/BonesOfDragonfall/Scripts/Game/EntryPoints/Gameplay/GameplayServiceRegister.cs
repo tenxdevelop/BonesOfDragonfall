@@ -20,6 +20,7 @@ namespace BonesOfDragonfall
             commandProcessor.RegisterCommandHandler(new PlayerMoveCommandHandler(gameStateModel));
             commandProcessor.RegisterCommandHandler(new PlayerRotationCommandHandler(gameStateModel));
             commandProcessor.RegisterCommandHandler(new PlayerJumpCommandHandler(gameStateModel));
+            commandProcessor.RegisterCommandHandler(new PlayerChangeMaxSpeedCommandHandler(gameStateModel));
             
             container.RegisterInstance<ICommandProcessor>(commandProcessor);
             

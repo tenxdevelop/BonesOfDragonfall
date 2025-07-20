@@ -11,6 +11,7 @@ namespace BonesOfDragonfall
 {
     public class PlayerViewModel : IPlayerViewModel
     {
+        public ReactiveProperty<float> MaxSpeed => _playerModel.MaxSpeed;
         public ReactiveProperty<Vector3> ForceMovement => _playerModel.ForceMovement;
         public ReactiveProperty<float> DragMovement => _playerModel.DragMovement;
         public ReactiveProperty<Vector3> JumpForce => _playerModel.JumpForce;
@@ -42,14 +43,22 @@ namespace BonesOfDragonfall
             var playerIdleState = new PlayerIdleState();
             var playerMovingState = new PlayerMovingState(_playerService, _playerMoveDirection, _playerInGround, 7 * 10 * 1.5f, 0.1f, 4f, _playerModel.UniqueId);
             var playerJumpState = new PlayerJumpState(_playerService, _playerModel.UniqueId, 20);
+            var playerSprintingState = new PlayerSprintingState(_playerService, _playerMoveDirection, _playerInGround, 7 * 10 * 2f, 0.1f, 4f, _playerModel.UniqueId);
             
             _playerStateMachine.RegisterState(playerIdleState);
             
             _playerStateMachine.AddTransition<PlayerIdleState>(playerMovingState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude > 0));
+            _playerStateMachine.AddTransition<PlayerIdleState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
+            
             _playerStateMachine.AddTransition<PlayerMovingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
             _playerStateMachine.AddTransition<PlayerMovingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
-            _playerStateMachine.AddTransition<PlayerIdleState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
+            _playerStateMachine.AddTransition<PlayerMovingState>(playerSprintingState, new FuncPredicate(() => _playerInput.PlayerSprintingPressed() && _playerInGround.Value));
+            
             _playerStateMachine.AddTransition<PlayerJumpState>(playerIdleState, new FuncPredicate(() => true));
+            
+            _playerStateMachine.AddTransition<PlayerSprintingState>(playerMovingState, new FuncPredicate(() => !_playerInput.PlayerSprintingPressed() || !_playerInGround.Value));
+            _playerStateMachine.AddTransition<PlayerSprintingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
+            _playerStateMachine.AddTransition<PlayerSprintingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
             
             _playerStateMachine.SetState(playerIdleState);
         }

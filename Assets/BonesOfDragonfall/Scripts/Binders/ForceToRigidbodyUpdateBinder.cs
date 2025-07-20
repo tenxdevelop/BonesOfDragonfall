@@ -11,9 +11,11 @@ namespace BonesOfDragonfall
     public class ForceToRigidbodyUpdateBinder : MonoBehaviour
     {
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private float _maxSpeed;
-
-        [SerializeField] private UnityEvent<Vector3> UpdatePositionEvent;
+        
+        [SerializeField] private UnityEvent<Vector3> _updatePositionEvent;
+        
+        private float _maxSpeed;
+        
         public void AddForce(Vector3 force)
         {
             _rigidbody.AddForce(force);
@@ -27,9 +29,14 @@ namespace BonesOfDragonfall
             }
         }
 
+        public void SetMaxSpeed(float maxSpeed)
+        {
+            _maxSpeed = maxSpeed;
+        }
+        
         private void LateUpdate()
         {
-            UpdatePositionEvent?.Invoke(_rigidbody.position);
+            _updatePositionEvent?.Invoke(_rigidbody.position);
         }
     }
 }

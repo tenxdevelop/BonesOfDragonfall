@@ -119,6 +119,15 @@ namespace BonesOfDragonfall
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerSprintingKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""f70aaba4-584c-4d46-9dd8-a1c7b641c008"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -198,6 +207,17 @@ namespace BonesOfDragonfall
                     ""action"": ""PlayerJumpKeyboard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f157c729-2a74-4f2b-80d3-d969b371c4ed"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerSprintingKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -209,6 +229,7 @@ namespace BonesOfDragonfall
             m_PlayerInputMap_PlayerRotationCameraMouse = m_PlayerInputMap.FindAction("PlayerRotationCameraMouse", throwIfNotFound: true);
             m_PlayerInputMap_PlayerMovementKeyboard = m_PlayerInputMap.FindAction("PlayerMovementKeyboard", throwIfNotFound: true);
             m_PlayerInputMap_PlayerJumpKeyboard = m_PlayerInputMap.FindAction("PlayerJumpKeyboard", throwIfNotFound: true);
+            m_PlayerInputMap_PlayerSprintingKeyboard = m_PlayerInputMap.FindAction("PlayerSprintingKeyboard", throwIfNotFound: true);
         }
 
         ~@GameInputSystem()
@@ -292,6 +313,7 @@ namespace BonesOfDragonfall
         private readonly InputAction m_PlayerInputMap_PlayerRotationCameraMouse;
         private readonly InputAction m_PlayerInputMap_PlayerMovementKeyboard;
         private readonly InputAction m_PlayerInputMap_PlayerJumpKeyboard;
+        private readonly InputAction m_PlayerInputMap_PlayerSprintingKeyboard;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerInputMap".
         /// </summary>
@@ -315,6 +337,10 @@ namespace BonesOfDragonfall
             /// Provides access to the underlying input action "PlayerInputMap/PlayerJumpKeyboard".
             /// </summary>
             public InputAction @PlayerJumpKeyboard => m_Wrapper.m_PlayerInputMap_PlayerJumpKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerInputMap/PlayerSprintingKeyboard".
+            /// </summary>
+            public InputAction @PlayerSprintingKeyboard => m_Wrapper.m_PlayerInputMap_PlayerSprintingKeyboard;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -350,6 +376,9 @@ namespace BonesOfDragonfall
                 @PlayerJumpKeyboard.started += instance.OnPlayerJumpKeyboard;
                 @PlayerJumpKeyboard.performed += instance.OnPlayerJumpKeyboard;
                 @PlayerJumpKeyboard.canceled += instance.OnPlayerJumpKeyboard;
+                @PlayerSprintingKeyboard.started += instance.OnPlayerSprintingKeyboard;
+                @PlayerSprintingKeyboard.performed += instance.OnPlayerSprintingKeyboard;
+                @PlayerSprintingKeyboard.canceled += instance.OnPlayerSprintingKeyboard;
             }
 
             /// <summary>
@@ -370,6 +399,9 @@ namespace BonesOfDragonfall
                 @PlayerJumpKeyboard.started -= instance.OnPlayerJumpKeyboard;
                 @PlayerJumpKeyboard.performed -= instance.OnPlayerJumpKeyboard;
                 @PlayerJumpKeyboard.canceled -= instance.OnPlayerJumpKeyboard;
+                @PlayerSprintingKeyboard.started -= instance.OnPlayerSprintingKeyboard;
+                @PlayerSprintingKeyboard.performed -= instance.OnPlayerSprintingKeyboard;
+                @PlayerSprintingKeyboard.canceled -= instance.OnPlayerSprintingKeyboard;
             }
 
             /// <summary>
@@ -431,6 +463,13 @@ namespace BonesOfDragonfall
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPlayerJumpKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerSprintingKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerSprintingKeyboard(InputAction.CallbackContext context);
         }
     }
 }

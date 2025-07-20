@@ -10,6 +10,7 @@ namespace BonesOfDragonfall
 {
     public interface IPlayerViewModel : IViewModel
     {
+        ReactiveProperty<float> MaxSpeed { get; }
         ReactiveProperty<Vector3> ForceMovement { get; }
         ReactiveProperty<float> DragMovement { get; }
         ReactiveProperty<Vector3> JumpForce { get; }

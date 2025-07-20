@@ -24,5 +24,10 @@ namespace BonesOfDragonfall
         {
             return OriginInputMap.PlayerInputMap.PlayerJumpKeyboard.triggered;
         }
+
+        public bool PlayerSprintPressedKeyboard()
+        {
+            return OriginInputMap.PlayerInputMap.PlayerSprintingKeyboard.IsPressed();
+        }
     }
 }

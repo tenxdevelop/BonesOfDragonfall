@@ -226,10 +226,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1369906850001809264}
-  - component: {fileID: 946038698736247503}
-  - component: {fileID: 6844281905511736107}
   - component: {fileID: 7304278133750069706}
   - component: {fileID: 5355451559215190888}
+  - component: {fileID: 3785792440709320402}
+  - component: {fileID: 5225909854775169801}
   m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
@@ -246,41 +246,12 @@ Transform:
   m_GameObject: {fileID: 3734588705733697869}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.003, z: 0}
-  m_LocalScale: {x: 0.6553872, y: 0.13671814, z: 0.5816335}
+  m_LocalPosition: {x: 0, y: -0.999, z: 0}
+  m_LocalScale: {x: 0.5507094, y: 0.17972967, z: 0.6180158}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7327480517269187708}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &946038698736247503
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3734588705733697869}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6844281905511736107
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3734588705733697869}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7304278133750069706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +281,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_viewModelTypeFullName: BonesOfDragonfall.PlayerViewModel
   m_propertyName: PlayerNotInGround
+  m_trigerViewTypeFullName: Any
+--- !u!65 &3785792440709320402
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3734588705733697869}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5225909854775169801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3734588705733697869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad824f1417ed7864d8256a000d66ce60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_viewModelTypeFullName: BonesOfDragonfall.PlayerViewModel
+  m_propertyName: PlayerInGround
   m_trigerViewTypeFullName: Any
 --- !u!1 &5121288798459959954
 GameObject:
@@ -439,6 +446,7 @@ GameObject:
   - component: {fileID: 7784231110890115550}
   - component: {fileID: 6759551849713199011}
   - component: {fileID: 1066657726829437645}
+  - component: {fileID: 1223009351757616971}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -489,6 +497,8 @@ MonoBehaviour:
   - {fileID: 6759551849713199011}
   - {fileID: 7304278133750069706}
   - {fileID: 5355451559215190888}
+  - {fileID: 1223009351757616971}
+  - {fileID: 5225909854775169801}
 --- !u!114 &1239484072962572336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,8 +604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: -4945614411266827198}
-  _maxSpeed: 8
-  UpdatePositionEvent:
+  _updatePositionEvent:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7311049004809935031}
@@ -702,3 +711,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: -4945614411266827198}
+--- !u!114 &1223009351757616971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681950440652223065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6561b3afb253922498de999656855382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_viewModelTypeFullName: BonesOfDragonfall.PlayerViewModel
+  m_propertyName: MaxSpeed
+  m_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 509370741104860136}
+        m_TargetAssemblyTypeName: BonesOfDragonfall.ForceToRigidbodyUpdateBinder,
+          Assembly-CSharp
+        m_MethodName: SetMaxSpeed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_eventWithAnalitics:
+    m_PersistentCalls:
+      m_Calls: []

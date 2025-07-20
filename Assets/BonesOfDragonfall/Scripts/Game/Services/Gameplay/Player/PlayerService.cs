@@ -39,5 +39,11 @@ namespace BonesOfDragonfall
             var command = new CmdPlayerJump(jumpForce, playerId);
             _commandProcessor.Process(command);
         }
+
+        public void ChangeMaxSpeed(float maxSpeed, int playerId)
+        {
+            var command = new CmdPlayerChangeMaxSpeed(maxSpeed, playerId);
+            _commandProcessor.Process(command);
+        }
     }
 }

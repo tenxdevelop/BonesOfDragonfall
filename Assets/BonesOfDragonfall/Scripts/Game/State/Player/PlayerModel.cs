@@ -16,6 +16,7 @@ namespace BonesOfDragonfall
         
         public string ConfigId => OriginState.configId;
         
+        public ReactiveProperty<float> MaxSpeed { get; private set; }
         public ReactiveProperty<Vector3> Position { get; private set; }
         public ReactiveProperty<Vector3> ForceMovement { get; private set; }
         public ReactiveProperty<float> DragMovement { get; private set; }
@@ -30,7 +31,8 @@ namespace BonesOfDragonfall
             
             HealthPoint = new ReactiveProperty<float>(originState.healthPoint);
             Position = new ReactiveProperty<Vector3>(originState.position);
-            
+
+            MaxSpeed = new ReactiveProperty<float>();
             ForceMovement = new ReactiveProperty<Vector3>();
             DragMovement = new ReactiveProperty<float>();
             JumpForce = new ReactiveProperty<Vector3>();

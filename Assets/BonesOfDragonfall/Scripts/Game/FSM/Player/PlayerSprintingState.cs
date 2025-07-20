@@ -9,7 +9,7 @@ using UnityEngine;
 
 namespace BonesOfDragonfall
 {
-    public class PlayerMovingState : IState
+    public class PlayerSprintingState : IState
     {
         private int _playerId;
         private float _playerSpeed;
@@ -21,7 +21,7 @@ namespace BonesOfDragonfall
         private Vector2 _playerMoveDirection;
         private bool _playerInGround;
         
-        public PlayerMovingState(IPlayerService playerService, ReactiveProperty<Vector2> direction,ReactiveProperty<bool> playerInGround, float playerSpeed, 
+        public PlayerSprintingState(IPlayerService playerService, ReactiveProperty<Vector2> direction,ReactiveProperty<bool> playerInGround, float playerSpeed, 
             float playerAirSpeed, float dragMovement, int playerId)
         {
             _playerService = playerService;
@@ -36,8 +36,8 @@ namespace BonesOfDragonfall
         
         public void OnStart()
         {
-            Debug.Log("playerMoving");
-            _playerService.ChangeMaxSpeed(8f, _playerId);
+            Debug.Log("playerSprinting");
+            _playerService.ChangeMaxSpeed(12f, _playerId);
         }
 
         public void OnUpdate(float deltaTime)
