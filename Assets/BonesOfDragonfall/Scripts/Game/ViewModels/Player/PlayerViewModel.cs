@@ -4,6 +4,7 @@
 
 using SkyForge.Reactive;
 using SkyForge.MVVM;
+using SkyForge.FSM;
 using UnityEngine;
 
 namespace BonesOfDragonfall
@@ -13,20 +14,35 @@ namespace BonesOfDragonfall
         public ReactiveProperty<Vector3> ForceMovement => _playerModel.ForceMovement;
         public ReactiveProperty<Quaternion> Rotation => _playerModel.Rotation;
         public ReactiveProperty<float> CameraRotation => _playerModel.CameraRotation;
-
-        private readonly IPlayerModel _playerModel;
+        
         private readonly IPlayerService _playerService;
+        private readonly IPlayerModel _playerModel;
         private readonly IPlayerInput _playerInput;
         
-        private Vector2 _playerMoveDirection = Vector2.zero;
+        private ReactiveProperty<Vector2> _playerMoveDirection = new();
+
+        private IFinalStateMachine _playerStateMachine;
+        
         public PlayerViewModel(IPlayerModel playerModel, IPlayerService playerService, IPlayerInput playerInput)
         {
-            _playerModel = playerModel;
             _playerService = playerService;
+            _playerModel = playerModel;
             _playerInput = playerInput;
 
             _playerInput.PlayerMovedReceivedEvent += OnPlayerMovedReceived;
             _playerInput.PlayerCameraRotationReceivedEvent += OnPlayerCameraRotationReceived;
+            
+            //Config player state machine
+            _playerStateMachine = new FinalStateMachine();
+
+            var playerIdleState = new PlayerIdleState();
+            var playerMovingState = new PlayerMovingState(_playerService, _playerMoveDirection, 7 * 10, _playerModel.UniqueId);
+            
+            _playerStateMachine.RegisterState(playerIdleState);
+            _playerStateMachine.AddTransition<PlayerIdleState>(playerMovingState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude > 0));
+            _playerStateMachine.AddTransition<PlayerMovingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
+            
+            _playerStateMachine.SetState(playerIdleState);
         }
 
         private void OnPlayerCameraRotationReceived(Vector2 direction)
@@ -36,7 +52,7 @@ namespace BonesOfDragonfall
 
         private void OnPlayerMovedReceived(Vector2 direction)
         {
-            _playerMoveDirection = direction;
+            _playerMoveDirection.Value = direction;
         }
 
         public void Dispose()
@@ -47,7 +63,7 @@ namespace BonesOfDragonfall
 
         public void Update(float deltaTime)
         {
-            _playerService.Move(_playerMoveDirection, 16, _playerModel.UniqueId);
+            _playerStateMachine.Update(deltaTime);
         }
 
         [ReactiveMethod]
@@ -58,7 +74,7 @@ namespace BonesOfDragonfall
         
         public void PhysicsUpdate(float deltaTime)
         {
-            
+            _playerStateMachine.PhysicsUpdate(deltaTime);
         }
 
        
