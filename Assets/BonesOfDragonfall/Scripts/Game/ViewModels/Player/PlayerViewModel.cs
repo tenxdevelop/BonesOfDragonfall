@@ -32,6 +32,8 @@ namespace BonesOfDragonfall
         private readonly ReactiveProperty<bool> _playerInGround = new();
 
         private bool _isReadyCrouch;
+
+        private bool _isReadyStandup;
         
         public PlayerViewModel(IPlayerModel playerModel, IPlayerService playerService, IPlayerInput playerInput, Coroutines coroutine)
         {
@@ -47,6 +49,7 @@ namespace BonesOfDragonfall
             ConfigurePlayerStateMachine(coroutine);
 
             _isReadyCrouch = true;
+            _isReadyStandup = true;
         }
 
         private void OnPlayerCameraRotationReceived(Vector2 direction)
@@ -68,6 +71,7 @@ namespace BonesOfDragonfall
         public void Update(float deltaTime)
         {
             _playerStateMachine.Update(deltaTime);
+            _isReadyStandup = _playerService.CheckStandup(2f, _playerModel.UniqueId);
         }
 
         [ReactiveMethod]
@@ -120,7 +124,7 @@ namespace BonesOfDragonfall
             _playerStateMachine.AddTransition<PlayerSprintingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
             _playerStateMachine.AddTransition<PlayerSprintingState>(playerCrouchState, new FuncPredicate(() => _playerInput.PlayerCrouchPressed() && _playerInGround.Value && _isReadyCrouch));
             
-            _playerStateMachine.AddTransition<PlayerCrouchState>(playerIdleState, new FuncPredicate(() => _playerInput.PlayerCrouchPressed() || !_playerInGround.Value && _isReadyCrouch));
+            _playerStateMachine.AddTransition<PlayerCrouchState>(playerIdleState, new FuncPredicate(() => (_playerInput.PlayerCrouchPressed() || !_playerInGround.Value) && _isReadyCrouch && _isReadyStandup));
             
             _playerStateMachine.SetState(playerIdleState);
         }

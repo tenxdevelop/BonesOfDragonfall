@@ -27,6 +27,9 @@ namespace BonesOfDragonfall
             GameplayViewModelRegister.RegisterViewModels(_container, gameplayEnterParams);
             GameplayViewRegister.RegisterViews(_container);
             
+            var applicationService = _container.Resolve<ApplicationService>();
+            applicationService.HideMouseCursor();
+            
             yield return null;
             
         }

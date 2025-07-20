@@ -82,7 +82,7 @@ namespace BonesOfDragonfall
 
         private IEnumerator UpdateIsCrouch()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.5f);
             IsReadyCrouch.Value = true;
         }
     }

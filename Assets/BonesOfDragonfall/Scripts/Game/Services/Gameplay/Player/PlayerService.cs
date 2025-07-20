@@ -57,5 +57,11 @@ namespace BonesOfDragonfall
             var command = new CmdPlayerStandup(playerId);
             _commandProcessor.Process(command);
         }
+
+        public bool CheckStandup(float playerHeight, int playerId)
+        {
+            var command = new CmdCheckStandupPlayer(playerHeight, playerId);
+            return _commandProcessor.Process(command);
+        }
     }
 }

@@ -8,25 +8,26 @@ using System.Linq;
 
 namespace BonesOfDragonfall
 {
-    public class PlayerStandupCommandHandler : ICommandHandler<CmdPlayerStandup>
+    public class CheckStandupPlayerCommandHandler : ICommandHandler<CmdCheckStandupPlayer>
     {
         
         private GameStateModel _gameStateModel;
 
-        public PlayerStandupCommandHandler(GameStateModel gameStateModel)
+        public CheckStandupPlayerCommandHandler(GameStateModel gameStateModel)
         {
             _gameStateModel = gameStateModel;
         }
         
-        public bool Handle(CmdPlayerStandup command)
+        public bool Handle(CmdCheckStandupPlayer command)
         {
             var player = _gameStateModel.Entities.FirstOrDefault(entity => entity.UniqueId.Equals(command.PlayerId)) as IPlayerModel;
 
             if (player is null)
                 return false;
-            
-            player.ScaleCollider.Value = new Vector3(1, 1, 1);
-            return true;
+
+            var result = Physics.Raycast(player.Position.Value, Vector3.up, command.PlayerHeight * 0.5f + 0.4f);
+
+            return !result;
         }
     }
 }

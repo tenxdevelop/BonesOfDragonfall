@@ -15,5 +15,6 @@ namespace BonesOfDragonfall
         void ChangeMaxSpeed(float maxSpeed, int playerId);
         void PlayerCrouch(float crouchScale, int playerId);
         void PlayerStandup(int playerId);
+        bool CheckStandup(float playerHeight, int playerId);
     }
 }
