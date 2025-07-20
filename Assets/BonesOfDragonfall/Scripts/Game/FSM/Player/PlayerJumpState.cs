@@ -8,9 +8,9 @@ namespace BonesOfDragonfall
 {
     public class PlayerJumpState : IState
     {
-        private int _playerId;
-        private float _jumpForce;
-        private IPlayerService _playerService;
+        private readonly int _playerId;
+        private readonly float _jumpForce;
+        private readonly IPlayerService _playerService;
 
         public PlayerJumpState(IPlayerService playerService, int playerId, float jumpForce)
         {

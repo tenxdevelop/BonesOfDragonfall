@@ -11,12 +11,12 @@ namespace BonesOfDragonfall
 {
     public class PlayerMovingState : IState
     {
-        private int _playerId;
-        private float _playerSpeed;
-        private float _playerAirSpeed;
-        private float _dragMovement;
+        private readonly int _playerId;
+        private readonly float _playerSpeed;
+        private readonly float _playerAirSpeed;
+        private readonly float _dragMovement;
         
-        private IPlayerService _playerService;
+        private readonly IPlayerService _playerService;
         
         private Vector2 _playerMoveDirection;
         private bool _playerInGround;

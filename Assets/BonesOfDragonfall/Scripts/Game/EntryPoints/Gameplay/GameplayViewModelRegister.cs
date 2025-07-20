@@ -2,6 +2,7 @@
    Copyright SunWorldStudio Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using SkyForge.Extension;
 using SkyForge;
 
 namespace BonesOfDragonfall
@@ -11,7 +12,7 @@ namespace BonesOfDragonfall
         public static void RegisterViewModels(DIContainer container, GameplayEnterParams gameplayEnterParams)
         {
             container.RegisterSingleton<IPlayerViewModel>(factory => new PlayerViewModel(container.Resolve<IGameStateProvider>().GetPlayerModel(), 
-                container.Resolve<IPlayerService>(), container.Resolve<IPlayerInput>()));
+                container.Resolve<IPlayerService>(), container.Resolve<IPlayerInput>(), container.Resolve<Coroutines>()));
         }
     }
 }

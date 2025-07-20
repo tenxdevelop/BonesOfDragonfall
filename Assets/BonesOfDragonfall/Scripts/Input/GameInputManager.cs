@@ -67,6 +67,20 @@ namespace BonesOfDragonfall
             
             return false;
         }
+
+        public bool PlayerCrouchPressed()
+        {
+            
+            var playerInputs = GetInputs<IPlayerInputMapper>();
+            
+            foreach (var playerInput in playerInputs)
+            {
+                if (playerInput.PlayerCrouchPressed())
+                    return true;
+            }
+            
+            return false;
+        }
         
         private void OnPlayerCameraRotationReceived(Vector2 direction)
         {

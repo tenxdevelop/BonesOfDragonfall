@@ -22,6 +22,7 @@ namespace BonesOfDragonfall
         public ReactiveProperty<float> DragMovement { get; private set; }
         public ReactiveProperty<Vector3> JumpForce { get; private set; }
         public ReactiveProperty<Quaternion> Rotation { get; private set; }
+        public ReactiveProperty<Vector3> ScaleCollider { get; private set; }
         public ReactiveProperty<float> HealthPoint { get; private set; }
         public ReactiveProperty<float> CameraRotation { get; private set; }
         
@@ -39,6 +40,8 @@ namespace BonesOfDragonfall
             
             Rotation = new ReactiveProperty<Quaternion>(new Quaternion(0, 0, 0, 1));
             CameraRotation = new ReactiveProperty<float>();
+
+            ScaleCollider = new ReactiveProperty<Vector3>(new Vector3(1, 1, 1));
             
             HealthPoint.Subscribe(newHealthPoint => OriginState.healthPoint = newHealthPoint);
             Position.Subscribe(newPosition => OriginState.position = newPosition);

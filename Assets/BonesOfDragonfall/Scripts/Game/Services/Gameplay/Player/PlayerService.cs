@@ -45,5 +45,17 @@ namespace BonesOfDragonfall
             var command = new CmdPlayerChangeMaxSpeed(maxSpeed, playerId);
             _commandProcessor.Process(command);
         }
+
+        public void PlayerCrouch(float crouchScale, int playerId)
+        {
+            var command = new CmdPlayerCrouch(crouchScale, playerId);
+            _commandProcessor.Process(command);
+        }
+
+        public void PlayerStandup(int playerId)
+        {
+            var command = new CmdPlayerStandup(playerId);
+            _commandProcessor.Process(command);
+        }
     }
 }

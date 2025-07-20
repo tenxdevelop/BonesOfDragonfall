@@ -46,6 +46,12 @@ namespace BonesOfDragonfall
             return gameInputMap.PlayerSprintPressedKeyboard();
         }
         
+        public bool PlayerCrouchPressed()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            return gameInputMap.PlayerCrouchPressedKeyboard();
+        }
+        
         private void OnPlayerMovedKeyboard(InputAction.CallbackContext context)
         {
             PlayerMovedReceivedEvent?.Invoke(context.ReadValue<Vector2>());

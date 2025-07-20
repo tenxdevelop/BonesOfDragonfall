@@ -15,6 +15,7 @@ namespace BonesOfDragonfall
         ReactiveProperty<float> DragMovement { get; }
         ReactiveProperty<Vector3> JumpForce { get; }
         ReactiveProperty<Quaternion> Rotation { get; }
+        ReactiveProperty<Vector3> ScaleCollider { get; }
         ReactiveProperty<float> CameraRotation { get; }
         
         void UpdatePosition(object sender, Vector3 position);

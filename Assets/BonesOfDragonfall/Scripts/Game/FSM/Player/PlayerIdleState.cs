@@ -1,4 +1,8 @@
-﻿using SkyForge.FSM;
+﻿/**************************************************************************\
+   Copyright SunWorldStudio Corporation. All Rights Reserved.
+\**************************************************************************/
+
+using SkyForge.FSM;
 using UnityEngine;
 
 namespace BonesOfDragonfall

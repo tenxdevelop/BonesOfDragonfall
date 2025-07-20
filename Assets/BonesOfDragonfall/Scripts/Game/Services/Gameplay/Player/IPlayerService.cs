@@ -13,5 +13,7 @@ namespace BonesOfDragonfall
         void PlayerRotation(Vector2 direction, float sensitivityX, float sensitivityY, int playerId);
         void Jump(float jumpForce, int playerId);
         void ChangeMaxSpeed(float maxSpeed, int playerId);
+        void PlayerCrouch(float crouchScale, int playerId);
+        void PlayerStandup(int playerId);
     }
 }

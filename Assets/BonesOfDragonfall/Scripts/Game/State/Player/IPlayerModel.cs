@@ -11,6 +11,7 @@ namespace BonesOfDragonfall
     {
         ReactiveProperty<float> HealthPoint { get; }
         ReactiveProperty<float> MaxSpeed { get; }
+        ReactiveProperty<Vector3> ScaleCollider { get; }
         ReactiveProperty<Quaternion> Rotation { get; }
         ReactiveProperty<float> CameraRotation { get; }
         ReactiveProperty<Vector3> ForceMovement { get; }

@@ -2,6 +2,8 @@
    Copyright SunWorldStudio Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using SkyForge.Reactive.Extension;
+using SkyForge.Extension;
 using SkyForge.Reactive;
 using SkyForge.MVVM;
 using SkyForge.FSM;
@@ -17,18 +19,21 @@ namespace BonesOfDragonfall
         public ReactiveProperty<Vector3> JumpForce => _playerModel.JumpForce;
         public ReactiveProperty<Quaternion> Rotation => _playerModel.Rotation;
         public ReactiveProperty<float> CameraRotation => _playerModel.CameraRotation;
+        public  ReactiveProperty<Vector3> ScaleCollider => _playerModel.ScaleCollider;
         
         private readonly IPlayerService _playerService;
         private readonly IPlayerModel _playerModel;
         private readonly IPlayerInput _playerInput;
         
-        private ReactiveProperty<Vector2> _playerMoveDirection = new();
+        private readonly ReactiveProperty<Vector2> _playerMoveDirection = new();
 
-        private IFinalStateMachine _playerStateMachine;
+        private readonly IFinalStateMachine _playerStateMachine;
 
-        private ReactiveProperty<bool> _playerInGround = new();
+        private readonly ReactiveProperty<bool> _playerInGround = new();
+
+        private bool _isReadyCrouch;
         
-        public PlayerViewModel(IPlayerModel playerModel, IPlayerService playerService, IPlayerInput playerInput)
+        public PlayerViewModel(IPlayerModel playerModel, IPlayerService playerService, IPlayerInput playerInput, Coroutines coroutine)
         {
             _playerService = playerService;
             _playerModel = playerModel;
@@ -39,28 +44,9 @@ namespace BonesOfDragonfall
             
             //Config player state machine
             _playerStateMachine = new FinalStateMachine();
+            ConfigurePlayerStateMachine(coroutine);
 
-            var playerIdleState = new PlayerIdleState();
-            var playerMovingState = new PlayerMovingState(_playerService, _playerMoveDirection, _playerInGround, 7 * 10 * 1.5f, 0.1f, 4f, _playerModel.UniqueId);
-            var playerJumpState = new PlayerJumpState(_playerService, _playerModel.UniqueId, 20);
-            var playerSprintingState = new PlayerSprintingState(_playerService, _playerMoveDirection, _playerInGround, 7 * 10 * 2f, 0.1f, 4f, _playerModel.UniqueId);
-            
-            _playerStateMachine.RegisterState(playerIdleState);
-            
-            _playerStateMachine.AddTransition<PlayerIdleState>(playerMovingState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude > 0));
-            _playerStateMachine.AddTransition<PlayerIdleState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
-            
-            _playerStateMachine.AddTransition<PlayerMovingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
-            _playerStateMachine.AddTransition<PlayerMovingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
-            _playerStateMachine.AddTransition<PlayerMovingState>(playerSprintingState, new FuncPredicate(() => _playerInput.PlayerSprintingPressed() && _playerInGround.Value));
-            
-            _playerStateMachine.AddTransition<PlayerJumpState>(playerIdleState, new FuncPredicate(() => true));
-            
-            _playerStateMachine.AddTransition<PlayerSprintingState>(playerMovingState, new FuncPredicate(() => !_playerInput.PlayerSprintingPressed() || !_playerInGround.Value));
-            _playerStateMachine.AddTransition<PlayerSprintingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
-            _playerStateMachine.AddTransition<PlayerSprintingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
-            
-            _playerStateMachine.SetState(playerIdleState);
+            _isReadyCrouch = true;
         }
 
         private void OnPlayerCameraRotationReceived(Vector2 direction)
@@ -105,6 +91,38 @@ namespace BonesOfDragonfall
         public void PlayerNotInGround(object sender)
         {
             _playerInGround.Value = false;
+        }
+
+        private void ConfigurePlayerStateMachine(Coroutines coroutine)
+        {
+            var playerIdleState = new PlayerIdleState();
+            var playerMovingState = new PlayerMovingState(_playerService, _playerMoveDirection, _playerInGround, 7 * 10 * 1.5f, 0.1f, 4f, _playerModel.UniqueId);
+            var playerJumpState = new PlayerJumpState(_playerService, _playerModel.UniqueId, 20);
+            var playerSprintingState = new PlayerSprintingState(_playerService, _playerMoveDirection, _playerInGround, 7 * 10 * 2f, 0.1f, 4f, _playerModel.UniqueId);
+            var playerCrouchState = new PlayerCrouchState(_playerService, coroutine, 0.5f, 3.5f,_playerMoveDirection, _playerInGround, 7 * 10 * 2f, 0.1f, 4f, _playerModel.UniqueId);
+            playerCrouchState.IsReadyCrouch.Subscribe(newValue => _isReadyCrouch = newValue);
+            
+            _playerStateMachine.RegisterState(playerIdleState);
+            
+            _playerStateMachine.AddTransition<PlayerIdleState>(playerMovingState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude > 0));
+            _playerStateMachine.AddTransition<PlayerIdleState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
+            _playerStateMachine.AddTransition<PlayerIdleState>(playerCrouchState, new FuncPredicate(() => _playerInput.PlayerCrouchPressed() && _playerInGround.Value && _isReadyCrouch));
+            
+            _playerStateMachine.AddTransition<PlayerMovingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
+            _playerStateMachine.AddTransition<PlayerMovingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
+            _playerStateMachine.AddTransition<PlayerMovingState>(playerSprintingState, new FuncPredicate(() => _playerInput.PlayerSprintingPressed() && _playerInGround.Value));
+            _playerStateMachine.AddTransition<PlayerMovingState>(playerCrouchState, new FuncPredicate(() => _playerInput.PlayerCrouchPressed() && _playerInGround.Value && _isReadyCrouch));
+            
+            _playerStateMachine.AddTransition<PlayerJumpState>(playerIdleState, new FuncPredicate(() => true));
+            
+            _playerStateMachine.AddTransition<PlayerSprintingState>(playerMovingState, new FuncPredicate(() => !_playerInput.PlayerSprintingPressed() || !_playerInGround.Value));
+            _playerStateMachine.AddTransition<PlayerSprintingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
+            _playerStateMachine.AddTransition<PlayerSprintingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
+            _playerStateMachine.AddTransition<PlayerSprintingState>(playerCrouchState, new FuncPredicate(() => _playerInput.PlayerCrouchPressed() && _playerInGround.Value && _isReadyCrouch));
+            
+            _playerStateMachine.AddTransition<PlayerCrouchState>(playerIdleState, new FuncPredicate(() => _playerInput.PlayerCrouchPressed() || !_playerInGround.Value && _isReadyCrouch));
+            
+            _playerStateMachine.SetState(playerIdleState);
         }
     }
 }
