@@ -1,4 +1,6 @@
 # My Ignore 
+.vsconfig
+
 /[Aa]ssets/BonesOfDragonfall/[Ss]cenes/[Tt]est/
 /[Aa]ssets/BonesOfDragonfall/[Ss]cenes/[Tt]est.meta
 
