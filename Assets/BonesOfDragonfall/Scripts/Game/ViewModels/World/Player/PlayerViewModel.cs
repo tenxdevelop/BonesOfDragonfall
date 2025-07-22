@@ -72,6 +72,7 @@ namespace BonesOfDragonfall
         {
             _playerStateMachine.Update(deltaTime);
             _isReadyStandup = _playerService.CheckStandup(2f, _playerModel.UniqueId);
+            UpdateInteractionPlayer();
         }
 
         [ReactiveMethod]
@@ -127,6 +128,16 @@ namespace BonesOfDragonfall
             _playerStateMachine.AddTransition<PlayerCrouchState>(playerIdleState, new FuncPredicate(() => (_playerInput.PlayerCrouchPressed() || !_playerInGround.Value) && _isReadyCrouch && _isReadyStandup));
             
             _playerStateMachine.SetState(playerIdleState);
+        }
+
+        private void UpdateInteractionPlayer()
+        {
+            var interactableBinder = _playerService.CheckInteractionPlayer(3f, 2f, _playerModel.UniqueId);
+
+            if (_playerInput.PlayerInteractionPressed() && interactableBinder != null)
+            {
+                interactableBinder.Interact();
+            }
         }
     }
 }

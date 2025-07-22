@@ -13,6 +13,8 @@ namespace BonesOfDragonfall
         {
             container.RegisterSingleton<IPlayerViewModel>(factory => new PlayerViewModel(container.Resolve<IGameStateProvider>().GetPlayerModel(), 
                 container.Resolve<IPlayerService>(), container.Resolve<IPlayerInput>(), container.Resolve<Coroutines>()));
+
+            container.Register<IDoorViewModel>(factory => new DoorViewModel());
         }
     }
 }

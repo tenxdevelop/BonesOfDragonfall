@@ -91,5 +91,18 @@ namespace BonesOfDragonfall
         {
             PlayerMovedReceivedEvent?.Invoke(direction);
         }
+
+        public bool PlayerInteractionPressed()
+        {
+            var playerInputs = GetInputs<IPlayerInputMapper>();
+
+            foreach (var playerInput in playerInputs)
+            {
+                if (playerInput.PlayerInteractionPressed())
+                    return true;
+            }
+
+            return false;
+        }
     }
 }

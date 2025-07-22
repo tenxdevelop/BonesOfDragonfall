@@ -14,6 +14,8 @@ namespace BonesOfDragonfall
     {
         private SingleReactiveProperty<GameplayExitParams> _gameplayExitParams = new();
 
+        [SerializeField] private DoorView _doorView;
+
         private DIContainer _container;
 
         private Vector2 _playerMoveDirection = Vector2.zero;
@@ -26,7 +28,11 @@ namespace BonesOfDragonfall
             GameplayServiceRegister.RegisterServices(_container, gameplayEnterParams, _gameplayExitParams);
             GameplayViewModelRegister.RegisterViewModels(_container, gameplayEnterParams);
             GameplayViewRegister.RegisterViews(_container);
-            
+
+            var doorViewModel = _container.Resolve<IDoorViewModel>();
+
+            _doorView.Bind(doorViewModel);
+
             var applicationService = _container.Resolve<ApplicationService>();
             applicationService.HideMouseCursor();
             
@@ -36,7 +42,7 @@ namespace BonesOfDragonfall
         
         private void OnDisable()
         {
-            _container.Dispose();
+            _container?.Dispose();
         }
         
         public IObservable<SceneExitParams> Run()

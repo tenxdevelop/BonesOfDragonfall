@@ -18,5 +18,7 @@ namespace BonesOfDragonfall
         public bool PlayerSprintingPressed();
 
         public bool PlayerCrouchPressed();
+
+        public bool PlayerInteractionPressed();
     }
 }
