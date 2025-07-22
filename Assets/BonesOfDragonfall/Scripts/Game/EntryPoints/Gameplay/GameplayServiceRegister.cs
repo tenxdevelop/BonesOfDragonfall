@@ -24,6 +24,8 @@ namespace BonesOfDragonfall
             commandProcessor.RegisterCommandHandler(new PlayerCrouchCommandHandler(gameStateModel));
             commandProcessor.RegisterCommandHandler(new PlayerStandupCommandHandler(gameStateModel));
             commandProcessor.RegisterCommandHandler(new CheckStandupPlayerCommandHandler(gameStateModel));
+            commandProcessor.RegisterCommandHandler(new AddItemsToInventoryCommandHandler(gameStateModel, container.Resolve<IItemFactoryService>(), 
+                container.Resolve<IGameConfigProvider>()));
             
             container.RegisterInstance<ICommandProcessor>(commandProcessor);
             
@@ -41,6 +43,7 @@ namespace BonesOfDragonfall
             /////////////////////////////////////
             
             container.RegisterSingleton<IPlayerService>(factory => new PlayerService(commandProcessor));
+            container.RegisterSingleton<IInventoryService>(factory => new InventoryService(commandProcessor));
         }
     }
 }

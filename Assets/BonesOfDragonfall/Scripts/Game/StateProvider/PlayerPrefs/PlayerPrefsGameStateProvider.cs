@@ -14,7 +14,7 @@ namespace BonesOfDragonfall
         private const string GAME_STATE_KEY = nameof(GAME_STATE_KEY);
         public GameStateModel StateModel { get; private set; }
         
-        public PlayerPrefsGameStateProvider(IEntityFactoryService entityFactoryService)
+        public PlayerPrefsGameStateProvider(IEntityFactoryService entityFactoryService, IItemFactoryService itemFactoryService)
         {
             var gameStateData = new GameStateData()
             {
@@ -29,10 +29,19 @@ namespace BonesOfDragonfall
                         healthPoint = 100,
                         uniqueId = 1
                     }
+                },
+                inventoryMaps = new List<InventoryData>()
+                {
+                    new InventoryData()
+                    {
+                        items = new List<ItemData>(),
+                        ownerId = 1,
+                        maxWeight = 40
+                    }
                 }
             };
             
-            StateModel = new GameStateModel(gameStateData, entityFactoryService);
+            StateModel = new GameStateModel(gameStateData, entityFactoryService, itemFactoryService);
         }
         
         public void Dispose()

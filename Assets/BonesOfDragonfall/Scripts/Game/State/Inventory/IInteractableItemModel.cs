@@ -2,14 +2,10 @@
    Copyright SunWorldStudio Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using SkyForge.Reactive;
-
 namespace BonesOfDragonfall
 {
-    public interface IGameStateModel
+    public interface IInteractableItemModel : IItemModel
     {
-        ReactiveCollection<IEntityStateModel> Entities { get; }
-        ReactiveCollection<IInventoryModel> InventoryMaps { get; }
-        int GetEntityId();
+        void Interact();
     }
 }

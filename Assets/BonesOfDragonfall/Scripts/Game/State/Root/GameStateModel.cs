@@ -14,16 +14,17 @@ namespace BonesOfDragonfall
     {
         public GameStateData OriginState { get; private set; }
         public ReactiveCollection<IEntityStateModel> Entities { get; private set; }
+        public ReactiveCollection<IInventoryModel> InventoryMaps { get; private set; }
 
         private readonly IEntityFactoryService _entityFactoryService;
-
-        public GameStateModel(GameStateData originState, IEntityFactoryService entityFactoryService)
+        
+        public GameStateModel(GameStateData originState, IEntityFactoryService entityFactoryService, IItemFactoryService itemFactoryService)
         {
             _entityFactoryService = entityFactoryService;
             
             OriginState = originState;
             
-            UpdateGameState(originState);
+            UpdateGameState(originState, itemFactoryService);
         }
 
         public int GetEntityId()
@@ -31,9 +32,39 @@ namespace BonesOfDragonfall
             return OriginState.globalEntityId++;
         }
         
-        private void UpdateGameState(GameStateData originState)
+        private void UpdateGameState(GameStateData originState, IItemFactoryService itemFactoryService)
         {
             UpdateEntities(originState.entities);
+            UpdateInventoryMaps(originState.inventoryMaps, itemFactoryService);
+        }
+
+        private void UpdateInventoryMaps(List<InventoryData> inventoryMaps, IItemFactoryService itemFactoryService)
+        {
+            InventoryMaps = new ReactiveCollection<IInventoryModel>();
+
+            foreach (var inventory in inventoryMaps)
+            {
+                var inventoryModel = new InventoryModel(inventory, itemFactoryService);
+                InventoryMaps.Add(inventoryModel);
+            }
+
+            InventoryMaps.Subscribe(OnInventoryAdded, OnInventoryRemoved, OnInventoryClear);
+        }
+
+        private void OnInventoryClear()
+        {
+            OriginState.inventoryMaps.Clear();
+        }
+
+        private void OnInventoryRemoved(IInventoryModel removedInventoryModel)
+        {
+            var removedInventoryData = OriginState.inventoryMaps.FirstOrDefault(inventoryData => inventoryData.Equals(removedInventoryModel.OriginState));
+            OriginState.inventoryMaps.Remove(removedInventoryData);
+        }
+
+        private void OnInventoryAdded(IInventoryModel newInventoryModel)
+        {
+            OriginState.inventoryMaps.Add(newInventoryModel.OriginState);
         }
 
         private void UpdateEntities(List<EntityStateData> entityStateData)

@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_viewModelTypeFullName: BonesOfDragonfall.PlayerViewModel
   m_propertyName: PlayerInGround
-  m_trigerViewTypeFullName: Any
+  m_trigerViewTypeFullName: SkyForge.MVVM.AnyTriggerView
 --- !u!114 &5355451559215190888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,7 +370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_viewModelTypeFullName: BonesOfDragonfall.PlayerViewModel
   m_propertyName: PlayerNotInGround
-  m_trigerViewTypeFullName: Any
+  m_trigerViewTypeFullName: SkyForge.MVVM.AnyTriggerView
 --- !u!65 &3785792440709320402
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_viewModelTypeFullName: BonesOfDragonfall.PlayerViewModel
   m_propertyName: PlayerInGround
-  m_trigerViewTypeFullName: Any
+  m_trigerViewTypeFullName: SkyForge.MVVM.AnyTriggerView
 --- !u!1 &5121288798459959954
 GameObject:
   m_ObjectHideFlags: 0

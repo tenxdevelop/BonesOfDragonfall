@@ -13,8 +13,14 @@ namespace BonesOfDragonfall
             container.RegisterSingleton(factory => new SceneService());
             container.RegisterSingleton(factory => new LoadService());
             container.RegisterSingleton(factory => new ApplicationService());
+            
+            container.RegisterSingleton<IGameConfigProvider>(factory => new ScriptableObjectGameConfigProvider(ScriptableObjectGameConfigProvider.GAME_CONFIG_NAME));
+            
             container.RegisterSingleton<IEntityFactoryService>(factory => new EntityFactoryService());
-            container.RegisterSingleton<IGameStateProvider>(factory => new PlayerPrefsGameStateProvider(factory.Resolve<IEntityFactoryService>()));
+            container.RegisterSingleton<IItemFactoryService>(factory => new ItemFactoryService(factory.Resolve<IGameConfigProvider>()));
+            
+            container.RegisterSingleton<IGameStateProvider>(factory => new PlayerPrefsGameStateProvider(factory.Resolve<IEntityFactoryService>(), 
+                factory.Resolve<IItemFactoryService>()));
         }
     }
 }

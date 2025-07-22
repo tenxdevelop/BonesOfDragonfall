@@ -13,5 +13,7 @@ namespace BonesOfDragonfall
         public int globalEntityId;
         
         public List<EntityStateData> entities;
+        
+        public List<InventoryData> inventoryMaps;
     }
 }

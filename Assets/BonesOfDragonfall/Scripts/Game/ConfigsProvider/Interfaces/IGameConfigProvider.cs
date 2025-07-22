@@ -6,10 +6,10 @@ using SkyForge.Reactive;
 
 namespace BonesOfDragonfall
 {
-    public interface IGameStateModel
+    public interface IGameConfigProvider : System.IDisposable
     {
-        ReactiveCollection<IEntityStateModel> Entities { get; }
-        ReactiveCollection<IInventoryModel> InventoryMaps { get; }
-        int GetEntityId();
+        GameConfig GameConfig { get; }
+
+        IObservable<GameConfig> LoadGameConfig();
     }
 }

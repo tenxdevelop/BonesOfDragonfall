@@ -3,13 +3,15 @@
 \**************************************************************************/
 
 using SkyForge.Reactive;
+using SkyForge.Proxy;
 
 namespace BonesOfDragonfall
 {
-    public interface IGameStateModel
+    public interface IInventoryModel : IProxy<InventoryData>
     {
-        ReactiveCollection<IEntityStateModel> Entities { get; }
-        ReactiveCollection<IInventoryModel> InventoryMaps { get; }
-        int GetEntityId();
+        int OwnerId { get; }
+
+        ReactiveProperty<float> MaxWeight { get; }
+        ReactiveCollection<IItemModel> Items { get; }
     }
 }

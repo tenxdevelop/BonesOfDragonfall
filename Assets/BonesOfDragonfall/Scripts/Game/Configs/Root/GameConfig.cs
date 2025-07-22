@@ -2,14 +2,13 @@
    Copyright SunWorldStudio Corporation. All Rights Reserved.
 \**************************************************************************/
 
-using SkyForge.Reactive;
+using UnityEngine;
 
 namespace BonesOfDragonfall
 {
-    public interface IGameStateModel
+    [CreateAssetMenu(fileName = "New game config", menuName = "Game configs/new game config")]
+    public class GameConfig : ScriptableObject
     {
-        ReactiveCollection<IEntityStateModel> Entities { get; }
-        ReactiveCollection<IInventoryModel> InventoryMaps { get; }
-        int GetEntityId();
+        public ItemsMap ItemsMap;
     }
 }
