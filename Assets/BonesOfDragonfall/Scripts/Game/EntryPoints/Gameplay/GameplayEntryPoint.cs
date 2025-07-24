@@ -104,16 +104,28 @@ namespace BonesOfDragonfall
 
         private void Update()
         {
-            if (_init && _playerInput.PlayerJumpPressed())
+            if (_init)
             {
-                Debug.Log("Try to add wood");
-                
-                var inventoryService = _container.Resolve<IInventoryService>();
-                var result = inventoryService.AddItemsToInventory(InventoryService.PLAYER_INVENTORY_ID, 1, 10);
-
-                if (result.IsHaveOverload)
+                if (_playerInput.PlayerJumpPressed())
                 {
-                    Debug.Log("Инвентарь перегружен");
+                    var inventoryService = _container.Resolve<IInventoryService>();
+                    var result = inventoryService.AddItemsToInventory(InventoryService.PLAYER_INVENTORY_ID, 1, 10);
+
+                    if (result.IsHaveOverload)
+                    {
+                        Debug.Log("Инвентарь перегружен");
+                    }
+                }
+
+                if (_playerInput.PlayerCrouchPressed())
+                {
+                    var inventoryService = _container.Resolve<IInventoryService>();
+                    var result = inventoryService.RemoveItemsFromInventory(InventoryService.PLAYER_INVENTORY_ID, 1, 4);
+
+                    if (!result.Success)
+                    {
+                        Debug.Log("не получилось удалить дерево");
+                    }
                 }
             }
         }

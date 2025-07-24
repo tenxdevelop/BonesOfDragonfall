@@ -30,7 +30,7 @@ namespace BonesOfDragonfall
 
             if (inventory is null)
                 return false;
-
+            
             var itemModel = inventory.Items.FirstOrDefault(itemModel => itemModel.ItemId.Equals(command.ItemId));
 
             if (itemModel is null)

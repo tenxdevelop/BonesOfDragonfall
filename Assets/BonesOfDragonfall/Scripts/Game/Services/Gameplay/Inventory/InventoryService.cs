@@ -29,5 +29,13 @@ namespace BonesOfDragonfall
             
             return command.AddItemsToInventoryResult;
         }
+
+        public RemoveItemsFromInventoryResult RemoveItemsFromInventory(int ownerId, int itemId, int amount = 1)
+        {
+            var command = new CmdRemoveItemsFromInventory(ownerId, itemId, amount);
+            _commandProcessor.Process(command);
+            
+            return command.RemoveItemsFromInventoryResult;
+        }
     }
 }
