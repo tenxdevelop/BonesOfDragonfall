@@ -27,6 +27,7 @@ namespace BonesOfDragonfall
             commandProcessor.RegisterCommandHandler(new AddItemsToInventoryCommandHandler(gameStateModel, container.Resolve<IItemFactoryService>(), 
                 container.Resolve<ISettingsProvider>()));
             commandProcessor.RegisterCommandHandler(new RemoveItemsFromInventoryCommandHandler(gameStateModel));
+            commandProcessor.RegisterCommandHandler(new HasItemsInInventoryCommandHandler(gameStateModel));
             
             container.RegisterInstance<ICommandProcessor>(commandProcessor);
             

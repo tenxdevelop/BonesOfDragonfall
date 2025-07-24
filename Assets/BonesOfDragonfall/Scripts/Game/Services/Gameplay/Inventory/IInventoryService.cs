@@ -10,5 +10,6 @@ namespace BonesOfDragonfall
     {
         AddItemsToInventoryResult AddItemsToInventory(int ownerId, int itemId, int amount = 1);
         RemoveItemsFromInventoryResult RemoveItemsFromInventory(int ownerId, int itemId, int amount = 1);
+        bool HasItemsInInventory(int ownerId, int itemId);
     }
 }

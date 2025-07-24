@@ -37,5 +37,11 @@ namespace BonesOfDragonfall
             
             return command.RemoveItemsFromInventoryResult;
         }
+
+        public bool HasItemsInInventory(int ownerId, int itemId)
+        {
+            var command = new CmdHasItemsInInventory(ownerId, itemId);
+            return _commandProcessor.Process(command);
+        }
     }
 }
