@@ -25,7 +25,7 @@ namespace BonesOfDragonfall
             commandProcessor.RegisterCommandHandler(new PlayerStandupCommandHandler(gameStateModel));
             commandProcessor.RegisterCommandHandler(new CheckStandupPlayerCommandHandler(gameStateModel));
             commandProcessor.RegisterCommandHandler(new AddItemsToInventoryCommandHandler(gameStateModel, container.Resolve<IItemFactoryService>(), 
-                container.Resolve<IGameConfigProvider>()));
+                container.Resolve<ISettingsProvider>()));
             
             container.RegisterInstance<ICommandProcessor>(commandProcessor);
             

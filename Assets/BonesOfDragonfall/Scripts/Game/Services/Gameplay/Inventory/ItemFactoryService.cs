@@ -10,9 +10,9 @@ namespace BonesOfDragonfall
     {
         private ItemsMap _itemsConfigMap;
 
-        public ItemFactoryService(IGameConfigProvider gameConfigProvider)
+        public ItemFactoryService(ISettingsProvider settingsProvider)
         {
-            _itemsConfigMap = gameConfigProvider.GameConfig.ItemsMap;
+            _itemsConfigMap = settingsProvider.GameSettings.itemsMap;
         }
         
         public IItemModel CreateItemModel(int itemId)

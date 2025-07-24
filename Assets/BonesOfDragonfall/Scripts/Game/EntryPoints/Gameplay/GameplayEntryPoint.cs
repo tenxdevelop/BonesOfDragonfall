@@ -3,14 +3,13 @@
 \**************************************************************************/
 
 using SkyForge.Reactive.Extension;
+using System.Collections.Generic;
 using System.Collections;
 using SkyForge.Extension;
 using SkyForge.Reactive;
 using System.Linq;
 using UnityEngine;
 using SkyForge;
-using System;
-using System.Collections.Generic;
 
 namespace BonesOfDragonfall
 {
@@ -19,23 +18,27 @@ namespace BonesOfDragonfall
         private SingleReactiveProperty<GameplayExitParams> _gameplayExitParams = new();
 
         private DIContainer _container;
-
-        private Vector2 _playerMoveDirection = Vector2.zero;
-
-        private bool _playerInventoryIsOverload;
-
+        
+        //////// for test /////////
+        
         private IPlayerInput _playerInput;
-
+        
         private bool _init;
 
         private IBinding _inventoryBind;
 
         private Dictionary<int, IBinding> _itemsBind;
+
+        ///////////////////////////
+        
         public IEnumerator Initialization(DIContainer parentContainer, SceneEnterParams sceneEnterParams)
         {
             _container = parentContainer;
 
             var gameplayEnterParams = sceneEnterParams.As<GameplayEnterParams>();
+            
+            var settingsProvider = _container.Resolve<ISettingsProvider>();
+            settingsProvider.LoadGameSettings();
             
             GameplayServiceRegister.RegisterServices(_container, gameplayEnterParams, _gameplayExitParams);
             GameplayViewModelRegister.RegisterViewModels(_container, gameplayEnterParams);
@@ -45,9 +48,7 @@ namespace BonesOfDragonfall
             applicationService.HideMouseCursor();
             
             yield return null;
-
-            _playerInventoryIsOverload = false;
-
+            
             _playerInput = _container.Resolve<IPlayerInput>();
             
             var gameStateModel = _container.Resolve<IGameStateProvider>().StateModel;
@@ -86,7 +87,7 @@ namespace BonesOfDragonfall
             {
                 _itemsBind[newItemModel.ItemId] = newItemModel.Amount.Subscribe(newAmount =>
                 {
-                    var itemsConfigMap = _container.Resolve<IGameConfigProvider>().GameConfig.ItemsMap;
+                    var itemsConfigMap = _container.Resolve<ISettingsProvider>().GameSettings.itemsMap;
 
                     var itemConfig = itemsConfigMap.GetItemConfig(newItemModel.ItemId);
             
@@ -94,7 +95,7 @@ namespace BonesOfDragonfall
                 });
             }
             
-            var itemsConfigMap = _container.Resolve<IGameConfigProvider>().GameConfig.ItemsMap;
+            var itemsConfigMap = _container.Resolve<ISettingsProvider>().GameSettings.itemsMap;
 
             var itemConfig = itemsConfigMap.GetItemConfig(newItemModel.ItemId);
             
@@ -110,14 +111,9 @@ namespace BonesOfDragonfall
                 var inventoryService = _container.Resolve<IInventoryService>();
                 var result = inventoryService.AddItemsToInventory(InventoryService.PLAYER_INVENTORY_ID, 1, 10);
 
-                if (result.IsHaveOverload && !_playerInventoryIsOverload)
+                if (result.IsHaveOverload)
                 {
                     Debug.Log("Инвентарь перегружен");
-                    _playerInventoryIsOverload = true;
-                }
-                else
-                {
-                    _playerInventoryIsOverload = false;
                 }
             }
         }

@@ -17,11 +17,11 @@ namespace BonesOfDragonfall
         private IItemFactoryService _itemFactoryService;
         private ItemsMap _itemsConfigMap;
         
-        public AddItemsToInventoryCommandHandler(GameStateModel gameStateModel, IItemFactoryService itemFactoryService, IGameConfigProvider gameConfigProvider)
+        public AddItemsToInventoryCommandHandler(GameStateModel gameStateModel, IItemFactoryService itemFactoryService, ISettingsProvider settingsProvider)
         {
             _itemFactoryService = itemFactoryService;
             _gameStateModel = gameStateModel;
-            _itemsConfigMap = gameConfigProvider.GameConfig.ItemsMap;
+            _itemsConfigMap = settingsProvider.GameSettings.itemsMap;
         }
         
         public bool Handle(CmdAddItemsToInventory command)

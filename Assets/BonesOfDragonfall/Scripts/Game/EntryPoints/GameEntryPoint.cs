@@ -14,8 +14,10 @@ namespace BonesOfDragonfall
     public class GameEntryPoint
     {
         private static GameEntryPoint _instance;
+        private static ISettingsProvider _settingsProvider;
         
         private DIContainer _rootContainer;
+        
         private Coroutines _coroutine;
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -23,16 +25,17 @@ namespace BonesOfDragonfall
         {
             if(_instance is not null)
                 throw new System.ApplicationException("GameEntryPoint is already running!");
-            
-            InitApplicationSettings();
+
+            _settingsProvider = new ScriptableObjectSettingsProvider(ScriptableObjectSettingsProvider.GAME_SETTINGS_NAME);
+            InitApplicationSettings(_settingsProvider.ApplicationSettings);
             
             _instance = new GameEntryPoint();
             _instance.Run();
         }
         
-        private static void InitApplicationSettings()
+        private static void InitApplicationSettings(ApplicationSettings applicationSettings)
         {
-            Application.targetFrameRate = 120;
+            Application.targetFrameRate = applicationSettings.targetFPS;
         }
         
         private void Run()
@@ -43,6 +46,8 @@ namespace BonesOfDragonfall
             _coroutine = new GameObject("[COROUTINES]").AddComponent<Coroutines>();
             Object.DontDestroyOnLoad(_coroutine.gameObject);
             _rootContainer.RegisterInstance(_coroutine);
+            
+            _rootContainer.RegisterInstance(_settingsProvider);
             
             GameServiceRegister.RegisterServices(_rootContainer);
             GameViewModelRegister.RegisterViewModels(_rootContainer);

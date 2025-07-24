@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace BonesOfDragonfall
 {
-    [CreateAssetMenu(fileName = "New item config", menuName = "Game configs/Inventory/new item config")]
+    [CreateAssetMenu(fileName = "New item config", menuName = "Game settings/Inventory/new item config")]
     public class ItemConfig : ScriptableObject
     {
         public int itemId;

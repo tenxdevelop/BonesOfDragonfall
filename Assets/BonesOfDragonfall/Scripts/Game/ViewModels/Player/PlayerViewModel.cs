@@ -22,6 +22,7 @@ namespace BonesOfDragonfall
         public  ReactiveProperty<Vector3> ScaleCollider => _playerModel.ScaleCollider;
         
         private readonly IPlayerService _playerService;
+        private readonly PlayerSettings _playerSettings;
         private readonly IPlayerModel _playerModel;
         private readonly IPlayerInput _playerInput;
         
@@ -32,12 +33,14 @@ namespace BonesOfDragonfall
         private readonly ReactiveProperty<bool> _playerInGround = new();
 
         private bool _isReadyCrouch;
-
         private bool _isReadyStandup;
+
+        private IBinding _playerCrouchIsReadyBinding;
         
-        public PlayerViewModel(IPlayerModel playerModel, IPlayerService playerService, IPlayerInput playerInput, Coroutines coroutine)
+        public PlayerViewModel(IPlayerModel playerModel, ISettingsProvider settingsProvider, IPlayerService playerService, IPlayerInput playerInput, Coroutines coroutine)
         {
             _playerService = playerService;
+            _playerSettings = settingsProvider.GameSettings.playerSettings;
             _playerModel = playerModel;
             _playerInput = playerInput;
 
@@ -54,7 +57,7 @@ namespace BonesOfDragonfall
 
         private void OnPlayerCameraRotationReceived(Vector2 direction)
         {
-            _playerService.PlayerRotation(direction, 25, 20, _playerModel.UniqueId);
+            _playerService.PlayerRotation(direction, _playerSettings.sensitivityX, _playerSettings.sensitivityY, _playerModel.UniqueId);
         }
 
         private void OnPlayerMovedReceived(Vector2 direction)
@@ -66,12 +69,13 @@ namespace BonesOfDragonfall
         {
             _playerInput.PlayerMovedReceivedEvent -= OnPlayerMovedReceived;
             _playerInput.PlayerCameraRotationReceivedEvent -= OnPlayerCameraRotationReceived;
+            _playerCrouchIsReadyBinding?.Dispose();
         }
 
         public void Update(float deltaTime)
         {
             _playerStateMachine.Update(deltaTime);
-            _isReadyStandup = _playerService.CheckStandup(2f, _playerModel.UniqueId);
+            _isReadyStandup = _playerService.CheckStandup(_playerSettings.playerHeight, _playerModel.UniqueId);
         }
 
         [ReactiveMethod]
@@ -100,11 +104,11 @@ namespace BonesOfDragonfall
         private void ConfigurePlayerStateMachine(Coroutines coroutine)
         {
             var playerIdleState = new PlayerIdleState();
-            var playerMovingState = new PlayerMovingState(_playerService, _playerMoveDirection, _playerInGround, 7 * 10 * 1.5f, 0.1f, 4f, _playerModel.UniqueId);
-            var playerJumpState = new PlayerJumpState(_playerService, _playerModel.UniqueId, 20);
-            var playerSprintingState = new PlayerSprintingState(_playerService, _playerMoveDirection, _playerInGround, 7 * 10 * 2f, 0.1f, 4f, _playerModel.UniqueId);
-            var playerCrouchState = new PlayerCrouchState(_playerService, coroutine, 0.5f, 3.5f,_playerMoveDirection, _playerInGround, 7 * 10 * 2f, 0.1f, 4f, _playerModel.UniqueId);
-            playerCrouchState.IsReadyCrouch.Subscribe(newValue => _isReadyCrouch = newValue);
+            var playerMovingState = new PlayerMovingState(_playerService, _playerMoveDirection, _playerInGround, _playerSettings, _playerModel.UniqueId);
+            var playerJumpState = new PlayerJumpState(_playerService, _playerModel.UniqueId, _playerSettings.jumpForce);
+            var playerSprintingState = new PlayerSprintingState(_playerService, _playerMoveDirection, _playerInGround, _playerSettings, _playerModel.UniqueId);
+            var playerCrouchState = new PlayerCrouchState(_playerService, coroutine, _playerMoveDirection, _playerInGround, _playerSettings, _playerModel.UniqueId);
+            _playerCrouchIsReadyBinding = playerCrouchState.IsReadyCrouch.Subscribe(newValue => _isReadyCrouch = newValue);
             
             _playerStateMachine.RegisterState(playerIdleState);
             

@@ -12,23 +12,25 @@ namespace BonesOfDragonfall
     public class PlayerSprintingState : IState
     {
         private readonly int _playerId;
-        private readonly float _playerSpeed;
+        private readonly float _playerSprintingSpeed;
         private readonly float _playerAirSpeed;
         private readonly float _dragMovement;
+        private readonly float _maxPlayerSprintingSpeed;
         
         private readonly IPlayerService _playerService;
         
         private Vector2 _playerMoveDirection;
         private bool _playerInGround;
         
-        public PlayerSprintingState(IPlayerService playerService, ReactiveProperty<Vector2> direction,ReactiveProperty<bool> playerInGround, float playerSpeed, 
-            float playerAirSpeed, float dragMovement, int playerId)
+        public PlayerSprintingState(IPlayerService playerService, ReactiveProperty<Vector2> direction,ReactiveProperty<bool> playerInGround, PlayerSettings playerSettings, int playerId)
         {
             _playerService = playerService;
-            _playerSpeed = playerSpeed;
+            _playerSprintingSpeed = playerSettings.playerSpeed * playerSettings.playerMultiplayerSprintingSpeed;
             _playerId = playerId;
-            _playerAirSpeed = playerAirSpeed;
-            _dragMovement = dragMovement;
+            _playerAirSpeed = playerSettings.playerAirSpeed;
+            _dragMovement = playerSettings.dragMovement;
+            _maxPlayerSprintingSpeed = playerSettings.maxPlayerSpeed * playerSettings.playerMultiplayerSprintingSpeed;
+            
             
             direction.Subscribe(newDirection => _playerMoveDirection =  newDirection);
             playerInGround.Subscribe(newPlayer => _playerInGround = newPlayer);
@@ -37,7 +39,7 @@ namespace BonesOfDragonfall
         public void OnStart()
         {
             Debug.Log("playerSprinting");
-            _playerService.ChangeMaxSpeed(12f, _playerId);
+            _playerService.ChangeMaxSpeed(_playerSprintingSpeed, _playerId);
         }
 
         public void OnUpdate(float deltaTime)
@@ -47,7 +49,7 @@ namespace BonesOfDragonfall
 
         public void OnPhysicsUpdate(float deltaTime)
         {
-            _playerService.Move(_playerMoveDirection, _playerSpeed, _playerAirSpeed, _dragMovement, _playerInGround, _playerId);
+            _playerService.Move(_playerMoveDirection, _playerSprintingSpeed, _playerAirSpeed, _dragMovement, _playerInGround, _playerId);
         }
 
         public void OnExit()

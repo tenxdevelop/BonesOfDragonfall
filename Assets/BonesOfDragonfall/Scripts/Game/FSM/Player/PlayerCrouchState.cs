@@ -29,20 +29,18 @@ namespace BonesOfDragonfall
         private Vector2 _playerMoveDirection;
         private bool _playerInGround;
         
-        public PlayerCrouchState(IPlayerService playerService, Coroutines coroutines, float playerCrouchScale, float maxSpeed, 
-            ReactiveProperty<Vector2> direction, ReactiveProperty<bool> playerInGround, float playerSpeed, 
-            float playerAirSpeed, float dragMovement, int playerId)
+        public PlayerCrouchState(IPlayerService playerService, Coroutines coroutines, ReactiveProperty<Vector2> direction, ReactiveProperty<bool> playerInGround, PlayerSettings playerSettings, int playerId)
         {
             _playerService = playerService;
             
             _playerId =  playerId;
-            _maxSpeed = maxSpeed;
-            _playerCrouchScale = playerCrouchScale;
+            _maxSpeed = playerSettings.playerMaxSpeedCrouch;
+            _playerCrouchScale = playerSettings.playerCrouchScale;
             _coroutine = coroutines;
             
-            _playerSpeed =  playerSpeed;
-            _dragMovement = dragMovement;
-            _playerAirSpeed = playerAirSpeed;
+            _playerSpeed =  playerSettings.playerSpeed;
+            _dragMovement = playerSettings.dragMovement;
+            _playerAirSpeed = playerSettings.playerAirSpeed;
             
             IsReadyCrouch = new ReactiveProperty<bool>(true);
             
@@ -82,7 +80,7 @@ namespace BonesOfDragonfall
 
         private IEnumerator UpdateIsCrouch()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             IsReadyCrouch.Value = true;
         }
     }

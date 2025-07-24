@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace BonesOfDragonfall
 {
-    [CreateAssetMenu(fileName = "New item map", menuName = "Game configs/Inventory/new item map")]
+    [CreateAssetMenu(fileName = "New item map", menuName = "Game settings/Inventory/new item map")]
     public class ItemsMap : ScriptableObject
     {
         public List<ItemConfig> Items;
