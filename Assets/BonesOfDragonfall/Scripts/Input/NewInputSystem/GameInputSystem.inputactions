@@ -152,6 +152,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "PlayerInventoryMap",
+            "id": "ff90f855-bc4d-42b0-b31d-159a6fd76c37",
+            "actions": [
+                {
+                    "name": "PlayerOpenInventoryKeyboard",
+                    "type": "Button",
+                    "id": "b336ae09-b330-497c-b645-7cb19b4f1587",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "db4d7cab-ae6c-4f67-9ea2-a85105729a22",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlayerOpenInventoryKeyboard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

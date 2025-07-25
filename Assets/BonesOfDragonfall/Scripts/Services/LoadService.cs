@@ -10,9 +10,12 @@ namespace BonesOfDragonfall
     public class LoadService : System.IDisposable
     {
         public const string PREFAB_UI_UIROOT = "Prefabs/UI/UIRoot";
+        
         public const string PREFAB_UI_STATIC_UIROOT_MAIN_MENU = "Prefabs/UI/MainMenu/StaticUIRootMainMenu";
         public const string PREFAB_UI_UIROOT_MAIN_MENU = "Prefabs/UI/MainMenu/UIRootMainMenu";
         
+        public const string PREFAB_UI_UIROOT_GAMEPLAY = "Prefabs/UI/Gameplay/UIRootGameplay";
+        public const string PREFAB_UI_PLAYER_INVENTORY = "Prefabs/UI/Gameplay/UIPlayerInventory";
         public const string PREFAB_WORLD_PLAYER = "Prefabs/World/Player/Player";
         
         public T LoadPrefab<T>(string prefabPath) where T : Object

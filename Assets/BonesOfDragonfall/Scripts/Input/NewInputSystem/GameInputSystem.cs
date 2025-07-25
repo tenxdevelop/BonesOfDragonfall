@@ -240,6 +240,34 @@ namespace BonesOfDragonfall
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""PlayerInventoryMap"",
+            ""id"": ""ff90f855-bc4d-42b0-b31d-159a6fd76c37"",
+            ""actions"": [
+                {
+                    ""name"": ""PlayerOpenInventoryKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""b336ae09-b330-497c-b645-7cb19b4f1587"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""db4d7cab-ae6c-4f67-9ea2-a85105729a22"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerOpenInventoryKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -251,11 +279,15 @@ namespace BonesOfDragonfall
             m_PlayerInputMap_PlayerJumpKeyboard = m_PlayerInputMap.FindAction("PlayerJumpKeyboard", throwIfNotFound: true);
             m_PlayerInputMap_PlayerSprintingKeyboard = m_PlayerInputMap.FindAction("PlayerSprintingKeyboard", throwIfNotFound: true);
             m_PlayerInputMap_PlayerCrouchKeyboard = m_PlayerInputMap.FindAction("PlayerCrouchKeyboard", throwIfNotFound: true);
+            // PlayerInventoryMap
+            m_PlayerInventoryMap = asset.FindActionMap("PlayerInventoryMap", throwIfNotFound: true);
+            m_PlayerInventoryMap_PlayerOpenInventoryKeyboard = m_PlayerInventoryMap.FindAction("PlayerOpenInventoryKeyboard", throwIfNotFound: true);
         }
 
         ~@GameInputSystem()
         {
             UnityEngine.Debug.Assert(!m_PlayerInputMap.enabled, "This will cause a leak and performance issues, GameInputSystem.PlayerInputMap.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_PlayerInventoryMap.enabled, "This will cause a leak and performance issues, GameInputSystem.PlayerInventoryMap.Disable() has not been called.");
         }
 
         /// <summary>
@@ -467,6 +499,102 @@ namespace BonesOfDragonfall
         /// Provides a new <see cref="PlayerInputMapActions" /> instance referencing this action map.
         /// </summary>
         public PlayerInputMapActions @PlayerInputMap => new PlayerInputMapActions(this);
+
+        // PlayerInventoryMap
+        private readonly InputActionMap m_PlayerInventoryMap;
+        private List<IPlayerInventoryMapActions> m_PlayerInventoryMapActionsCallbackInterfaces = new List<IPlayerInventoryMapActions>();
+        private readonly InputAction m_PlayerInventoryMap_PlayerOpenInventoryKeyboard;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "PlayerInventoryMap".
+        /// </summary>
+        public struct PlayerInventoryMapActions
+        {
+            private @GameInputSystem m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public PlayerInventoryMapActions(@GameInputSystem wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerInventoryMap/PlayerOpenInventoryKeyboard".
+            /// </summary>
+            public InputAction @PlayerOpenInventoryKeyboard => m_Wrapper.m_PlayerInventoryMap_PlayerOpenInventoryKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_PlayerInventoryMap; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="PlayerInventoryMapActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(PlayerInventoryMapActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="PlayerInventoryMapActions" />
+            public void AddCallbacks(IPlayerInventoryMapActions instance)
+            {
+                if (instance == null || m_Wrapper.m_PlayerInventoryMapActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_PlayerInventoryMapActionsCallbackInterfaces.Add(instance);
+                @PlayerOpenInventoryKeyboard.started += instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerOpenInventoryKeyboard.performed += instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerOpenInventoryKeyboard.canceled += instance.OnPlayerOpenInventoryKeyboard;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="PlayerInventoryMapActions" />
+            private void UnregisterCallbacks(IPlayerInventoryMapActions instance)
+            {
+                @PlayerOpenInventoryKeyboard.started -= instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerOpenInventoryKeyboard.performed -= instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerOpenInventoryKeyboard.canceled -= instance.OnPlayerOpenInventoryKeyboard;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerInventoryMapActions.UnregisterCallbacks(IPlayerInventoryMapActions)" />.
+            /// </summary>
+            /// <seealso cref="PlayerInventoryMapActions.UnregisterCallbacks(IPlayerInventoryMapActions)" />
+            public void RemoveCallbacks(IPlayerInventoryMapActions instance)
+            {
+                if (m_Wrapper.m_PlayerInventoryMapActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="PlayerInventoryMapActions.AddCallbacks(IPlayerInventoryMapActions)" />
+            /// <seealso cref="PlayerInventoryMapActions.RemoveCallbacks(IPlayerInventoryMapActions)" />
+            /// <seealso cref="PlayerInventoryMapActions.UnregisterCallbacks(IPlayerInventoryMapActions)" />
+            public void SetCallbacks(IPlayerInventoryMapActions instance)
+            {
+                foreach (var item in m_Wrapper.m_PlayerInventoryMapActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_PlayerInventoryMapActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="PlayerInventoryMapActions" /> instance referencing this action map.
+        /// </summary>
+        public PlayerInventoryMapActions @PlayerInventoryMap => new PlayerInventoryMapActions(this);
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInputMap" which allows adding and removing callbacks.
         /// </summary>
@@ -509,6 +637,21 @@ namespace BonesOfDragonfall
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPlayerCrouchKeyboard(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInventoryMap" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="PlayerInventoryMapActions.AddCallbacks(IPlayerInventoryMapActions)" />
+        /// <seealso cref="PlayerInventoryMapActions.RemoveCallbacks(IPlayerInventoryMapActions)" />
+        public interface IPlayerInventoryMapActions
+        {
+            /// <summary>
+            /// Method invoked when associated input action "PlayerOpenInventoryKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerOpenInventoryKeyboard(InputAction.CallbackContext context);
         }
     }
 }

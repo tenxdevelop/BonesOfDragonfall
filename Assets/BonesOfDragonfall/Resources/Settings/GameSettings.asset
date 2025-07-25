@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4b7acbc236a4bd7a109c35b3dd83c5e, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  ItemsMap: {fileID: 11400000, guid: 4736b5bf867691b44868ea7c23545c63, type: 2}
+  itemsMap: {fileID: 11400000, guid: 4736b5bf867691b44868ea7c23545c63, type: 2}
+  playerSettings: {fileID: 11400000, guid: db11b4d0163563145932b37006b77ab3, type: 2}

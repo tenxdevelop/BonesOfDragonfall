@@ -26,11 +26,22 @@ namespace BonesOfDragonfall
         
         public bool Handle(CmdAddItemsToInventory command)
         {
+            if (command.AmountToAdd < 0)
+            {
+                Debug.Log("don't added item to inventory, amount less 0");
+                command.SetResult(new AddItemsToInventoryResult(command.InventoryOwnerId, command.AmountToAdd, false, false));
+                return false;
+            }
+
             var inventory = _gameStateModel.InventoryMaps.FirstOrDefault(inventory => inventory.OwnerId.Equals(command.InventoryOwnerId));
 
             if (inventory is null)
+            {
+                Debug.Log("inventory not found");
+                command.SetResult(new AddItemsToInventoryResult(command.InventoryOwnerId, command.AmountToAdd, false, false));
                 return false;
-            
+            }
+
             var itemModel = inventory.Items.FirstOrDefault(itemModel => itemModel.ItemId.Equals(command.ItemId));
 
             if (itemModel is null)
@@ -49,7 +60,7 @@ namespace BonesOfDragonfall
 
             var isHaveOverload = currentWeightInventory > inventory.MaxWeight.Value;
             
-            var result = new AddItemsToInventoryResult(command.InventoryOwnerId, command.AmountToAdd, isHaveOverload);
+            var result = new AddItemsToInventoryResult(command.InventoryOwnerId, command.AmountToAdd, isHaveOverload, true);
             
             command.SetResult(result);
             

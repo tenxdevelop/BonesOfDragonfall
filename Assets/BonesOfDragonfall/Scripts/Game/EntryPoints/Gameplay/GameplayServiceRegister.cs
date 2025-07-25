@@ -2,6 +2,7 @@
    Copyright SunWorldStudio Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using SkyForge.Services.ConsoleService;
 using SkyForge.Reactive;
 using SkyForge.Command;
 using SkyForge;
@@ -37,15 +38,24 @@ namespace BonesOfDragonfall
             
             var gameInputManager = new GameInputManager();
             gameInputManager.RegisterInput<IPlayerInputMapper, PlayerKeyboardAndMouseInputMapper>();
+            gameInputManager.RegisterInput<IPlayerInventoryInputMapper, PlayerInventoryKeyboardMapper>();
             
             gameInputManager.Init();
             
             container.RegisterInstance<IPlayerInput>(gameInputManager);
+            container.RegisterInstance<IPlayerInventoryInput>(gameInputManager);
+            container.RegisterInstance<IInputManager>(gameInputManager);
             
-            /////////////////////////////////////
+            var consoleServiceInputManager = new ConsoleServiceInputManager();
+            
+            consoleServiceInputManager.RegisterInput<IConsoleInput, ConsoleServiceInput>();
+            container.RegisterInstance(consoleServiceInputManager);
+            
+            //////////////////////////////////////
             
             container.RegisterSingleton<IPlayerService>(factory => new PlayerService(commandProcessor));
             container.RegisterSingleton<IInventoryService>(factory => new InventoryService(commandProcessor));
+            container.RegisterSingleton<IConsoleService>(factory => new ConsoleService(factory));
         }
     }
 }

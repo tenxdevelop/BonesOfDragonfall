@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 1
   itemType: 1
-  itemCategory: 3
+  itemCategory: 4
   iconSpriteId: wood_icon
   prefabItemId: prefab/wood
   nameLID: wood

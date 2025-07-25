@@ -10,6 +10,7 @@ namespace BonesOfDragonfall
 {
     public class ApplicationService : IDisposable
     {
+        
         public void Dispose()
         {
             
@@ -30,9 +31,23 @@ namespace BonesOfDragonfall
             Cursor.visible = false;
         }
 
-        public void ShowMouseCursor()
+        public bool ShowMouseCursor()
         {
+            var visibleBefore = Cursor.visible;
             Cursor.visible = true;
+            return visibleBefore;
+        }
+
+        public float StopTimeGame()
+        {
+            var timeScaleBefore = Time.timeSinceLevelLoad;
+            Time.timeScale = 0;
+            return timeScaleBefore;
+        }
+
+        public void StartTimeGame()
+        {
+            Time.timeScale = 1;
         }
         
     }

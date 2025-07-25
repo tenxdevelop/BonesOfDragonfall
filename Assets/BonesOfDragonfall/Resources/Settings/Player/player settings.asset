@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2039273b42914d38ba8f990926f0984a, type: 3}
   m_Name: player settings
   m_EditorClassIdentifier: 
-  sensitivityX: 0
-  sensitivityY: 0
-  playerHeight: 0
-  playerSpeed: 0
-  maxPlayerSpeed: 0
-  playerAirSpeed: 0
-  playerMultiplayerSprintingSpeed: 0
-  dragMovement: 0
-  jumpForce: 0
-  playerCrouchScale: 0
-  playerMaxSpeedCrouch: 0
+  sensitivityX: 25
+  sensitivityY: 20
+  playerHeight: 2
+  playerSpeed: 105
+  maxPlayerSpeed: 8
+  playerAirSpeed: 0.1
+  playerMultiplayerSprintingSpeed: 1.2
+  dragMovement: 4
+  jumpForce: 20
+  playerCrouchScale: 0.5
+  playerMaxSpeedCrouch: 3.5

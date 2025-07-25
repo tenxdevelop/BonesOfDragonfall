@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ca2eafe5cd447689fef9c27c3493c52, type: 3}
   m_Name: ApplicationSettings
   m_EditorClassIdentifier: 
-  targetFPS: 0
+  targetFPS: 120
