@@ -52,10 +52,10 @@ namespace BonesOfDragonfall
             return gameInputMap.PlayerCrouchPressedKeyboard();
         }
 
-        public void DisablePlayerInput()
+        public bool DisablePlayerInput()
         {
             var gameInputMap =  m_inputMap.As<GameInputMap>();
-            gameInputMap.DisablePlayerInputKeyboard();
+            return gameInputMap.DisablePlayerInputKeyboard();
         }
 
         public void EnablePlayerInput()
@@ -77,7 +77,31 @@ namespace BonesOfDragonfall
         public bool PlayerInteractionPressed()
         {
             var gameInputMap = m_inputMap.As<GameInputMap>();
-            return gameInputMap.PlayerInterationPressedKeyboard();
+            return gameInputMap.PlayerInteractionPressedKeyboard();
+        }
+
+        public bool DisablePlayerMovementInput()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            return gameInputMap.DisablePlayerMovementInputKeyboard();
+        }
+
+        public void EnablePlayerMovementInput()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            gameInputMap.EnablePlayerMovementInputKeyboard();
+        }
+
+        public bool PlayerOpenInventoryPressed()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            return gameInputMap.PlayerOpenInventoryPressedKeyboard();
+        }
+
+        public bool PlayerStartMagicCastPressed()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            return gameInputMap.PlayerStartMagicCastPressedKeyboard();
         }
     }
 }

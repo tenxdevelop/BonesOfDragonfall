@@ -27,7 +27,8 @@ namespace BonesOfDragonfall
                         configId = "playerConfig",
                         position = new Vector3(0, 1, 0),
                         healthPoint = 100,
-                        uniqueId = 1
+                        uniqueId = 1,
+                        magicCast = new List<MagicElementData>()
                     }
                 },
                 inventoryMaps = new List<InventoryData>()

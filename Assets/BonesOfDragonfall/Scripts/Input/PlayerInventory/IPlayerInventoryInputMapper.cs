@@ -8,6 +8,8 @@ namespace BonesOfDragonfall
 {
     public interface IPlayerInventoryInputMapper : IInput
     {
-        public bool PlayerOpenInventoryPressed();
+        public bool PlayerCloseInventoryPressed();
+        public bool DisablePlayerInventoryInput();
+        public void EnablePlayerInventoryInput();
     }
 }

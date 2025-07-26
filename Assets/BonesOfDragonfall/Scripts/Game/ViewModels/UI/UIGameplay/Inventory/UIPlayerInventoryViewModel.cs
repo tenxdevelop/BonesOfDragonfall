@@ -15,34 +15,53 @@ namespace BonesOfDragonfall
         public ReactiveProperty<bool> IsActiveInventory { get; private set; } = new();
 
         private readonly IPlayerInventoryInput _playerInventoryInput;
+        private readonly IPlayerInput  _playerInput;
         
         private readonly IBinding _isActiveInventoryBinding;
         private readonly ItemsMap _itemMapConfig;
 
         private bool _isActiveMouseBefore;
+        private bool _isActivePlayerInputBefore;
+        private bool _isActivePlayerMovementInputBefore;
+        private bool _isActivePlayerMagicInputBefore;
         private float _timeScaleBefore;
-        public UIPlayerInventoryViewModel(IInventoryModel playerInventory, ItemsMap itemMapConfig, IPlayerInventoryInput playerInventoryInput, IPlayerInput playerInput, ApplicationService applicationService)
+        public UIPlayerInventoryViewModel(IInventoryModel playerInventory, ItemsMap itemMapConfig, IPlayerInventoryInput playerInventoryInput, 
+            IPlayerInput playerInput, IPlayerMagicInput playerMagicInput, ApplicationService applicationService)
         {
             _playerInventoryInput = playerInventoryInput;
+            _playerInput = playerInput;
             _itemMapConfig = itemMapConfig;
             
             _isActiveInventoryBinding = IsActiveInventory.Subscribe(inventoryOpen =>
             {
                 if (inventoryOpen)
                 {
+                    _playerInventoryInput.EnablePlayerInventoryInput();
+                    
                     _timeScaleBefore = applicationService.StopTimeGame();
                     _isActiveMouseBefore = applicationService.ShowMouseCursor();
-                    playerInput.DisablePlayerInput();
+                    _isActivePlayerInputBefore = playerInput.DisablePlayerInput();
+                    _isActivePlayerMovementInputBefore = playerInput.DisablePlayerMovementInput();
+                    _isActivePlayerMagicInputBefore = playerMagicInput.DisablePlayerMagicCastInput();
                 }
                 else
                 {
+                    _playerInventoryInput.DisablePlayerInventoryInput();
+                    
                     if(_timeScaleBefore != 0)
                         applicationService.StartTimeGame();
                     
                     if(!_isActiveMouseBefore)
                         applicationService.HideMouseCursor();
                     
-                    playerInput.EnablePlayerInput();
+                    if(_isActivePlayerInputBefore)
+                        playerInput.EnablePlayerInput();
+                    
+                    if(_isActivePlayerMovementInputBefore)
+                        playerInput.EnablePlayerMovementInput();
+                    
+                    if(_isActivePlayerMagicInputBefore)
+                        playerMagicInput.EnablePlayerMagicCastInput();
                 }
             });
 
@@ -61,10 +80,16 @@ namespace BonesOfDragonfall
 
         public void Update(float deltaTime)
         {
-            if (_playerInventoryInput.PlayerOpenInventoryPressed())
+            if (_playerInput.PlayerOpenInventoryPressed())
             {
-                IsActiveInventory.Opposed();
+                IsActiveInventory.Value = true;
             }
+            
+            if (_playerInventoryInput.PlayerCloseInventoryPressed())
+            {
+                IsActiveInventory.Value = false;
+            }
+            
         }
 
         public void PhysicsUpdate(float deltaTime)

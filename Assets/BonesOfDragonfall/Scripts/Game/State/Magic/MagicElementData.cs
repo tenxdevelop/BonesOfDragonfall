@@ -6,10 +6,11 @@ using System;
 
 namespace BonesOfDragonfall
 {
-    public interface IPlayerInventoryInput  : IDisposable
+    [Serializable]
+    public class MagicElementData
     {
-        public bool PlayerCloseInventoryPressed();
-        public bool DisablePlayerInventoryInput();
-        public void EnablePlayerInventoryInput();
+        public MagicElementType magicElementType;
+        public float power;
+        public float costOfMagic;
     }
 }

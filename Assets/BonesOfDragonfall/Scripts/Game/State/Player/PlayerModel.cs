@@ -3,7 +3,9 @@
 \**************************************************************************/
 
 using SkyForge.Reactive.Extension;
+using System.Collections.Generic;
 using SkyForge.Reactive;
+using System.Linq;
 using UnityEngine;
 
 namespace BonesOfDragonfall
@@ -13,9 +15,9 @@ namespace BonesOfDragonfall
         public PlayerData OriginState { get; private set; }
         public EntityType EntityType =>  OriginState.entityType;
         public int UniqueId =>  OriginState.uniqueId;
-        
         public string ConfigId => OriginState.configId;
-        
+        public ReactiveProperty<float> HealthPoint { get; private set; }
+        public ReactiveCollection<MagicElementData> MagicCast { get; private set; }
         public ReactiveProperty<float> MaxSpeed { get; private set; }
         public ReactiveProperty<Vector3> Position { get; private set; }
         public ReactiveProperty<Vector3> ForceMovement { get; private set; }
@@ -23,7 +25,6 @@ namespace BonesOfDragonfall
         public ReactiveProperty<Vector3> JumpForce { get; private set; }
         public ReactiveProperty<Quaternion> Rotation { get; private set; }
         public ReactiveProperty<Vector3> ScaleCollider { get; private set; }
-        public ReactiveProperty<float> HealthPoint { get; private set; }
         public ReactiveProperty<float> CameraRotation { get; private set; }
         
         public PlayerModel(PlayerData originState)
@@ -31,6 +32,8 @@ namespace BonesOfDragonfall
             OriginState = originState;
             
             HealthPoint = new ReactiveProperty<float>(originState.healthPoint);
+            UpdateMagicCast(originState.magicCast);
+            
             Position = new ReactiveProperty<Vector3>(originState.position);
 
             MaxSpeed = new ReactiveProperty<float>();
@@ -46,6 +49,32 @@ namespace BonesOfDragonfall
             HealthPoint.Subscribe(newHealthPoint => OriginState.healthPoint = newHealthPoint);
             Position.Subscribe(newPosition => OriginState.position = newPosition);
         }
-        
+
+        private void UpdateMagicCast(List<MagicElementData> magicCast)
+        {
+            MagicCast = new ReactiveCollection<MagicElementData>();
+            foreach (var magicElement in magicCast)
+            {
+                MagicCast.Add(magicElement);
+            }
+
+            MagicCast.Subscribe(OnMagicElementAdded, OnMagicElementRemoved, OnMagicCastClear);
+        }
+
+        private void OnMagicCastClear()
+        {
+            OriginState.magicCast.Clear();
+        }
+
+        private void OnMagicElementRemoved(MagicElementData removedMagicElement)
+        {
+            var removedMagicElementData = OriginState.magicCast.FirstOrDefault(magicElement => magicElement.Equals(removedMagicElement));
+            OriginState.magicCast.Remove(removedMagicElement);
+        }
+
+        private void OnMagicElementAdded(MagicElementData newMagicElement)
+        {
+            OriginState.magicCast.Add(newMagicElement);
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace BonesOfDragonfall
         private readonly PlayerSettings _playerSettings;
         private readonly IPlayerModel _playerModel;
         private readonly IPlayerInput _playerInput;
+        private readonly IPlayerMagicInput _playerMagicInput;
         
         private readonly ReactiveProperty<Vector2> _playerMoveDirection = new();
 
@@ -33,16 +34,20 @@ namespace BonesOfDragonfall
         private readonly ReactiveProperty<bool> _playerInGround = new();
 
         private bool _isReadyCrouch;
+        private bool _isReadyMagicCast;
         private bool _isReadyStandup;
 
         private IBinding _playerCrouchIsReadyBinding;
+        private IBinding _playerMagicCastIsReadyBinding;
         
-        public PlayerViewModel(IPlayerModel playerModel, ISettingsProvider settingsProvider, IPlayerService playerService, IPlayerInput playerInput, Coroutines coroutine)
+        public PlayerViewModel(IPlayerModel playerModel, ISettingsProvider settingsProvider, IPlayerService playerService, IPlayerInput playerInput, IPlayerMagicInput playerMagicInput,
+            Coroutines coroutine)
         {
             _playerService = playerService;
             _playerSettings = settingsProvider.GameSettings.playerSettings;
             _playerModel = playerModel;
             _playerInput = playerInput;
+            _playerMagicInput = playerMagicInput;
 
             _playerInput.PlayerMovedReceivedEvent += OnPlayerMovedReceived;
             _playerInput.PlayerCameraRotationReceivedEvent += OnPlayerCameraRotationReceived;
@@ -52,6 +57,7 @@ namespace BonesOfDragonfall
             ConfigurePlayerStateMachine(coroutine);
 
             _isReadyCrouch = true;
+            _isReadyMagicCast = true;
             _isReadyStandup = true;
         }
 
@@ -70,6 +76,7 @@ namespace BonesOfDragonfall
             _playerInput.PlayerMovedReceivedEvent -= OnPlayerMovedReceived;
             _playerInput.PlayerCameraRotationReceivedEvent -= OnPlayerCameraRotationReceived;
             _playerCrouchIsReadyBinding?.Dispose();
+            _playerMagicCastIsReadyBinding?.Dispose();
         }
 
         public void Update(float deltaTime)
@@ -78,7 +85,6 @@ namespace BonesOfDragonfall
             
             _isReadyStandup = _playerService.CheckStandup(_playerSettings.playerHeight, _playerModel.UniqueId);
             UpdateInteractionPlayer();
-
         }
 
         [ReactiveMethod]
@@ -113,16 +119,21 @@ namespace BonesOfDragonfall
             var playerCrouchState = new PlayerCrouchState(_playerService, coroutine, _playerMoveDirection, _playerInGround, _playerSettings, _playerModel.UniqueId);
             _playerCrouchIsReadyBinding = playerCrouchState.IsReadyCrouch.Subscribe(newValue => _isReadyCrouch = newValue);
             
+            var playerMagicCastState = new PlayerMagicCastState(_playerService, coroutine, _playerMagicInput, _playerInput);
+            _playerMagicCastIsReadyBinding = playerMagicCastState.IsReadyMagicCast.Subscribe(newValue => _isReadyMagicCast = newValue);
+            
             _playerStateMachine.RegisterState(playerIdleState);
             
             _playerStateMachine.AddTransition<PlayerIdleState>(playerMovingState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude > 0));
             _playerStateMachine.AddTransition<PlayerIdleState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
             _playerStateMachine.AddTransition<PlayerIdleState>(playerCrouchState, new FuncPredicate(() => _playerInput.PlayerCrouchPressed() && _playerInGround.Value && _isReadyCrouch));
+            _playerStateMachine.AddTransition<PlayerIdleState>(playerMagicCastState, new FuncPredicate(() => _playerInput.PlayerStartMagicCastPressed() && _playerInGround.Value && _isReadyMagicCast));
             
             _playerStateMachine.AddTransition<PlayerMovingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
             _playerStateMachine.AddTransition<PlayerMovingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
             _playerStateMachine.AddTransition<PlayerMovingState>(playerSprintingState, new FuncPredicate(() => _playerInput.PlayerSprintingPressed() && _playerInGround.Value));
             _playerStateMachine.AddTransition<PlayerMovingState>(playerCrouchState, new FuncPredicate(() => _playerInput.PlayerCrouchPressed() && _playerInGround.Value && _isReadyCrouch));
+            _playerStateMachine.AddTransition<PlayerMovingState>(playerMagicCastState, new FuncPredicate(() => _playerInput.PlayerStartMagicCastPressed() && _playerInGround.Value && _isReadyMagicCast));
             
             _playerStateMachine.AddTransition<PlayerJumpState>(playerIdleState, new FuncPredicate(() => true));
             
@@ -130,8 +141,11 @@ namespace BonesOfDragonfall
             _playerStateMachine.AddTransition<PlayerSprintingState>(playerIdleState, new FuncPredicate(() => _playerMoveDirection.Value.magnitude == 0));
             _playerStateMachine.AddTransition<PlayerSprintingState>(playerJumpState, new FuncPredicate(() => _playerInput.PlayerJumpPressed() && _playerInGround.Value));
             _playerStateMachine.AddTransition<PlayerSprintingState>(playerCrouchState, new FuncPredicate(() => _playerInput.PlayerCrouchPressed() && _playerInGround.Value && _isReadyCrouch));
+            _playerStateMachine.AddTransition<PlayerSprintingState>(playerMagicCastState, new FuncPredicate(() => _playerInput.PlayerStartMagicCastPressed() && _playerInGround.Value && _isReadyMagicCast));
             
             _playerStateMachine.AddTransition<PlayerCrouchState>(playerIdleState, new FuncPredicate(() => (_playerInput.PlayerCrouchPressed() || !_playerInGround.Value) && _isReadyCrouch && _isReadyStandup));
+            
+            _playerStateMachine.AddTransition<PlayerMagicCastState>(playerIdleState, new FuncPredicate(() => _playerInput.PlayerStartMagicCastPressed() && _isReadyMagicCast));
             
             _playerStateMachine.SetState(playerIdleState);
         }

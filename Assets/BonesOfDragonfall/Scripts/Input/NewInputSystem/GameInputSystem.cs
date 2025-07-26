@@ -103,45 +103,27 @@ namespace BonesOfDragonfall
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PlayerMovementKeyboard"",
-                    ""type"": ""Value"",
-                    ""id"": ""ce4a6d51-359b-41dc-80f8-732e83dac209"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""PlayerJumpKeyboard"",
-                    ""type"": ""Button"",
-                    ""id"": ""d8577c6f-1b18-4c17-88d2-e4911422cde2"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PlayerSprintingKeyboard"",
-                    ""type"": ""Button"",
-                    ""id"": ""f70aaba4-584c-4d46-9dd8-a1c7b641c008"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""PlayerCrouchKeyboard"",
-                    ""type"": ""Button"",
-                    ""id"": ""e0f1938a-96e1-44e7-bf1e-4f295d2e51c1"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""PlayerInteractionKeyboard"",
                     ""type"": ""Button"",
                     ""id"": ""9818309a-8ad3-4a0b-b8b9-7046e9026aa2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerStartMagicCastKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""80f97ba2-96c8-4c97-8f98-b0b2e88637d2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerOpenInventoryKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6a7e063-9e36-4713-bec2-f507e2a89d4b"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -161,94 +143,6 @@ namespace BonesOfDragonfall
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""7eacd220-fdc1-4aa0-8be1-4262923cf009"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerMovementKeyboard"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""9b8d5c4a-4972-4825-800d-fa5ba548c15b"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerMovementKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""61082ca9-1ca5-4536-a047-89babce879fa"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerMovementKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""c55c5324-5b3b-4f72-aa20-ab46d2c0e53a"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerMovementKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""7dbe8dca-f609-46f7-9d9e-4a1ba3f684c1"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerMovementKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d8ab6232-fe07-4de5-aea2-052efca653d0"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerJumpKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f157c729-2a74-4f2b-80d3-d969b371c4ed"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerSprintingKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""00a1e887-e503-43d6-941c-cdcb2983414a"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PlayerCrouchKeyboard"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": """",
                     ""id"": ""33dcaf0f-4a62-40e2-969b-346c8cbe02cb"",
                     ""path"": ""<Keyboard>/e"",
@@ -256,6 +150,28 @@ namespace BonesOfDragonfall
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""PlayerInteractionKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb7dbb22-4c4c-439d-bb74-715f90f2ef16"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerStartMagicCastKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""914aa6b0-6d73-4d69-907a-78dc37e454b2"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerOpenInventoryKeyboard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -266,7 +182,7 @@ namespace BonesOfDragonfall
             ""id"": ""ff90f855-bc4d-42b0-b31d-159a6fd76c37"",
             ""actions"": [
                 {
-                    ""name"": ""PlayerOpenInventoryKeyboard"",
+                    ""name"": ""PlayerCloseInventoryKeyboard"",
                     ""type"": ""Button"",
                     ""id"": ""b336ae09-b330-497c-b645-7cb19b4f1587"",
                     ""expectedControlType"": """",
@@ -283,7 +199,327 @@ namespace BonesOfDragonfall
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PlayerOpenInventoryKeyboard"",
+                    ""action"": ""PlayerCloseInventoryKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerMovementInput"",
+            ""id"": ""f1156adf-7650-4fec-acaf-39efea375df2"",
+            ""actions"": [
+                {
+                    ""name"": ""PlayerMovementKeyboard"",
+                    ""type"": ""Value"",
+                    ""id"": ""4ba964f2-f77b-4921-a1a4-30a50032bdb8"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PlayerJumpKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""eae9deac-f36c-4cf4-b2c8-a624917f10de"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerSprintingKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b29d027-b702-4a51-a30a-bd2e3b838189"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerCrouchKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7aa9017-a548-4355-b610-decf71d6e220"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""1f136b1c-63b2-4db1-b1be-4c7e957b55c2"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMovementKeyboard"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""4ee1d7da-5077-4fe3-9156-38737683d453"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMovementKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""d7caaa80-aa30-40c0-a0a4-11809873ab23"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMovementKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""57467ab6-918e-436f-a82d-fa773abd1a7a"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMovementKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""40d4b145-dfdc-499b-af20-f0140faa3c4c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMovementKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6457b257-a462-44cc-8aa9-ba3f6fe24847"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerJumpKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cff5072a-5674-4153-b42c-336320a89966"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerSprintingKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""353e2b76-5f02-4d47-8ac8-27e366cf7e07"",
+                    ""path"": ""<Keyboard>/leftCtrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerCrouchKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerMagicCastInput"",
+            ""id"": ""ad83f7b9-51c1-460c-88bb-8a7c5e1c010e"",
+            ""actions"": [
+                {
+                    ""name"": ""PlayerMagicCastFireKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""76851b41-db5e-484b-a913-69c06a70fcc6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerMagicCastWaterKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""10481ad8-adcc-4079-9c2d-243d7937d71b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerMagicCastEarthKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""df5cd987-3281-4b56-9319-1892ff46392c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerMagicCastElectricKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb6d4e91-4536-4f04-b336-f92a1f7a514e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerMagicCastAirKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""a05213dc-026e-4a99-ae67-e51ba6da1d2a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerMagicCastFrostKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""d92c8dec-3ba3-4239-ba5e-e254bc339724"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerMagicCastLightKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""21715a45-9cb0-481d-90ed-05c39b2920c9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerMagicCastDarkKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""c62dd6d2-d588-48dc-b4a9-15ada6b50278"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PlayerMagicCastMagicKeyboard"",
+                    ""type"": ""Button"",
+                    ""id"": ""edd28862-d14e-4022-9553-1c8872d4b14e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b3db7cce-0552-45b2-96fc-75eae5372c1a"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMagicCastFireKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57337cb8-e051-423d-a826-762787e62d95"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMagicCastWaterKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db54d557-9cf4-4aed-8f18-ac60b425dbad"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMagicCastEarthKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c173a8c8-9694-4729-b9d9-416843951730"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMagicCastElectricKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4e912ce-a0f7-4d7e-b4f7-fd4b9e12c5b4"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMagicCastAirKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c07c4c5-ab71-4037-96eb-151120337153"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMagicCastFrostKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c476ab9-f083-402a-b0a1-b9f2aafc5446"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMagicCastLightKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c92226e-137f-456d-8280-ef5bb343d80a"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMagicCastDarkKeyboard"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""782baa46-6771-4c1b-8ce4-cdadebba2bc0"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlayerMagicCastMagicKeyboard"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -295,20 +531,37 @@ namespace BonesOfDragonfall
             // PlayerInputMap
             m_PlayerInputMap = asset.FindActionMap("PlayerInputMap", throwIfNotFound: true);
             m_PlayerInputMap_PlayerRotationCameraMouse = m_PlayerInputMap.FindAction("PlayerRotationCameraMouse", throwIfNotFound: true);
-            m_PlayerInputMap_PlayerMovementKeyboard = m_PlayerInputMap.FindAction("PlayerMovementKeyboard", throwIfNotFound: true);
-            m_PlayerInputMap_PlayerJumpKeyboard = m_PlayerInputMap.FindAction("PlayerJumpKeyboard", throwIfNotFound: true);
-            m_PlayerInputMap_PlayerSprintingKeyboard = m_PlayerInputMap.FindAction("PlayerSprintingKeyboard", throwIfNotFound: true);
-            m_PlayerInputMap_PlayerCrouchKeyboard = m_PlayerInputMap.FindAction("PlayerCrouchKeyboard", throwIfNotFound: true);
             m_PlayerInputMap_PlayerInteractionKeyboard = m_PlayerInputMap.FindAction("PlayerInteractionKeyboard", throwIfNotFound: true);
+            m_PlayerInputMap_PlayerStartMagicCastKeyboard = m_PlayerInputMap.FindAction("PlayerStartMagicCastKeyboard", throwIfNotFound: true);
+            m_PlayerInputMap_PlayerOpenInventoryKeyboard = m_PlayerInputMap.FindAction("PlayerOpenInventoryKeyboard", throwIfNotFound: true);
             // PlayerInventoryMap
             m_PlayerInventoryMap = asset.FindActionMap("PlayerInventoryMap", throwIfNotFound: true);
-            m_PlayerInventoryMap_PlayerOpenInventoryKeyboard = m_PlayerInventoryMap.FindAction("PlayerOpenInventoryKeyboard", throwIfNotFound: true);
+            m_PlayerInventoryMap_PlayerCloseInventoryKeyboard = m_PlayerInventoryMap.FindAction("PlayerCloseInventoryKeyboard", throwIfNotFound: true);
+            // PlayerMovementInput
+            m_PlayerMovementInput = asset.FindActionMap("PlayerMovementInput", throwIfNotFound: true);
+            m_PlayerMovementInput_PlayerMovementKeyboard = m_PlayerMovementInput.FindAction("PlayerMovementKeyboard", throwIfNotFound: true);
+            m_PlayerMovementInput_PlayerJumpKeyboard = m_PlayerMovementInput.FindAction("PlayerJumpKeyboard", throwIfNotFound: true);
+            m_PlayerMovementInput_PlayerSprintingKeyboard = m_PlayerMovementInput.FindAction("PlayerSprintingKeyboard", throwIfNotFound: true);
+            m_PlayerMovementInput_PlayerCrouchKeyboard = m_PlayerMovementInput.FindAction("PlayerCrouchKeyboard", throwIfNotFound: true);
+            // PlayerMagicCastInput
+            m_PlayerMagicCastInput = asset.FindActionMap("PlayerMagicCastInput", throwIfNotFound: true);
+            m_PlayerMagicCastInput_PlayerMagicCastFireKeyboard = m_PlayerMagicCastInput.FindAction("PlayerMagicCastFireKeyboard", throwIfNotFound: true);
+            m_PlayerMagicCastInput_PlayerMagicCastWaterKeyboard = m_PlayerMagicCastInput.FindAction("PlayerMagicCastWaterKeyboard", throwIfNotFound: true);
+            m_PlayerMagicCastInput_PlayerMagicCastEarthKeyboard = m_PlayerMagicCastInput.FindAction("PlayerMagicCastEarthKeyboard", throwIfNotFound: true);
+            m_PlayerMagicCastInput_PlayerMagicCastElectricKeyboard = m_PlayerMagicCastInput.FindAction("PlayerMagicCastElectricKeyboard", throwIfNotFound: true);
+            m_PlayerMagicCastInput_PlayerMagicCastAirKeyboard = m_PlayerMagicCastInput.FindAction("PlayerMagicCastAirKeyboard", throwIfNotFound: true);
+            m_PlayerMagicCastInput_PlayerMagicCastFrostKeyboard = m_PlayerMagicCastInput.FindAction("PlayerMagicCastFrostKeyboard", throwIfNotFound: true);
+            m_PlayerMagicCastInput_PlayerMagicCastLightKeyboard = m_PlayerMagicCastInput.FindAction("PlayerMagicCastLightKeyboard", throwIfNotFound: true);
+            m_PlayerMagicCastInput_PlayerMagicCastDarkKeyboard = m_PlayerMagicCastInput.FindAction("PlayerMagicCastDarkKeyboard", throwIfNotFound: true);
+            m_PlayerMagicCastInput_PlayerMagicCastMagicKeyboard = m_PlayerMagicCastInput.FindAction("PlayerMagicCastMagicKeyboard", throwIfNotFound: true);
         }
 
         ~@GameInputSystem()
         {
             UnityEngine.Debug.Assert(!m_PlayerInputMap.enabled, "This will cause a leak and performance issues, GameInputSystem.PlayerInputMap.Disable() has not been called.");
             UnityEngine.Debug.Assert(!m_PlayerInventoryMap.enabled, "This will cause a leak and performance issues, GameInputSystem.PlayerInventoryMap.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_PlayerMovementInput.enabled, "This will cause a leak and performance issues, GameInputSystem.PlayerMovementInput.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_PlayerMagicCastInput.enabled, "This will cause a leak and performance issues, GameInputSystem.PlayerMagicCastInput.Disable() has not been called.");
         }
 
         /// <summary>
@@ -385,11 +638,9 @@ namespace BonesOfDragonfall
         private readonly InputActionMap m_PlayerInputMap;
         private List<IPlayerInputMapActions> m_PlayerInputMapActionsCallbackInterfaces = new List<IPlayerInputMapActions>();
         private readonly InputAction m_PlayerInputMap_PlayerRotationCameraMouse;
-        private readonly InputAction m_PlayerInputMap_PlayerMovementKeyboard;
-        private readonly InputAction m_PlayerInputMap_PlayerJumpKeyboard;
-        private readonly InputAction m_PlayerInputMap_PlayerSprintingKeyboard;
-        private readonly InputAction m_PlayerInputMap_PlayerCrouchKeyboard;
         private readonly InputAction m_PlayerInputMap_PlayerInteractionKeyboard;
+        private readonly InputAction m_PlayerInputMap_PlayerStartMagicCastKeyboard;
+        private readonly InputAction m_PlayerInputMap_PlayerOpenInventoryKeyboard;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerInputMap".
         /// </summary>
@@ -406,25 +657,17 @@ namespace BonesOfDragonfall
             /// </summary>
             public InputAction @PlayerRotationCameraMouse => m_Wrapper.m_PlayerInputMap_PlayerRotationCameraMouse;
             /// <summary>
-            /// Provides access to the underlying input action "PlayerInputMap/PlayerMovementKeyboard".
-            /// </summary>
-            public InputAction @PlayerMovementKeyboard => m_Wrapper.m_PlayerInputMap_PlayerMovementKeyboard;
-            /// <summary>
-            /// Provides access to the underlying input action "PlayerInputMap/PlayerJumpKeyboard".
-            /// </summary>
-            public InputAction @PlayerJumpKeyboard => m_Wrapper.m_PlayerInputMap_PlayerJumpKeyboard;
-            /// <summary>
-            /// Provides access to the underlying input action "PlayerInputMap/PlayerSprintingKeyboard".
-            /// </summary>
-            public InputAction @PlayerSprintingKeyboard => m_Wrapper.m_PlayerInputMap_PlayerSprintingKeyboard;
-            /// <summary>
-            /// Provides access to the underlying input action "PlayerInputMap/PlayerCrouchKeyboard".
-            /// </summary>
-            public InputAction @PlayerCrouchKeyboard => m_Wrapper.m_PlayerInputMap_PlayerCrouchKeyboard;
-            /// <summary>
             /// Provides access to the underlying input action "PlayerInputMap/PlayerInteractionKeyboard".
             /// </summary>
             public InputAction @PlayerInteractionKeyboard => m_Wrapper.m_PlayerInputMap_PlayerInteractionKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerInputMap/PlayerStartMagicCastKeyboard".
+            /// </summary>
+            public InputAction @PlayerStartMagicCastKeyboard => m_Wrapper.m_PlayerInputMap_PlayerStartMagicCastKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerInputMap/PlayerOpenInventoryKeyboard".
+            /// </summary>
+            public InputAction @PlayerOpenInventoryKeyboard => m_Wrapper.m_PlayerInputMap_PlayerOpenInventoryKeyboard;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -454,21 +697,15 @@ namespace BonesOfDragonfall
                 @PlayerRotationCameraMouse.started += instance.OnPlayerRotationCameraMouse;
                 @PlayerRotationCameraMouse.performed += instance.OnPlayerRotationCameraMouse;
                 @PlayerRotationCameraMouse.canceled += instance.OnPlayerRotationCameraMouse;
-                @PlayerMovementKeyboard.started += instance.OnPlayerMovementKeyboard;
-                @PlayerMovementKeyboard.performed += instance.OnPlayerMovementKeyboard;
-                @PlayerMovementKeyboard.canceled += instance.OnPlayerMovementKeyboard;
-                @PlayerJumpKeyboard.started += instance.OnPlayerJumpKeyboard;
-                @PlayerJumpKeyboard.performed += instance.OnPlayerJumpKeyboard;
-                @PlayerJumpKeyboard.canceled += instance.OnPlayerJumpKeyboard;
-                @PlayerSprintingKeyboard.started += instance.OnPlayerSprintingKeyboard;
-                @PlayerSprintingKeyboard.performed += instance.OnPlayerSprintingKeyboard;
-                @PlayerSprintingKeyboard.canceled += instance.OnPlayerSprintingKeyboard;
-                @PlayerCrouchKeyboard.started += instance.OnPlayerCrouchKeyboard;
-                @PlayerCrouchKeyboard.performed += instance.OnPlayerCrouchKeyboard;
-                @PlayerCrouchKeyboard.canceled += instance.OnPlayerCrouchKeyboard;
                 @PlayerInteractionKeyboard.started += instance.OnPlayerInteractionKeyboard;
                 @PlayerInteractionKeyboard.performed += instance.OnPlayerInteractionKeyboard;
                 @PlayerInteractionKeyboard.canceled += instance.OnPlayerInteractionKeyboard;
+                @PlayerStartMagicCastKeyboard.started += instance.OnPlayerStartMagicCastKeyboard;
+                @PlayerStartMagicCastKeyboard.performed += instance.OnPlayerStartMagicCastKeyboard;
+                @PlayerStartMagicCastKeyboard.canceled += instance.OnPlayerStartMagicCastKeyboard;
+                @PlayerOpenInventoryKeyboard.started += instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerOpenInventoryKeyboard.performed += instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerOpenInventoryKeyboard.canceled += instance.OnPlayerOpenInventoryKeyboard;
             }
 
             /// <summary>
@@ -483,21 +720,15 @@ namespace BonesOfDragonfall
                 @PlayerRotationCameraMouse.started -= instance.OnPlayerRotationCameraMouse;
                 @PlayerRotationCameraMouse.performed -= instance.OnPlayerRotationCameraMouse;
                 @PlayerRotationCameraMouse.canceled -= instance.OnPlayerRotationCameraMouse;
-                @PlayerMovementKeyboard.started -= instance.OnPlayerMovementKeyboard;
-                @PlayerMovementKeyboard.performed -= instance.OnPlayerMovementKeyboard;
-                @PlayerMovementKeyboard.canceled -= instance.OnPlayerMovementKeyboard;
-                @PlayerJumpKeyboard.started -= instance.OnPlayerJumpKeyboard;
-                @PlayerJumpKeyboard.performed -= instance.OnPlayerJumpKeyboard;
-                @PlayerJumpKeyboard.canceled -= instance.OnPlayerJumpKeyboard;
-                @PlayerSprintingKeyboard.started -= instance.OnPlayerSprintingKeyboard;
-                @PlayerSprintingKeyboard.performed -= instance.OnPlayerSprintingKeyboard;
-                @PlayerSprintingKeyboard.canceled -= instance.OnPlayerSprintingKeyboard;
-                @PlayerCrouchKeyboard.started -= instance.OnPlayerCrouchKeyboard;
-                @PlayerCrouchKeyboard.performed -= instance.OnPlayerCrouchKeyboard;
-                @PlayerCrouchKeyboard.canceled -= instance.OnPlayerCrouchKeyboard;
                 @PlayerInteractionKeyboard.started -= instance.OnPlayerInteractionKeyboard;
                 @PlayerInteractionKeyboard.performed -= instance.OnPlayerInteractionKeyboard;
                 @PlayerInteractionKeyboard.canceled -= instance.OnPlayerInteractionKeyboard;
+                @PlayerStartMagicCastKeyboard.started -= instance.OnPlayerStartMagicCastKeyboard;
+                @PlayerStartMagicCastKeyboard.performed -= instance.OnPlayerStartMagicCastKeyboard;
+                @PlayerStartMagicCastKeyboard.canceled -= instance.OnPlayerStartMagicCastKeyboard;
+                @PlayerOpenInventoryKeyboard.started -= instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerOpenInventoryKeyboard.performed -= instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerOpenInventoryKeyboard.canceled -= instance.OnPlayerOpenInventoryKeyboard;
             }
 
             /// <summary>
@@ -535,7 +766,7 @@ namespace BonesOfDragonfall
         // PlayerInventoryMap
         private readonly InputActionMap m_PlayerInventoryMap;
         private List<IPlayerInventoryMapActions> m_PlayerInventoryMapActionsCallbackInterfaces = new List<IPlayerInventoryMapActions>();
-        private readonly InputAction m_PlayerInventoryMap_PlayerOpenInventoryKeyboard;
+        private readonly InputAction m_PlayerInventoryMap_PlayerCloseInventoryKeyboard;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerInventoryMap".
         /// </summary>
@@ -548,9 +779,9 @@ namespace BonesOfDragonfall
             /// </summary>
             public PlayerInventoryMapActions(@GameInputSystem wrapper) { m_Wrapper = wrapper; }
             /// <summary>
-            /// Provides access to the underlying input action "PlayerInventoryMap/PlayerOpenInventoryKeyboard".
+            /// Provides access to the underlying input action "PlayerInventoryMap/PlayerCloseInventoryKeyboard".
             /// </summary>
-            public InputAction @PlayerOpenInventoryKeyboard => m_Wrapper.m_PlayerInventoryMap_PlayerOpenInventoryKeyboard;
+            public InputAction @PlayerCloseInventoryKeyboard => m_Wrapper.m_PlayerInventoryMap_PlayerCloseInventoryKeyboard;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -577,9 +808,9 @@ namespace BonesOfDragonfall
             {
                 if (instance == null || m_Wrapper.m_PlayerInventoryMapActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_PlayerInventoryMapActionsCallbackInterfaces.Add(instance);
-                @PlayerOpenInventoryKeyboard.started += instance.OnPlayerOpenInventoryKeyboard;
-                @PlayerOpenInventoryKeyboard.performed += instance.OnPlayerOpenInventoryKeyboard;
-                @PlayerOpenInventoryKeyboard.canceled += instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerCloseInventoryKeyboard.started += instance.OnPlayerCloseInventoryKeyboard;
+                @PlayerCloseInventoryKeyboard.performed += instance.OnPlayerCloseInventoryKeyboard;
+                @PlayerCloseInventoryKeyboard.canceled += instance.OnPlayerCloseInventoryKeyboard;
             }
 
             /// <summary>
@@ -591,9 +822,9 @@ namespace BonesOfDragonfall
             /// <seealso cref="PlayerInventoryMapActions" />
             private void UnregisterCallbacks(IPlayerInventoryMapActions instance)
             {
-                @PlayerOpenInventoryKeyboard.started -= instance.OnPlayerOpenInventoryKeyboard;
-                @PlayerOpenInventoryKeyboard.performed -= instance.OnPlayerOpenInventoryKeyboard;
-                @PlayerOpenInventoryKeyboard.canceled -= instance.OnPlayerOpenInventoryKeyboard;
+                @PlayerCloseInventoryKeyboard.started -= instance.OnPlayerCloseInventoryKeyboard;
+                @PlayerCloseInventoryKeyboard.performed -= instance.OnPlayerCloseInventoryKeyboard;
+                @PlayerCloseInventoryKeyboard.canceled -= instance.OnPlayerCloseInventoryKeyboard;
             }
 
             /// <summary>
@@ -627,6 +858,319 @@ namespace BonesOfDragonfall
         /// Provides a new <see cref="PlayerInventoryMapActions" /> instance referencing this action map.
         /// </summary>
         public PlayerInventoryMapActions @PlayerInventoryMap => new PlayerInventoryMapActions(this);
+
+        // PlayerMovementInput
+        private readonly InputActionMap m_PlayerMovementInput;
+        private List<IPlayerMovementInputActions> m_PlayerMovementInputActionsCallbackInterfaces = new List<IPlayerMovementInputActions>();
+        private readonly InputAction m_PlayerMovementInput_PlayerMovementKeyboard;
+        private readonly InputAction m_PlayerMovementInput_PlayerJumpKeyboard;
+        private readonly InputAction m_PlayerMovementInput_PlayerSprintingKeyboard;
+        private readonly InputAction m_PlayerMovementInput_PlayerCrouchKeyboard;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "PlayerMovementInput".
+        /// </summary>
+        public struct PlayerMovementInputActions
+        {
+            private @GameInputSystem m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public PlayerMovementInputActions(@GameInputSystem wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMovementInput/PlayerMovementKeyboard".
+            /// </summary>
+            public InputAction @PlayerMovementKeyboard => m_Wrapper.m_PlayerMovementInput_PlayerMovementKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMovementInput/PlayerJumpKeyboard".
+            /// </summary>
+            public InputAction @PlayerJumpKeyboard => m_Wrapper.m_PlayerMovementInput_PlayerJumpKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMovementInput/PlayerSprintingKeyboard".
+            /// </summary>
+            public InputAction @PlayerSprintingKeyboard => m_Wrapper.m_PlayerMovementInput_PlayerSprintingKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMovementInput/PlayerCrouchKeyboard".
+            /// </summary>
+            public InputAction @PlayerCrouchKeyboard => m_Wrapper.m_PlayerMovementInput_PlayerCrouchKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_PlayerMovementInput; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="PlayerMovementInputActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(PlayerMovementInputActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="PlayerMovementInputActions" />
+            public void AddCallbacks(IPlayerMovementInputActions instance)
+            {
+                if (instance == null || m_Wrapper.m_PlayerMovementInputActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_PlayerMovementInputActionsCallbackInterfaces.Add(instance);
+                @PlayerMovementKeyboard.started += instance.OnPlayerMovementKeyboard;
+                @PlayerMovementKeyboard.performed += instance.OnPlayerMovementKeyboard;
+                @PlayerMovementKeyboard.canceled += instance.OnPlayerMovementKeyboard;
+                @PlayerJumpKeyboard.started += instance.OnPlayerJumpKeyboard;
+                @PlayerJumpKeyboard.performed += instance.OnPlayerJumpKeyboard;
+                @PlayerJumpKeyboard.canceled += instance.OnPlayerJumpKeyboard;
+                @PlayerSprintingKeyboard.started += instance.OnPlayerSprintingKeyboard;
+                @PlayerSprintingKeyboard.performed += instance.OnPlayerSprintingKeyboard;
+                @PlayerSprintingKeyboard.canceled += instance.OnPlayerSprintingKeyboard;
+                @PlayerCrouchKeyboard.started += instance.OnPlayerCrouchKeyboard;
+                @PlayerCrouchKeyboard.performed += instance.OnPlayerCrouchKeyboard;
+                @PlayerCrouchKeyboard.canceled += instance.OnPlayerCrouchKeyboard;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="PlayerMovementInputActions" />
+            private void UnregisterCallbacks(IPlayerMovementInputActions instance)
+            {
+                @PlayerMovementKeyboard.started -= instance.OnPlayerMovementKeyboard;
+                @PlayerMovementKeyboard.performed -= instance.OnPlayerMovementKeyboard;
+                @PlayerMovementKeyboard.canceled -= instance.OnPlayerMovementKeyboard;
+                @PlayerJumpKeyboard.started -= instance.OnPlayerJumpKeyboard;
+                @PlayerJumpKeyboard.performed -= instance.OnPlayerJumpKeyboard;
+                @PlayerJumpKeyboard.canceled -= instance.OnPlayerJumpKeyboard;
+                @PlayerSprintingKeyboard.started -= instance.OnPlayerSprintingKeyboard;
+                @PlayerSprintingKeyboard.performed -= instance.OnPlayerSprintingKeyboard;
+                @PlayerSprintingKeyboard.canceled -= instance.OnPlayerSprintingKeyboard;
+                @PlayerCrouchKeyboard.started -= instance.OnPlayerCrouchKeyboard;
+                @PlayerCrouchKeyboard.performed -= instance.OnPlayerCrouchKeyboard;
+                @PlayerCrouchKeyboard.canceled -= instance.OnPlayerCrouchKeyboard;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerMovementInputActions.UnregisterCallbacks(IPlayerMovementInputActions)" />.
+            /// </summary>
+            /// <seealso cref="PlayerMovementInputActions.UnregisterCallbacks(IPlayerMovementInputActions)" />
+            public void RemoveCallbacks(IPlayerMovementInputActions instance)
+            {
+                if (m_Wrapper.m_PlayerMovementInputActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="PlayerMovementInputActions.AddCallbacks(IPlayerMovementInputActions)" />
+            /// <seealso cref="PlayerMovementInputActions.RemoveCallbacks(IPlayerMovementInputActions)" />
+            /// <seealso cref="PlayerMovementInputActions.UnregisterCallbacks(IPlayerMovementInputActions)" />
+            public void SetCallbacks(IPlayerMovementInputActions instance)
+            {
+                foreach (var item in m_Wrapper.m_PlayerMovementInputActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_PlayerMovementInputActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="PlayerMovementInputActions" /> instance referencing this action map.
+        /// </summary>
+        public PlayerMovementInputActions @PlayerMovementInput => new PlayerMovementInputActions(this);
+
+        // PlayerMagicCastInput
+        private readonly InputActionMap m_PlayerMagicCastInput;
+        private List<IPlayerMagicCastInputActions> m_PlayerMagicCastInputActionsCallbackInterfaces = new List<IPlayerMagicCastInputActions>();
+        private readonly InputAction m_PlayerMagicCastInput_PlayerMagicCastFireKeyboard;
+        private readonly InputAction m_PlayerMagicCastInput_PlayerMagicCastWaterKeyboard;
+        private readonly InputAction m_PlayerMagicCastInput_PlayerMagicCastEarthKeyboard;
+        private readonly InputAction m_PlayerMagicCastInput_PlayerMagicCastElectricKeyboard;
+        private readonly InputAction m_PlayerMagicCastInput_PlayerMagicCastAirKeyboard;
+        private readonly InputAction m_PlayerMagicCastInput_PlayerMagicCastFrostKeyboard;
+        private readonly InputAction m_PlayerMagicCastInput_PlayerMagicCastLightKeyboard;
+        private readonly InputAction m_PlayerMagicCastInput_PlayerMagicCastDarkKeyboard;
+        private readonly InputAction m_PlayerMagicCastInput_PlayerMagicCastMagicKeyboard;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "PlayerMagicCastInput".
+        /// </summary>
+        public struct PlayerMagicCastInputActions
+        {
+            private @GameInputSystem m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public PlayerMagicCastInputActions(@GameInputSystem wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMagicCastInput/PlayerMagicCastFireKeyboard".
+            /// </summary>
+            public InputAction @PlayerMagicCastFireKeyboard => m_Wrapper.m_PlayerMagicCastInput_PlayerMagicCastFireKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMagicCastInput/PlayerMagicCastWaterKeyboard".
+            /// </summary>
+            public InputAction @PlayerMagicCastWaterKeyboard => m_Wrapper.m_PlayerMagicCastInput_PlayerMagicCastWaterKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMagicCastInput/PlayerMagicCastEarthKeyboard".
+            /// </summary>
+            public InputAction @PlayerMagicCastEarthKeyboard => m_Wrapper.m_PlayerMagicCastInput_PlayerMagicCastEarthKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMagicCastInput/PlayerMagicCastElectricKeyboard".
+            /// </summary>
+            public InputAction @PlayerMagicCastElectricKeyboard => m_Wrapper.m_PlayerMagicCastInput_PlayerMagicCastElectricKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMagicCastInput/PlayerMagicCastAirKeyboard".
+            /// </summary>
+            public InputAction @PlayerMagicCastAirKeyboard => m_Wrapper.m_PlayerMagicCastInput_PlayerMagicCastAirKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMagicCastInput/PlayerMagicCastFrostKeyboard".
+            /// </summary>
+            public InputAction @PlayerMagicCastFrostKeyboard => m_Wrapper.m_PlayerMagicCastInput_PlayerMagicCastFrostKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMagicCastInput/PlayerMagicCastLightKeyboard".
+            /// </summary>
+            public InputAction @PlayerMagicCastLightKeyboard => m_Wrapper.m_PlayerMagicCastInput_PlayerMagicCastLightKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMagicCastInput/PlayerMagicCastDarkKeyboard".
+            /// </summary>
+            public InputAction @PlayerMagicCastDarkKeyboard => m_Wrapper.m_PlayerMagicCastInput_PlayerMagicCastDarkKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMagicCastInput/PlayerMagicCastMagicKeyboard".
+            /// </summary>
+            public InputAction @PlayerMagicCastMagicKeyboard => m_Wrapper.m_PlayerMagicCastInput_PlayerMagicCastMagicKeyboard;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_PlayerMagicCastInput; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="PlayerMagicCastInputActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(PlayerMagicCastInputActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="PlayerMagicCastInputActions" />
+            public void AddCallbacks(IPlayerMagicCastInputActions instance)
+            {
+                if (instance == null || m_Wrapper.m_PlayerMagicCastInputActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_PlayerMagicCastInputActionsCallbackInterfaces.Add(instance);
+                @PlayerMagicCastFireKeyboard.started += instance.OnPlayerMagicCastFireKeyboard;
+                @PlayerMagicCastFireKeyboard.performed += instance.OnPlayerMagicCastFireKeyboard;
+                @PlayerMagicCastFireKeyboard.canceled += instance.OnPlayerMagicCastFireKeyboard;
+                @PlayerMagicCastWaterKeyboard.started += instance.OnPlayerMagicCastWaterKeyboard;
+                @PlayerMagicCastWaterKeyboard.performed += instance.OnPlayerMagicCastWaterKeyboard;
+                @PlayerMagicCastWaterKeyboard.canceled += instance.OnPlayerMagicCastWaterKeyboard;
+                @PlayerMagicCastEarthKeyboard.started += instance.OnPlayerMagicCastEarthKeyboard;
+                @PlayerMagicCastEarthKeyboard.performed += instance.OnPlayerMagicCastEarthKeyboard;
+                @PlayerMagicCastEarthKeyboard.canceled += instance.OnPlayerMagicCastEarthKeyboard;
+                @PlayerMagicCastElectricKeyboard.started += instance.OnPlayerMagicCastElectricKeyboard;
+                @PlayerMagicCastElectricKeyboard.performed += instance.OnPlayerMagicCastElectricKeyboard;
+                @PlayerMagicCastElectricKeyboard.canceled += instance.OnPlayerMagicCastElectricKeyboard;
+                @PlayerMagicCastAirKeyboard.started += instance.OnPlayerMagicCastAirKeyboard;
+                @PlayerMagicCastAirKeyboard.performed += instance.OnPlayerMagicCastAirKeyboard;
+                @PlayerMagicCastAirKeyboard.canceled += instance.OnPlayerMagicCastAirKeyboard;
+                @PlayerMagicCastFrostKeyboard.started += instance.OnPlayerMagicCastFrostKeyboard;
+                @PlayerMagicCastFrostKeyboard.performed += instance.OnPlayerMagicCastFrostKeyboard;
+                @PlayerMagicCastFrostKeyboard.canceled += instance.OnPlayerMagicCastFrostKeyboard;
+                @PlayerMagicCastLightKeyboard.started += instance.OnPlayerMagicCastLightKeyboard;
+                @PlayerMagicCastLightKeyboard.performed += instance.OnPlayerMagicCastLightKeyboard;
+                @PlayerMagicCastLightKeyboard.canceled += instance.OnPlayerMagicCastLightKeyboard;
+                @PlayerMagicCastDarkKeyboard.started += instance.OnPlayerMagicCastDarkKeyboard;
+                @PlayerMagicCastDarkKeyboard.performed += instance.OnPlayerMagicCastDarkKeyboard;
+                @PlayerMagicCastDarkKeyboard.canceled += instance.OnPlayerMagicCastDarkKeyboard;
+                @PlayerMagicCastMagicKeyboard.started += instance.OnPlayerMagicCastMagicKeyboard;
+                @PlayerMagicCastMagicKeyboard.performed += instance.OnPlayerMagicCastMagicKeyboard;
+                @PlayerMagicCastMagicKeyboard.canceled += instance.OnPlayerMagicCastMagicKeyboard;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="PlayerMagicCastInputActions" />
+            private void UnregisterCallbacks(IPlayerMagicCastInputActions instance)
+            {
+                @PlayerMagicCastFireKeyboard.started -= instance.OnPlayerMagicCastFireKeyboard;
+                @PlayerMagicCastFireKeyboard.performed -= instance.OnPlayerMagicCastFireKeyboard;
+                @PlayerMagicCastFireKeyboard.canceled -= instance.OnPlayerMagicCastFireKeyboard;
+                @PlayerMagicCastWaterKeyboard.started -= instance.OnPlayerMagicCastWaterKeyboard;
+                @PlayerMagicCastWaterKeyboard.performed -= instance.OnPlayerMagicCastWaterKeyboard;
+                @PlayerMagicCastWaterKeyboard.canceled -= instance.OnPlayerMagicCastWaterKeyboard;
+                @PlayerMagicCastEarthKeyboard.started -= instance.OnPlayerMagicCastEarthKeyboard;
+                @PlayerMagicCastEarthKeyboard.performed -= instance.OnPlayerMagicCastEarthKeyboard;
+                @PlayerMagicCastEarthKeyboard.canceled -= instance.OnPlayerMagicCastEarthKeyboard;
+                @PlayerMagicCastElectricKeyboard.started -= instance.OnPlayerMagicCastElectricKeyboard;
+                @PlayerMagicCastElectricKeyboard.performed -= instance.OnPlayerMagicCastElectricKeyboard;
+                @PlayerMagicCastElectricKeyboard.canceled -= instance.OnPlayerMagicCastElectricKeyboard;
+                @PlayerMagicCastAirKeyboard.started -= instance.OnPlayerMagicCastAirKeyboard;
+                @PlayerMagicCastAirKeyboard.performed -= instance.OnPlayerMagicCastAirKeyboard;
+                @PlayerMagicCastAirKeyboard.canceled -= instance.OnPlayerMagicCastAirKeyboard;
+                @PlayerMagicCastFrostKeyboard.started -= instance.OnPlayerMagicCastFrostKeyboard;
+                @PlayerMagicCastFrostKeyboard.performed -= instance.OnPlayerMagicCastFrostKeyboard;
+                @PlayerMagicCastFrostKeyboard.canceled -= instance.OnPlayerMagicCastFrostKeyboard;
+                @PlayerMagicCastLightKeyboard.started -= instance.OnPlayerMagicCastLightKeyboard;
+                @PlayerMagicCastLightKeyboard.performed -= instance.OnPlayerMagicCastLightKeyboard;
+                @PlayerMagicCastLightKeyboard.canceled -= instance.OnPlayerMagicCastLightKeyboard;
+                @PlayerMagicCastDarkKeyboard.started -= instance.OnPlayerMagicCastDarkKeyboard;
+                @PlayerMagicCastDarkKeyboard.performed -= instance.OnPlayerMagicCastDarkKeyboard;
+                @PlayerMagicCastDarkKeyboard.canceled -= instance.OnPlayerMagicCastDarkKeyboard;
+                @PlayerMagicCastMagicKeyboard.started -= instance.OnPlayerMagicCastMagicKeyboard;
+                @PlayerMagicCastMagicKeyboard.performed -= instance.OnPlayerMagicCastMagicKeyboard;
+                @PlayerMagicCastMagicKeyboard.canceled -= instance.OnPlayerMagicCastMagicKeyboard;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerMagicCastInputActions.UnregisterCallbacks(IPlayerMagicCastInputActions)" />.
+            /// </summary>
+            /// <seealso cref="PlayerMagicCastInputActions.UnregisterCallbacks(IPlayerMagicCastInputActions)" />
+            public void RemoveCallbacks(IPlayerMagicCastInputActions instance)
+            {
+                if (m_Wrapper.m_PlayerMagicCastInputActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="PlayerMagicCastInputActions.AddCallbacks(IPlayerMagicCastInputActions)" />
+            /// <seealso cref="PlayerMagicCastInputActions.RemoveCallbacks(IPlayerMagicCastInputActions)" />
+            /// <seealso cref="PlayerMagicCastInputActions.UnregisterCallbacks(IPlayerMagicCastInputActions)" />
+            public void SetCallbacks(IPlayerMagicCastInputActions instance)
+            {
+                foreach (var item in m_Wrapper.m_PlayerMagicCastInputActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_PlayerMagicCastInputActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="PlayerMagicCastInputActions" /> instance referencing this action map.
+        /// </summary>
+        public PlayerMagicCastInputActions @PlayerMagicCastInput => new PlayerMagicCastInputActions(this);
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInputMap" which allows adding and removing callbacks.
         /// </summary>
@@ -641,6 +1185,50 @@ namespace BonesOfDragonfall
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPlayerRotationCameraMouse(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerInteractionKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerInteractionKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerStartMagicCastKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerStartMagicCastKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerOpenInventoryKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerOpenInventoryKeyboard(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInventoryMap" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="PlayerInventoryMapActions.AddCallbacks(IPlayerInventoryMapActions)" />
+        /// <seealso cref="PlayerInventoryMapActions.RemoveCallbacks(IPlayerInventoryMapActions)" />
+        public interface IPlayerInventoryMapActions
+        {
+            /// <summary>
+            /// Method invoked when associated input action "PlayerCloseInventoryKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerCloseInventoryKeyboard(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerMovementInput" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="PlayerMovementInputActions.AddCallbacks(IPlayerMovementInputActions)" />
+        /// <seealso cref="PlayerMovementInputActions.RemoveCallbacks(IPlayerMovementInputActions)" />
+        public interface IPlayerMovementInputActions
+        {
             /// <summary>
             /// Method invoked when associated input action "PlayerMovementKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
@@ -669,28 +1257,77 @@ namespace BonesOfDragonfall
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPlayerCrouchKeyboard(InputAction.CallbackContext context);
-            /// <summary>
-            /// Method invoked when associated input action "PlayerInteractionKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-            /// </summary>
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnPlayerInteractionKeyboard(InputAction.CallbackContext context);
         }
         /// <summary>
-        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInventoryMap" which allows adding and removing callbacks.
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerMagicCastInput" which allows adding and removing callbacks.
         /// </summary>
-        /// <seealso cref="PlayerInventoryMapActions.AddCallbacks(IPlayerInventoryMapActions)" />
-        /// <seealso cref="PlayerInventoryMapActions.RemoveCallbacks(IPlayerInventoryMapActions)" />
-        public interface IPlayerInventoryMapActions
+        /// <seealso cref="PlayerMagicCastInputActions.AddCallbacks(IPlayerMagicCastInputActions)" />
+        /// <seealso cref="PlayerMagicCastInputActions.RemoveCallbacks(IPlayerMagicCastInputActions)" />
+        public interface IPlayerMagicCastInputActions
         {
             /// <summary>
-            /// Method invoked when associated input action "PlayerOpenInventoryKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// Method invoked when associated input action "PlayerMagicCastFireKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-            void OnPlayerOpenInventoryKeyboard(InputAction.CallbackContext context);
+            void OnPlayerMagicCastFireKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerMagicCastWaterKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerMagicCastWaterKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerMagicCastEarthKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerMagicCastEarthKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerMagicCastElectricKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerMagicCastElectricKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerMagicCastAirKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerMagicCastAirKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerMagicCastFrostKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerMagicCastFrostKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerMagicCastLightKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerMagicCastLightKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerMagicCastDarkKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerMagicCastDarkKeyboard(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlayerMagicCastMagicKeyboard" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlayerMagicCastMagicKeyboard(InputAction.CallbackContext context);
         }
     }
 }

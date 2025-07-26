@@ -4,18 +4,19 @@
 
 using UnityEngine.InputSystem;
 using SkyForge.Input;
-using UnityEngine;
 
 namespace BonesOfDragonfall
 {
     public class GameInputMap : BaseInputMap<GameInputSystem>
     {
         private bool _isActivePlayerInput = true;
-        private bool _isActivePlayerInventoryInput = true;
+        private bool _isActivePlayerMovementInput = true;
+        private bool _isActivePlayerInventoryInput;
+        private bool _isActivePlayerMagicCastInput;
         
         public InputAction GetInputPlayerMovedKeyboard()
         {
-            return OriginInputMap.PlayerInputMap.PlayerMovementKeyboard;
+            return OriginInputMap.PlayerMovementInput.PlayerMovementKeyboard;
         }
 
         public InputAction GetInputPlayerRotationCameraMouse()
@@ -25,35 +26,39 @@ namespace BonesOfDragonfall
 
         public bool PlayerJumpPressedKeyboard()
         {
-            return OriginInputMap.PlayerInputMap.PlayerJumpKeyboard.triggered;
+            return OriginInputMap.PlayerMovementInput.PlayerJumpKeyboard.triggered;
         }
 
         public bool PlayerSprintPressedKeyboard()
         {
-            return OriginInputMap.PlayerInputMap.PlayerSprintingKeyboard.IsPressed();
+            return OriginInputMap.PlayerMovementInput.PlayerSprintingKeyboard.IsPressed();
         }
 
         public bool PlayerCrouchPressedKeyboard()
         {
-            return OriginInputMap.PlayerInputMap.PlayerCrouchKeyboard.triggered;
+            return OriginInputMap.PlayerMovementInput.PlayerCrouchKeyboard.triggered;
         }
         
-        public void DisablePlayerInputKeyboard()
+        public bool DisablePlayerInputKeyboard()
         {
+            var result = _isActivePlayerInput;
             _isActivePlayerInput = false;
             OriginInputMap.PlayerInputMap.Disable();
+            return result;
         }
-
+        
         public void EnablePlayerInputKeyboard()
         {
             _isActivePlayerInput = true;
             OriginInputMap.PlayerInputMap.Enable();
         }
 
-        public void DisablePlayerInventoryInputKeyboard()
+        public bool DisablePlayerInventoryInputKeyboard()
         {
+            var result =  _isActivePlayerInventoryInput;
             OriginInputMap.PlayerInventoryMap.Disable();
             _isActivePlayerInventoryInput = false;
+            return result;
         }
 
         public void EnablePlayerInventoryInputKeyboard()
@@ -64,9 +69,19 @@ namespace BonesOfDragonfall
         
         public bool PlayerOpenInventoryPressedKeyboard()
         {
-            return OriginInputMap.PlayerInventoryMap.PlayerOpenInventoryKeyboard.triggered;
+            return OriginInputMap.PlayerInputMap.PlayerOpenInventoryKeyboard.triggered;
         }
 
+        public bool PlayerCloseInventoryPressedKeyboard()
+        {
+            return OriginInputMap.PlayerInventoryMap.PlayerCloseInventoryKeyboard.triggered;
+        }
+
+        public bool PlayerStartMagicCastPressedKeyboard()
+        {
+            return OriginInputMap.PlayerInputMap.PlayerStartMagicCastKeyboard.triggered;
+        }
+        
         public void DisableInput()
         {
             OriginInputMap.Disable();
@@ -83,12 +98,91 @@ namespace BonesOfDragonfall
             {
                 OriginInputMap.PlayerInventoryMap.Enable();
             }
+
+            if (_isActivePlayerMovementInput)
+            {
+                OriginInputMap.PlayerMovementInput.Enable();
+            }
+
+            if (_isActivePlayerMagicCastInput)
+            {
+                OriginInputMap.PlayerMagicCastInput.Enable();
+            }
         }
 
-        public bool PlayerInterationPressedKeyboard()
+        public bool PlayerInteractionPressedKeyboard()
         {
             return OriginInputMap.PlayerInputMap.PlayerInteractionKeyboard.triggered;
 
         }
+
+        public bool PlayerMagicCastWaterPressedKeyboard()
+        {
+            return OriginInputMap.PlayerMagicCastInput.PlayerMagicCastWaterKeyboard.triggered;;
+        }
+        
+        public bool PlayerMagicCastFirePressedKeyboard()
+        {
+            return OriginInputMap.PlayerMagicCastInput.PlayerMagicCastFireKeyboard.triggered;
+        }
+
+        public bool PlayerMagicCastEarthPressedKeyboard()
+        {
+            return OriginInputMap.PlayerMagicCastInput.PlayerMagicCastEarthKeyboard.triggered;
+        }
+
+        public bool PlayerMagicCastElectricPressedKeyboard()
+        {
+            return OriginInputMap.PlayerMagicCastInput.PlayerMagicCastElectricKeyboard.triggered;
+        }
+
+        public bool PlayerMagicCastAirPressedKeyboard()
+        {
+            return OriginInputMap.PlayerMagicCastInput.PlayerMagicCastAirKeyboard.triggered;
+        }
+
+        public bool PlayerMagicCastFrostPressedKeyboard()
+        {
+            return OriginInputMap.PlayerMagicCastInput.PlayerMagicCastFrostKeyboard.triggered;
+        }
+
+        public bool PlayerMagicCastLightPressedKeyboard()
+        {
+            return OriginInputMap.PlayerMagicCastInput.PlayerMagicCastLightKeyboard.triggered;
+        }
+
+        public bool PlayerMagicCastDarkPressedKeyboard()
+        {
+            return OriginInputMap.PlayerMagicCastInput.PlayerMagicCastDarkKeyboard.triggered;
+        }
+
+        public bool DisablePlayerMagicCastInput()
+        {
+            var result = _isActivePlayerMagicCastInput;
+            _isActivePlayerMagicCastInput = false;
+            OriginInputMap.PlayerMagicCastInput.Disable();
+            return result;
+        }
+
+        public void EnablePlayerMagicCastInput()
+        {
+            _isActivePlayerMagicCastInput = true;
+            OriginInputMap.PlayerMagicCastInput.Enable();
+        }
+
+        public bool DisablePlayerMovementInputKeyboard()
+        {
+            var result = _isActivePlayerMovementInput;
+            _isActivePlayerMovementInput = false;
+            OriginInputMap.PlayerMovementInput.Disable();
+            return result;
+        }
+
+        public void EnablePlayerMovementInputKeyboard()
+        {
+            _isActivePlayerMovementInput = true;
+            OriginInputMap.PlayerMovementInput.Enable();
+        }
+        
     }
 }

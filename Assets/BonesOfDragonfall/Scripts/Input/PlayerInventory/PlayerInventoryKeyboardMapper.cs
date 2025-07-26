@@ -14,10 +14,22 @@ namespace BonesOfDragonfall
             
         }
 
-        public bool PlayerOpenInventoryPressed()
+        public bool PlayerCloseInventoryPressed()
         {
             var gameInputMap = m_inputMap.As<GameInputMap>();
-            return gameInputMap.PlayerOpenInventoryPressedKeyboard();
+            return gameInputMap.PlayerCloseInventoryPressedKeyboard();
+        }
+
+        public bool DisablePlayerInventoryInput()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            return gameInputMap.DisablePlayerInventoryInputKeyboard();
+        }
+
+        public void EnablePlayerInventoryInput()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            gameInputMap.EnablePlayerInventoryInputKeyboard();
         }
 
         public void Dispose()

@@ -2,6 +2,7 @@
    Copyright SunWorldStudio Corporation. All Rights Reserved.
 \**************************************************************************/
 
+using System.Collections.Generic;
 using System;
 
 namespace BonesOfDragonfall
@@ -10,5 +11,7 @@ namespace BonesOfDragonfall
     public class PlayerData : EntityStateData
     {
         public float healthPoint;
+
+        public List<MagicElementData> magicCast;
     }
 }

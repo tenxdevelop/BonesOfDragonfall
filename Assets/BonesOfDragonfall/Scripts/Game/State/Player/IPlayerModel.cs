@@ -10,6 +10,7 @@ namespace BonesOfDragonfall
     public interface IPlayerModel : IEntityStateModel<PlayerData>
     {
         ReactiveProperty<float> HealthPoint { get; }
+        ReactiveCollection<MagicElementData> MagicCast { get; }
         ReactiveProperty<float> MaxSpeed { get; }
         ReactiveProperty<Vector3> ScaleCollider { get; }
         ReactiveProperty<Quaternion> Rotation { get; }

@@ -40,7 +40,7 @@ namespace BonesOfDragonfall
 
         public float StopTimeGame()
         {
-            var timeScaleBefore = Time.timeSinceLevelLoad;
+            var timeScaleBefore = Time.timeScale;
             Time.timeScale = 0;
             return timeScaleBefore;
         }

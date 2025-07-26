@@ -41,12 +41,14 @@ namespace BonesOfDragonfall
             var gameInputManager = new GameInputManager();
             gameInputManager.RegisterInput<IPlayerInputMapper, PlayerKeyboardAndMouseInputMapper>();
             gameInputManager.RegisterInput<IPlayerInventoryInputMapper, PlayerInventoryKeyboardMapper>();
+            gameInputManager.RegisterInput<IPlayerMagicInputMapper, PlayerMagicKeyboardInputMapper>();
             
             gameInputManager.Init();
             
             container.RegisterInstance<IPlayerInput>(gameInputManager);
             container.RegisterInstance<IPlayerInventoryInput>(gameInputManager);
             container.RegisterInstance<IInputManager>(gameInputManager);
+            container.RegisterInstance<IPlayerMagicInput>(gameInputManager);
             
             var consoleServiceInputManager = new ConsoleServiceInputManager();
             
