@@ -299,13 +299,10 @@ namespace BonesOfDragonfall
             m_PlayerInputMap_PlayerJumpKeyboard = m_PlayerInputMap.FindAction("PlayerJumpKeyboard", throwIfNotFound: true);
             m_PlayerInputMap_PlayerSprintingKeyboard = m_PlayerInputMap.FindAction("PlayerSprintingKeyboard", throwIfNotFound: true);
             m_PlayerInputMap_PlayerCrouchKeyboard = m_PlayerInputMap.FindAction("PlayerCrouchKeyboard", throwIfNotFound: true);
-
+            m_PlayerInputMap_PlayerInteractionKeyboard = m_PlayerInputMap.FindAction("PlayerInteractionKeyboard", throwIfNotFound: true);
             // PlayerInventoryMap
             m_PlayerInventoryMap = asset.FindActionMap("PlayerInventoryMap", throwIfNotFound: true);
             m_PlayerInventoryMap_PlayerOpenInventoryKeyboard = m_PlayerInventoryMap.FindAction("PlayerOpenInventoryKeyboard", throwIfNotFound: true);
-
-            m_PlayerInputMap_PlayerInteractionKeyboard = m_PlayerInputMap.FindAction("PlayerInteractionKeyboard", throwIfNotFound: true);
-
         }
 
         ~@GameInputSystem()
