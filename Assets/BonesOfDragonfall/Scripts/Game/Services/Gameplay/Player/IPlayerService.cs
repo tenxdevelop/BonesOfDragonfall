@@ -16,5 +16,7 @@ namespace BonesOfDragonfall
         void PlayerCrouch(float crouchScale, int playerId);
         void PlayerStandup(int playerId);
         bool CheckStandup(float playerHeight, int playerId);
+
+        IInteractableBinder CheckInteractionPlayer(float distanceInteraction, float playerHeight, int playerId);
     }
 }

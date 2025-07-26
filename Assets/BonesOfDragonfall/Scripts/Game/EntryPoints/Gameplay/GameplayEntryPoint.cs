@@ -35,11 +35,10 @@ namespace BonesOfDragonfall
             yield return null;
             
         }
-
-
+        
         private void OnDisable()
         {
-            _container.Dispose();
+            _container?.Dispose();
         }
         
         public IObservable<SceneExitParams> Run()

@@ -120,7 +120,7 @@ namespace BonesOfDragonfall
         {
             PlayerMovedReceivedEvent?.Invoke(direction);
         }
-
+        
         public void DisableInput()
         {
             var gameInputMap = m_inputMap.As<GameInputMap>();
@@ -131,6 +131,19 @@ namespace BonesOfDragonfall
         {
             var gameInputMap = m_inputMap.As<GameInputMap>();
             gameInputMap.EnableInput();
+        }
+        
+        public bool PlayerInteractionPressed()
+        {
+            var playerInputs = GetInputs<IPlayerInputMapper>();
+
+            foreach (var playerInput in playerInputs)
+            {
+                if (playerInput.PlayerInteractionPressed())
+                    return true;
+            }
+
+            return false;
         }
     }
 }

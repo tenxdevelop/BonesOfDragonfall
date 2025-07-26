@@ -73,6 +73,11 @@ namespace BonesOfDragonfall
         {
             PlayerCameraRotationReceivedEvent?.Invoke(context.ReadValue<Vector2>());
         }
-        
+
+        public bool PlayerInteractionPressed()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            return gameInputMap.PlayerInterationPressedKeyboard();
+        }
     }
 }

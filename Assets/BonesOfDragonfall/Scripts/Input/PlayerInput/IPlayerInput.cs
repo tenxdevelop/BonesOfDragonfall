@@ -16,5 +16,7 @@ namespace BonesOfDragonfall
         public bool PlayerCrouchPressed();
         public void DisablePlayerInput();
         public void EnablePlayerInput();
+        public bool PlayerInteractionPressed();
+
     }
 }

@@ -37,7 +37,7 @@ namespace BonesOfDragonfall
         {
             return OriginInputMap.PlayerInputMap.PlayerCrouchKeyboard.triggered;
         }
-
+        
         public void DisablePlayerInputKeyboard()
         {
             _isActivePlayerInput = false;
@@ -83,6 +83,12 @@ namespace BonesOfDragonfall
             {
                 OriginInputMap.PlayerInventoryMap.Enable();
             }
+        }
+
+        public bool PlayerInterationPressedKeyboard()
+        {
+            return OriginInputMap.PlayerInputMap.PlayerInteractionKeyboard.triggered;
+
         }
     }
 }
