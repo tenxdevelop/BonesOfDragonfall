@@ -41,7 +41,7 @@ namespace BonesOfDragonfall
                 command.SetResult(new AddItemsToInventoryResult(command.InventoryOwnerId, command.AmountToAdd, false, false));
                 return false;
             }
-
+            
             var itemModel = inventory.Items.FirstOrDefault(itemModel => itemModel.ItemId.Equals(command.ItemId));
 
             if (itemModel is null)
@@ -57,11 +57,12 @@ namespace BonesOfDragonfall
                 var itemConfig = _itemsConfigMap.GetItemConfig(currentItemModel.ItemId);
                 return currentItemModel.Amount.Value * itemConfig.weight;
             });
-
+            
             var isHaveOverload = currentWeightInventory > inventory.MaxWeight.Value;
             
             var result = new AddItemsToInventoryResult(command.InventoryOwnerId, command.AmountToAdd, isHaveOverload, true);
             
+            inventory.InventoryChanged();
             command.SetResult(result);
             
             return true;

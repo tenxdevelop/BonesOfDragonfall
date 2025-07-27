@@ -544,6 +544,114 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &695602988203842939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8357855097150867128}
+  - component: {fileID: 7381573130496260311}
+  - component: {fileID: 4444277242800674768}
+  - component: {fileID: 4314874653609535491}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8357855097150867128
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695602988203842939}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2649336064269674280}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7381573130496260311
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695602988203842939}
+  m_CullTransparentMesh: 1
+--- !u!114 &4444277242800674768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695602988203842939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0.3254902}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4314874653609535491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695602988203842939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da58a32bc0e7ef4084c064e189e9b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_viewModelTypeFullName: BonesOfDragonfall.UIPlayerInventoryViewModel
+  m_propertyName: IsActiveInventory
+  m_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 695602988203842939}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_eventWithAnalitics:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &696997032536227774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1400,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c22e7903ea59ce2469525804462224a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1625,7 +1733,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -400}
-  m_SizeDelta: {x: 500, y: 0}
+  m_SizeDelta: {x: 500, y: 165}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &7705523797843620007
 MonoBehaviour:
@@ -1738,9 +1846,9 @@ RectTransform:
   - {fileID: 4037918548736817999}
   m_Father: {fileID: 7221164836093235245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -125}
   m_SizeDelta: {x: 490, y: 35}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &3022562036912808966
@@ -2494,6 +2602,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8357855097150867128}
   - {fileID: 6987017912668061262}
   - {fileID: 2501693930467941790}
   m_Father: {fileID: 0}
@@ -2521,8 +2630,9 @@ MonoBehaviour:
   m_subViews: []
   m_childBinders:
   - {fileID: 7507732095631379075}
-  - {fileID: 3275073246184973391}
   - {fileID: 102878287399854857}
+  - {fileID: 4314874653609535491}
+  - {fileID: 1517996574106475568}
 --- !u!1 &4308398589706082816
 GameObject:
   m_ObjectHideFlags: 0
@@ -3175,9 +3285,9 @@ RectTransform:
   - {fileID: 5384648628036686163}
   m_Father: {fileID: 7221164836093235245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -5}
   m_SizeDelta: {x: 490, y: 35}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &4888135809406507545
@@ -4099,9 +4209,9 @@ RectTransform:
   - {fileID: 3597492797087423828}
   m_Father: {fileID: 7221164836093235245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -45}
   m_SizeDelta: {x: 490, y: 35}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &6659258133997145976
@@ -4494,9 +4604,9 @@ RectTransform:
   - {fileID: 3471205053669644151}
   m_Father: {fileID: 7221164836093235245}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -85}
   m_SizeDelta: {x: 490, y: 35}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &7097614941312620008
@@ -5037,6 +5147,7 @@ GameObject:
   - component: {fileID: 8530730073041190262}
   - component: {fileID: 438356205333544672}
   - component: {fileID: 1366288810453135910}
+  - component: {fileID: 1517996574106475568}
   m_Layer: 0
   m_Name: CurrentWeight
   m_TagString: Untagged
@@ -5162,6 +5273,38 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1517996574106475568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987285855182409421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4226259d04b7864e968a69063cabbcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_viewModelTypeFullName: BonesOfDragonfall.UIPlayerInventoryViewModel
+  m_propertyName: CurrentWeight
+  m_event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1366288810453135910}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_eventWithAnalitics:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8076360505349329415
 GameObject:
   m_ObjectHideFlags: 0
@@ -5437,14 +5580,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2501693930467941790}
-  - component: {fileID: 3275073246184973391}
   m_Layer: 0
   m_Name: UIDescriptionItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2501693930467941790
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5467,38 +5609,6 @@ RectTransform:
   m_AnchoredPosition: {x: -221, y: -96}
   m_SizeDelta: {x: 500, y: 640}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &3275073246184973391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8439181134263192051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7da58a32bc0e7ef4084c064e189e9b57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_viewModelTypeFullName: BonesOfDragonfall.UIPlayerInventoryViewModel
-  m_propertyName: IsActiveInventory
-  m_event:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8439181134263192051}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_eventWithAnalitics:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &8455811227110888426
 GameObject:
   m_ObjectHideFlags: 0

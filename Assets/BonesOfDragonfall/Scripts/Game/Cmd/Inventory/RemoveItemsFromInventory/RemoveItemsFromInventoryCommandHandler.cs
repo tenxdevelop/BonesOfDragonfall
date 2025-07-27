@@ -47,6 +47,7 @@ namespace BonesOfDragonfall
                 inventory.Items.Remove(itemModel);
             }
             
+            inventory.InventoryChanged();
             command.SetResult(new RemoveItemsFromInventoryResult(command.InventoryOwnerId, command.AmountToRemove, true));
             return true;
         }

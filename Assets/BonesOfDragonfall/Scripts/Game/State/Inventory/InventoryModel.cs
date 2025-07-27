@@ -5,11 +5,13 @@
 using SkyForge.Reactive.Extension;
 using SkyForge.Reactive;
 using System.Linq;
+using System;
 
 namespace BonesOfDragonfall
 {
     public class InventoryModel : IInventoryModel
     {
+        public event Action InventoryChangedEvent;
         public int OwnerId => OriginState.ownerId;
         public InventoryData OriginState { get; private set; }
 
@@ -26,6 +28,11 @@ namespace BonesOfDragonfall
             MaxWeight.Subscribe(newMaxWeight => OriginState.maxWeight = newMaxWeight);
             
             UpdateInventory(originState);
+        }
+
+        public void InventoryChanged()
+        {
+            InventoryChangedEvent?.Invoke();
         }
         
         private void UpdateInventory(InventoryData originState)

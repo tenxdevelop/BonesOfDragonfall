@@ -13,7 +13,10 @@ namespace BonesOfDragonfall
     {
         public ReactiveCollection<IViewModel> Items { get; private set; } = new();
         public ReactiveProperty<bool> IsActiveInventory { get; private set; } = new();
+        
+        public ReactiveProperty<string> CurrentWeight { get; private set; } = new();
 
+        private readonly IInventoryModel _playerInventory;
         private readonly IPlayerInventoryInput _playerInventoryInput;
         private readonly IPlayerInput  _playerInput;
         
@@ -25,11 +28,16 @@ namespace BonesOfDragonfall
         private bool _isActivePlayerMovementInputBefore;
         private bool _isActivePlayerMagicInputBefore;
         private float _timeScaleBefore;
+        
         public UIPlayerInventoryViewModel(IInventoryModel playerInventory, ItemsMap itemMapConfig, IPlayerInventoryInput playerInventoryInput, 
             IPlayerInput playerInput, IPlayerMagicInput playerMagicInput, ApplicationService applicationService)
         {
+            
+            _playerInventory = playerInventory;
+            
             _playerInventoryInput = playerInventoryInput;
             _playerInput = playerInput;
+            
             _itemMapConfig = itemMapConfig;
             
             _isActiveInventoryBinding = IsActiveInventory.Subscribe(inventoryOpen =>
@@ -65,17 +73,21 @@ namespace BonesOfDragonfall
                 }
             });
 
-            foreach (var item in playerInventory.Items)
+            foreach (var item in _playerInventory.Items)
             {
                 CreateItemViewModel(item);
             }
+            
+            _playerInventory.Items.Subscribe(OnItemAdded, OnItemRemoved, OnItemsClear);
 
-            playerInventory.Items.Subscribe(OnItemAdded, OnItemRemoved, OnItemsClear);
+            _playerInventory.InventoryChangedEvent += OnInventoryChanged;
+            OnInventoryChanged();
         }
         
         public void Dispose()
         {
             _isActiveInventoryBinding?.Dispose();
+            _playerInventory.InventoryChangedEvent -= OnInventoryChanged;
         }
 
         public void Update(float deltaTime)
@@ -97,6 +109,17 @@ namespace BonesOfDragonfall
             
         }
 
+        private void OnInventoryChanged()
+        {
+            var currentWeight =  _playerInventory.Items.Sum(currentItemModel =>
+            {
+                var itemConfig = _itemMapConfig.GetItemConfig(currentItemModel.ItemId);
+                return currentItemModel.Amount.Value * itemConfig.weight;
+            });
+            
+            CurrentWeight.Value = $"{currentWeight}/{_playerInventory.MaxWeight.Value}";
+        }
+        
         private void CreateItemViewModel(IItemModel itemModel)
         {
             var itemConfig = _itemMapConfig.GetItemConfig(itemModel.ItemId);

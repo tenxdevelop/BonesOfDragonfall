@@ -11,5 +11,6 @@ namespace BonesOfDragonfall
     {
         ReactiveCollection<IViewModel> Items { get; }
         ReactiveProperty<bool> IsActiveInventory { get; }
+        ReactiveProperty<string> CurrentWeight { get; }
     }
 }
