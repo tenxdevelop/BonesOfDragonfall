@@ -14,8 +14,9 @@ namespace BonesOfDragonfall
         private const string GAME_STATE_KEY = nameof(GAME_STATE_KEY);
         public GameStateModel StateModel { get; private set; }
         
-        public PlayerPrefsGameStateProvider(IEntityFactoryService entityFactoryService, IItemFactoryService itemFactoryService)
+        public PlayerPrefsGameStateProvider(IEntityFactoryService entityFactoryService, IItemFactoryService itemFactoryService, ISettingsProvider settingsProvider)
         {
+            var playerSettings = settingsProvider.GameSettings.playerSettings;
             var gameStateData = new GameStateData()
             {
                 globalEntityId = 2,
@@ -26,7 +27,10 @@ namespace BonesOfDragonfall
                         entityType = EntityType.Player,
                         configId = "playerConfig",
                         position = new Vector3(0, 1, 0),
-                        healthPoint = 100,
+                        healthPoint = playerSettings.defaultMaxHealthPoint,
+                        maxHealthPoint = playerSettings.defaultMaxHealthPoint,
+                        magicPoint = playerSettings.defaultMaxMagicPoint,
+                        maxMagicPoint = playerSettings.defaultMaxMagicPoint,
                         uniqueId = 1,
                         magicCast = new List<MagicElementData>()
                     }

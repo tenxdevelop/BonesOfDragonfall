@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemsMap: {fileID: 11400000, guid: 4736b5bf867691b44868ea7c23545c63, type: 2}
   playerSettings: {fileID: 11400000, guid: db11b4d0163563145932b37006b77ab3, type: 2}
+  magicConfig: {fileID: 11400000, guid: 5d482cd69e1b56f4e8b7200a974d270d, type: 2}

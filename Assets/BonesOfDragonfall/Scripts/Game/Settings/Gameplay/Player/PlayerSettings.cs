@@ -25,5 +25,8 @@ namespace BonesOfDragonfall
 
         public float playerCrouchScale;
         public float playerMaxSpeedCrouch;
+
+        public float defaultMaxHealthPoint;
+        public float defaultMaxMagicPoint;
     }
 }

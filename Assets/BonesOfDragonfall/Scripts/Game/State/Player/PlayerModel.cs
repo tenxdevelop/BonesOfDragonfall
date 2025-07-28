@@ -17,6 +17,9 @@ namespace BonesOfDragonfall
         public int UniqueId =>  OriginState.uniqueId;
         public string ConfigId => OriginState.configId;
         public ReactiveProperty<float> HealthPoint { get; private set; }
+        public ReactiveProperty<float> MaxHealthPoint { get; private set; }
+        public ReactiveProperty<float> MagicPoint { get; private set; }
+        public ReactiveProperty<float> MaxMagicPoint { get; private set; }
         public ReactiveCollection<MagicElementData> MagicCast { get; private set; }
         public ReactiveProperty<float> MaxSpeed { get; private set; }
         public ReactiveProperty<Vector3> Position { get; private set; }
@@ -31,7 +34,12 @@ namespace BonesOfDragonfall
         {
             OriginState = originState;
             
+            MaxHealthPoint = new ReactiveProperty<float>(originState.maxHealthPoint);
             HealthPoint = new ReactiveProperty<float>(originState.healthPoint);
+            
+            MaxMagicPoint = new ReactiveProperty<float>(originState.maxMagicPoint);
+            MagicPoint = new ReactiveProperty<float>(originState.magicPoint);
+            
             UpdateMagicCast(originState.magicCast);
             
             Position = new ReactiveProperty<Vector3>(originState.position);
@@ -47,6 +55,9 @@ namespace BonesOfDragonfall
             ScaleCollider = new ReactiveProperty<Vector3>(new Vector3(1, 1, 1));
             
             HealthPoint.Subscribe(newHealthPoint => OriginState.healthPoint = newHealthPoint);
+            MaxHealthPoint.Subscribe(newMaxHealthPoint => OriginState.maxHealthPoint = newMaxHealthPoint);
+            MagicPoint.Subscribe(newMagicPoint => OriginState.magicPoint = newMagicPoint);
+            MaxMagicPoint.Subscribe(newMaxMagicPoint => OriginState.maxMagicPoint = newMaxMagicPoint);
             Position.Subscribe(newPosition => OriginState.position = newPosition);
         }
 

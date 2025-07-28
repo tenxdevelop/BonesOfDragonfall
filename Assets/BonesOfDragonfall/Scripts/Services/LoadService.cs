@@ -16,6 +16,8 @@ namespace BonesOfDragonfall
         
         public const string PREFAB_UI_UIROOT_GAMEPLAY = "Prefabs/UI/Gameplay/UIRootGameplay";
         public const string PREFAB_UI_PLAYER_INVENTORY = "Prefabs/UI/Gameplay/UIPlayerInventory";
+        public const string PREFAB_UI_UIROOT_PLAYER_HUD = "Prefabs/UI/Gameplay/UIRootPlayerHUD";
+        
         public const string PREFAB_WORLD_PLAYER = "Prefabs/World/Player/Player";
         
         public T LoadPrefab<T>(string prefabPath) where T : Object

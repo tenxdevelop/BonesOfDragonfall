@@ -29,6 +29,12 @@ namespace BonesOfDragonfall
             
             uIRootGameplayViewModel.AttachPopup(uIPlayerInventoryView);
             
+            var uIRootPlayerHUDViewPrefab = loadService.LoadPrefab<UIRootPlayerHUDView>(LoadService.PREFAB_UI_UIROOT_PLAYER_HUD);
+            var uIRootPlayerHUDViewModel = container.Resolve<IUIRootPlayerHUDViewModel>();
+            var uIRootPlayerHUDView = loadService.CreateView(uIRootPlayerHUDViewPrefab, uIRootPlayerHUDViewModel);
+            
+            uIRootGameplayViewModel.AttachHUDScreen(uIRootPlayerHUDView);
+            
             var playerViewPrefab = loadService.LoadPrefab<PlayerView>(LoadService.PREFAB_WORLD_PLAYER);
             var playerViewModel = container.Resolve<IPlayerViewModel>();
             loadService.CreateView(playerViewPrefab, playerViewModel);

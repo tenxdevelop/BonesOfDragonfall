@@ -3,20 +3,15 @@
 \**************************************************************************/
 
 using System.Collections.Generic;
-using System;
+using UnityEngine;
 
 namespace BonesOfDragonfall
 {
-    [Serializable]
-    public class PlayerData : EntityStateData
+    [CreateAssetMenu(fileName = "New magic cast settings", menuName = "Game settings/Magic/New magic cast settings")]
+    public class MagicCastConfig : ScriptableObject
     {
-        public float healthPoint;
+        public List<MagicElementType> magicCast;
 
-        public float maxHealthPoint;
-        
-        public List<MagicElementData> magicCast;
-
-        public float magicPoint;
-        public float maxMagicPoint;
+        public string magic;
     }
 }

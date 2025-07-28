@@ -3,20 +3,13 @@
 \**************************************************************************/
 
 using System.Collections.Generic;
-using System;
 
 namespace BonesOfDragonfall
 {
-    [Serializable]
-    public class PlayerData : EntityStateData
+    public interface IMagicCastMap
     {
-        public float healthPoint;
+        void InitMagicCastMap();
 
-        public float maxHealthPoint;
-        
-        public List<MagicElementData> magicCast;
-
-        public float magicPoint;
-        public float maxMagicPoint;
+        void GetMagic(List<MagicElementType> magicCast);
     }
 }
