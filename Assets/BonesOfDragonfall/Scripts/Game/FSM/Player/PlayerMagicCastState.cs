@@ -18,25 +18,25 @@ namespace BonesOfDragonfall
         private readonly IPlayerService _playerService;
         private readonly IPlayerInput _playerInput;
         private readonly IPlayerMagicInput _playerMagicInput;
-
+        private readonly IUIRootPlayerHUDViewModel _uIRootPlayerHUDViewModel;
         private bool _isActivePlayerMovementBefore;
         
-        public PlayerMagicCastState(IPlayerService playerService, Coroutines coroutine, IPlayerMagicInput playerMagicInput, IPlayerInput playerInput)
+        public PlayerMagicCastState(IPlayerService playerService, Coroutines coroutine, IPlayerMagicInput playerMagicInput, IPlayerInput playerInput, IUIRootPlayerHUDViewModel uIRootPlayerHUDViewModel)
         {
             _coroutine = coroutine;
             _playerService = playerService;
             _playerMagicInput = playerMagicInput;
             _playerInput = playerInput;
+            _uIRootPlayerHUDViewModel = uIRootPlayerHUDViewModel;
             
             IsReadyMagicCast = new ReactiveProperty<bool>(true);
         }
         
         public void OnStart()
         {
-            Debug.Log("Can magic cast");
             _playerMagicInput.EnablePlayerMagicCastInput();
             _isActivePlayerMovementBefore = _playerInput.DisablePlayerMovementInput();
-            
+            _uIRootPlayerHUDViewModel.ShowMagicHUD();
             IsReadyMagicCast.Value = false;
             _coroutine.StartCoroutine(UpdateIsReadyMagicCast());
         }
@@ -45,7 +45,15 @@ namespace BonesOfDragonfall
         {
             if (_playerMagicInput.PlayerMagicCastFirePressed())
             {
-                Debug.Log("cast element fire");
+                _playerService.AddMagicCastElement(MagicElementType.Fire, 10, 5, 1);
+            }
+            else if (_playerMagicInput.PlayerMagicCastWaterPressed())
+            {
+                _playerService.AddMagicCastElement(MagicElementType.Water, 10, 5, 1);
+            }
+            else if (_playerMagicInput.PlayerCastMagicPressed())
+            {
+                _playerService.ResetMagicCastElements(1);
             }
         }
 
@@ -56,12 +64,12 @@ namespace BonesOfDragonfall
 
         public void OnExit()
         {
-            Debug.Log("Disable magic cast");
             _playerMagicInput.DisablePlayerMagicCastInput();
             
             if(_isActivePlayerMovementBefore)
                 _playerInput.EnablePlayerMovementInput();
             
+            _uIRootPlayerHUDViewModel.HideMagicHUD();
             IsReadyMagicCast.Value = false;
             _coroutine.StartCoroutine(UpdateIsReadyMagicCast());
         }

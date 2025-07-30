@@ -18,5 +18,7 @@ namespace BonesOfDragonfall
         bool CheckStandup(float playerHeight, int playerId);
 
         IInteractableBinder CheckInteractionPlayer(float distanceInteraction, float playerHeight, int playerId);
+        void AddMagicCastElement(MagicElementType magicElementType, float costOfMagic, float power, int playerId);
+        void ResetMagicCastElements(int playerId);
     }
 }

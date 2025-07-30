@@ -26,6 +26,7 @@ namespace BonesOfDragonfall
         private readonly IPlayerModel _playerModel;
         private readonly IPlayerInput _playerInput;
         private readonly IPlayerMagicInput _playerMagicInput;
+        private readonly IUIRootPlayerHUDViewModel _uIRootPlayerHUDViewModel;
         
         private readonly ReactiveProperty<Vector2> _playerMoveDirection = new();
 
@@ -41,13 +42,14 @@ namespace BonesOfDragonfall
         private IBinding _playerMagicCastIsReadyBinding;
         
         public PlayerViewModel(IPlayerModel playerModel, ISettingsProvider settingsProvider, IPlayerService playerService, IPlayerInput playerInput, IPlayerMagicInput playerMagicInput,
-            Coroutines coroutine)
+            Coroutines coroutine, IUIRootPlayerHUDViewModel uIRootPlayerHUDViewModel)
         {
             _playerService = playerService;
             _playerSettings = settingsProvider.GameSettings.playerSettings;
             _playerModel = playerModel;
             _playerInput = playerInput;
             _playerMagicInput = playerMagicInput;
+            _uIRootPlayerHUDViewModel =  uIRootPlayerHUDViewModel;
 
             _playerInput.PlayerMovedReceivedEvent += OnPlayerMovedReceived;
             _playerInput.PlayerCameraRotationReceivedEvent += OnPlayerCameraRotationReceived;
@@ -119,7 +121,7 @@ namespace BonesOfDragonfall
             var playerCrouchState = new PlayerCrouchState(_playerService, coroutine, _playerMoveDirection, _playerInGround, _playerSettings, _playerModel.UniqueId);
             _playerCrouchIsReadyBinding = playerCrouchState.IsReadyCrouch.Subscribe(newValue => _isReadyCrouch = newValue);
             
-            var playerMagicCastState = new PlayerMagicCastState(_playerService, coroutine, _playerMagicInput, _playerInput);
+            var playerMagicCastState = new PlayerMagicCastState(_playerService, coroutine, _playerMagicInput, _playerInput, _uIRootPlayerHUDViewModel);
             _playerMagicCastIsReadyBinding = playerMagicCastState.IsReadyMagicCast.Subscribe(newValue => _isReadyMagicCast = newValue);
             
             _playerStateMachine.RegisterState(playerIdleState);

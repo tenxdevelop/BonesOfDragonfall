@@ -71,5 +71,17 @@ namespace BonesOfDragonfall
 
             return command.InteractableBinder;
         }
+
+        public void AddMagicCastElement(MagicElementType magicElementType, float costOfMagic, float power, int playerId)
+        {
+            var command = new CmdAddMagicCastElement(playerId, magicElementType, costOfMagic, power);
+            _commandProcessor.Process(command);
+        }
+
+        public void ResetMagicCastElements(int playerId)
+        {
+            var command = new CmdResetMagicCast(playerId);
+            _commandProcessor.Process(command);
+        }
     }
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0b9a7ece62d235343ac3b35b921f7f10, type: 2}
   magicCasts:
   - {fileID: 11400000, guid: 4589224516a686b409ea2667a41db4b4, type: 2}
-  maxLenghtMagicCast: 0
+  maxLenghtMagicCast: 6

@@ -23,3 +23,5 @@ MonoBehaviour:
   jumpForce: 20
   playerCrouchScale: 0.5
   playerMaxSpeedCrouch: 3.5
+  defaultMaxHealthPoint: 100
+  defaultMaxMagicPoint: 200

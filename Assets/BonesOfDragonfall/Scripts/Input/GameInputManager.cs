@@ -316,6 +316,18 @@ namespace BonesOfDragonfall
             return false;
         }
 
+        public bool PlayerCastMagicPressed()
+        {
+            var playerMagicInputs = GetInputs<IPlayerMagicInputMapper>();
+            foreach (var playerMagicInput in playerMagicInputs)
+            {
+                if (playerMagicInput.PlayerCastMagicPressed())
+                    return true;
+            }
+
+            return false;
+        }
+
         public bool DisablePlayerMagicCastInput()
         {
             var result = false;

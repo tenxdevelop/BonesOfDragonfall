@@ -30,7 +30,8 @@ namespace BonesOfDragonfall
             commandProcessor.RegisterCommandHandler(new RemoveItemsFromInventoryCommandHandler(gameStateModel));
             commandProcessor.RegisterCommandHandler(new HasItemsInInventoryCommandHandler(gameStateModel));
             commandProcessor.RegisterCommandHandler(new CheckInteractionCommandHandler(gameStateModel));
-
+            commandProcessor.RegisterCommandHandler(new AddMagicCastElementCommandHandler(gameStateModel, container.Resolve<ISettingsProvider>().GameSettings.magicConfig));
+            commandProcessor.RegisterCommandHandler(new ResetMagicCastCommandHandler(gameStateModel));
             
             container.RegisterInstance<ICommandProcessor>(commandProcessor);
             

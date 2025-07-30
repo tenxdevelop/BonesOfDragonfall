@@ -35,7 +35,11 @@ namespace BonesOfDragonfall
             magicEntity.MagicPoint.UpdateValue(-command.ElementCostOfMagic);
             
             var isCombineElement = false;
-            foreach (var currentMagicElement in magicEntity.MagicCast)
+            
+            var copyMagicCast = new MagicElementData[magicEntity.MagicCast.Count];
+            magicEntity.MagicCast.CopyTo(copyMagicCast, 0);
+            
+            foreach (var currentMagicElement in copyMagicCast)
             {
                 foreach (var combinationMagicElement in _magicConfig.combinationMagicElements)
                 {
@@ -53,6 +57,9 @@ namespace BonesOfDragonfall
                         break;
                     }
                 }
+                
+                if(isCombineElement)
+                    break;
             }
             
             if (!isCombineElement)

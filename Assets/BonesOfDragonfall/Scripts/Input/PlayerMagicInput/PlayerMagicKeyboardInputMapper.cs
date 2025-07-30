@@ -61,6 +61,12 @@ namespace BonesOfDragonfall
             return gameInputMap.PlayerMagicCastDarkPressedKeyboard();
         }
 
+        public bool PlayerCastMagicPressed()
+        {
+            var gameInputMap = m_inputMap.As<GameInputMap>();
+            return gameInputMap.PlayerCastMagicPressedKeyboard();
+        }
+
         public bool DisablePlayerMagicCastInput()
         {
             var gameInputMap = m_inputMap.As<GameInputMap>();

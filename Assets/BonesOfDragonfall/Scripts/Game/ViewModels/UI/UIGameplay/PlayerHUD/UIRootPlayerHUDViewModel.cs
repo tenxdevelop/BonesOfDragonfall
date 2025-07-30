@@ -8,6 +8,8 @@ namespace BonesOfDragonfall
 {
     public class UIRootPlayerHUDViewModel : IUIRootPlayerHUDViewModel
     {
+        public ReactiveProperty<bool> IsActiveMagicHUD { get; private set; } = new();
+        public ReactiveCollection<MagicElementData> MagicCast => _playerModel.MagicCast;
         public ReactiveProperty<float> MaxHealthPoints => _playerModel.MaxHealthPoint;
         
         public ReactiveProperty<float> CurrentHealthPoints => _playerModel.HealthPoint;
@@ -36,6 +38,16 @@ namespace BonesOfDragonfall
         public void PhysicsUpdate(float deltaTime)
         {
             
+        }
+
+        public void ShowMagicHUD()
+        {
+            IsActiveMagicHUD.Value = true;
+        }
+
+        public void HideMagicHUD()
+        {
+            IsActiveMagicHUD.Value = false;
         }
     }
 }

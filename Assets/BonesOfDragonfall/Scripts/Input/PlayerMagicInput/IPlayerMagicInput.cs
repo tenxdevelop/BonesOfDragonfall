@@ -24,6 +24,8 @@ namespace BonesOfDragonfall
 
         bool PlayerMagicCastDarkPressed();
 
+        bool PlayerCastMagicPressed();
+
         bool DisablePlayerMagicCastInput();
 
         void EnablePlayerMagicCastInput();

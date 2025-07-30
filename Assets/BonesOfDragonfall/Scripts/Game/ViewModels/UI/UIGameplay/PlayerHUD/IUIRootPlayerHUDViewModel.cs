@@ -9,6 +9,8 @@ namespace BonesOfDragonfall
 {
     public interface IUIRootPlayerHUDViewModel : IViewModel
     {
+        ReactiveProperty<bool> IsActiveMagicHUD { get; }
+        ReactiveCollection<MagicElementData> MagicCast { get; }
         ReactiveProperty<float> MaxHealthPoints { get; }
         
         ReactiveProperty<float> CurrentHealthPoints { get; }
@@ -16,5 +18,8 @@ namespace BonesOfDragonfall
         ReactiveProperty<float> MaxMagicPoints { get; }
         
         ReactiveProperty<float> CurrentMagicPoints { get; }
+
+        void ShowMagicHUD();
+        void HideMagicHUD();
     }
 }
